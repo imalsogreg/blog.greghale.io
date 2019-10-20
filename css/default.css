@@ -1,15 +1,16 @@
 html {
   font-size: 62.5%;
   width: 100%;
-  height: 100%;
-  /* background-color: red; */
+  min-height: 100%;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.25);
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 body {
-  font-size: 1.6rem;
-  color: #000;
-  background-color: green;
-  height: 100%;
+  font-size: 2rem;
+  color: #333;
+  background-color:lightskyblue !important;
+  min-height: 100%;
 
   background-color:#dee;
   background-image: linear-gradient(white 2px, transparent 2px),
@@ -28,7 +29,7 @@ main {
 
 header {
 
-    border-bottom: 0.2rem solid #000;
+    border-bottom: 0.2rem solid lightskyblue;
 }
 
 nav {
@@ -38,7 +39,7 @@ nav {
 nav a {
   font-size: 1.8rem;
   font-weight: bold;
-  color: black;
+  color: #333;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -46,7 +47,7 @@ nav a {
 footer {
   margin-top: 3rem;
   padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
+  border-top: 0.2rem solid #333;
   font-size: 1.2rem;
   color: #555;
 }
@@ -67,7 +68,7 @@ article .header {
 
 .logo a {
   font-weight: bold;
-  color: #000;
+  color: #333;
   text-decoration: none;
 }
 
@@ -178,9 +179,10 @@ article .header {
 
 .content {
     display: flex;
-    height: 100%;
-      flex-direction: column;
-      background-color: rgba(255,255,255,0.9);
-      padding-left: 20px;
-      padding-right: 20px;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.9);
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
