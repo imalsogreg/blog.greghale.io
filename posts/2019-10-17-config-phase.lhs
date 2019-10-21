@@ -187,6 +187,19 @@ Another typeclass allows the construction of a resource
 from its configuration data. The two type parameters correspond
 to the configtime and runtime types.
 
+
+\begin{code}
+class ToRuntime cty rty where
+  toRuntime :: cty -> IO rty
+
+-- | Catch-all instance for regular (not phase-specific) types
+instance ToRuntime ty ty where
+  toRuntime = return
+
+instance ToRuntime PG.ConnectInfo PG.Connection where
+  toRuntime = PG.connect
+\end{code}
+
 There is a catch-all instance for cases when the configtime
 type is the same as the runtime type. When we eventually
 process our configuration record, the catch-all instance will
@@ -198,16 +211,7 @@ we would do that <em>in order to</em> let the types differ
 across phases, so we won't encounter this case. Sorry for
 the aside, I hope it makes sense)
 
-\begin{code}
-class ToRuntime cty rty where
-  toRuntime :: cty -> IO rty
-
-instance ToRuntime ty ty where
-  toRuntime = return
-
-instance ToRuntime PG.ConnectInfo PG.Connection where
-  toRuntime = PG.connect
-\end{code}
+<h2>generic-lens</h2>
 
 In order to have our <code>buildConfig</code> function, we
 will use some fabulous magic from
@@ -226,6 +230,8 @@ buildConfig :: ConfigF ConfigTime -> IO (ConfigF RunTime)
 buildConfig = GenericLens.constraints @ToRuntime toRuntime
 \end{code}
 
+<h2>Summing up</h2>
+
 Summing up, we have removed a few types of duplication and
 informality from the process of building runtime resources
 from configuration data.
@@ -238,7 +244,7 @@ resource record from the configuration record into a very generic
 function.
 
 Was it worth it? In effect, we sacrificed <code>Haskell98</code>'s
-simplicity at the alter of the DRY (Don't Repeat Yourself)
+simplicity at the altar of the DRY (Don't Repeat Yourself)
 principle. Repetition is legitimately dangerous, especially
 in a codebase with multiple authors, written in a language
 where type safety encourages us to skimp on testing. The
@@ -246,8 +252,15 @@ competing interests here (redundancy vs. complexity) depend
 on just how much redundancy you are cleaning up.
 
 Thanks to Sarah Brofeldt ([\@srhb](https://github.com/srhb)),
-who fleshed out the idea with me and did much of the implementation;
-and also to K.A. Buhr for his very helpful [answer](https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436) on StackOverflow.
+who fleshed out the idea with me and did much of the implementation.
+Simple as it may look, we had to explore quite a few paths before
+we found this solution.
+
+Thanks also to K.A. Buhr for his very helpful
+[answer](https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436) on StackOverflow.
+[Ross Baker](https://github.com/rossabaker)
+read a draft of this post and gave great suggestions
+for improvement - Thanks!
 
 <h2>Related work</h2>
 
