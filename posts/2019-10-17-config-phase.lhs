@@ -11,12 +11,13 @@ tags: Haskell
 {-# LANGUAGE RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
 {-# LANGUAGE MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
 {-# LANGUAGE AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
-{-# LANGUAGE ScopedTypeVariables #-}
-import           Data.Text    (Text)
-import           GHC.Generics (Generic)
+{-# LANGUAGE ScopedTypeVariables, DefaultSignatures #-}
+import           Data.Text                         (Text)
+import           GHC.Generics                      (Generic)
 import           Control.Lens
+import qualified Data.Text                         as Text
 import qualified Katip
-import qualified Database.PostgreSQL.Simple as PG
+import qualified Database.PostgreSQL.Simple        as PG
 import qualified Data.Generics.Product.Constraints as GenericLens
 loadConfig = undefined
 \end{code}
@@ -68,7 +69,8 @@ main = do
       , PG.connectPassword = analysisDBPass
       , PG.connectDatabase = analysisDBDB
       }  
-  return ()
+  runBusinessLogic analysisDB userDB logLevel (Text.unpack hostname)
+
 
 
 runBusinessLogic
@@ -95,6 +97,8 @@ What problems will we run into as we try to scale this program up?
 
 
 <h2>Organizing configuration</h2>
+
+
 
 We can address these problems and add a lot of structure to our
  configuration. Let's start by drawing a connection between
@@ -123,7 +127,7 @@ Accepting some complexity here allows us to share a single type definition
 for specifying two things (a) the configuration _data_ and (b) the
 configuration _result_, in one go.
 
-Our `main` function will look mork like this:
+Our `main` function will look more like this:
 
 \begin{code}
 main' = do
@@ -176,15 +180,16 @@ class HasPhases t where
 instance HasPhases PG.Connection where
   type AtPhase 'ConfigTime PG.Connection = PG.ConnectInfo
   type AtPhase 'RunTime    PG.Connection = PG.Connection
+
 \end{code}
 
 Another typeclass allows the construction of a resource
 from its configuration data. The two type parameters correspond
 to the configtime and runtime types.
 
-There is a catchall instance for cases when the configtime
+There is a catch-all instance for cases when the configtime
 type is the same as the runtime type. When we eventually
-process our configuration record, the catchall instance will
+process our configuration record, the catch-all instance will
 apply to any field with a regular type, like our
 <code>hostname</code> field. (It would also match any
 <code>AtPhase</code> fields where configtime type is equal
@@ -218,7 +223,7 @@ details about the internals of our configuration record.
 
 \begin{code}
 buildConfig :: ConfigF ConfigTime -> IO (ConfigF RunTime)
-buildConfig = GenericLens.constraints @ToRuntime toRuntime 
+buildConfig = GenericLens.constraints @ToRuntime toRuntime
 \end{code}
 
 Summing up, we have removed a few types of duplication and
@@ -240,4 +245,11 @@ where type safety encourages us to skimp on testing. The
 competing interests here (redundancy vs. complexity) depend
 on just how much redundancy you are cleaning up.
 
+Thanks to Sarah Brofeldt ([\@srhb](https://github.com/srhb)),
+who fleshed out the idea with me and did much of the implementation;
+and also to K.A. Buhr for his very helpful [answer](https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436) on StackOverflow.
 
+<h2>Related work</h2>
+
+ - [Trees that Grow](https://www.microsoft.com/en-us/research/uploads/prod/2016/11/trees-that-grow.pdf)
+ - [Higher-Kinded Data](https://reasonablypolymorphic.com/blog/higher-kinded-data/)
