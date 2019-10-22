@@ -36,6 +36,11 @@ nav {
   text-align: right;
 }
 
+a {
+    color: #4070a0;
+    text-decoration: none;
+}
+
 nav a {
   font-size: 1.8rem;
   font-weight: bold;

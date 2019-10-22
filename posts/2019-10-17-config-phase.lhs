@@ -1,8 +1,10 @@
 ---
-title: Configuration phases
+title: Organizing configs by usage phase
 description: A pattern for connecting configuration data to capabilities
 tags: Haskell
 ---
+
+<h1>Organizing configs by usage phase</h1>
 
 \long\def\ignore#1{}
 
