@@ -3,7 +3,9 @@
 
 let
   shellPkgs =
-    { config-phases = ["generic-lens" "lens" "postgresql-simple" "katip"]; };
+    { config-phases = ["generic-lens" "lens" "postgresql-simple" "katip"];
+      vertigo       = ["reflex-dom" "string-qq"];
+    };
 
 
    shellFor = name: pWantedNames:
