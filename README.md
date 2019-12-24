@@ -26,3 +26,18 @@ Get all the way into a `ghcid` loop like this:
 ```
 > nix-shell ./shells-nix -A config-phases --run 'ghcid --command "ghci posts/2019-10-17-config-phase.lhs"'
 ```
+
+## Vertigo simulator
+
+I don't expect vertigo simulator to change often, so I just build it manually
+with reflex-platform, minify the javascript, and check the javascript into git.
+
+``` sh
+> ../reflex-platform/try-reflex
+> ghcjs vertigo.hs -o vertigo-tmp -dedupe
+```
+
+``` sh
+> nix-shell -p closure-compiler
+> closure-compiler -js vertigo-tmp.jsexe/all.js js/vertigo-simulator.js
+```
