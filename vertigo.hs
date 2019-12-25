@@ -46,7 +46,7 @@ vertigoPost
      , PostBuild t m, MonadFix m)
   => m ()
 vertigoPost = do
-  elClass "div" "ypr-and-content" $ do
+  elAttr "div" ("class" =: "ypr-and-content" <> "style" =: "display:flex; flex-direction: column-reverse; border-right: 10px solid lightgray") $ do
     rec
       ypr <- yawPitchRollWidget
       nystagmusContent ypr $ do
@@ -104,7 +104,12 @@ yawPitchRollWidget = elClass "table" "xyz" $ do
     mySlider lbl =
       elClass "tr" "range-input" $ do
         el "td" $ text lbl
-        ri <- el "td" $ rangeInput $ RangeInputConfig 0.01 never (constDyn $ "min" =: "0.01" <> "max" =: "10")
+        ri <- el "td"    $
+              rangeInput $
+              RangeInputConfig
+                0.01
+                never
+                (constDyn $ "min" =: "0.01" <> "max" =: "10")
         return $ value ri
   YawPitchRoll <$> mySlider "yaw" <*> mySlider "pitch" <*> mySlider "roll"
  
