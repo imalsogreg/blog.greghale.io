@@ -30,11 +30,24 @@ main = hakyllWith myConfig $ do
             >>= relativizeUrls
 
     match "posts/*" $ do
+        vertigoCtx <- preprocess vertigoChartCtx
+        let ctx = postCtx `mappend` vertigoCtx
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/post.html"    ctx
+            >>= loadAndApplyTemplate "templates/default.html" ctx
             >>= relativizeUrls
+
+    create ["vertigo-chart.html"] $ do
+      vertigoCtx <- preprocess vertigoChartCtx
+      let chartCtx = vertigoCtx <> defaultContext
+      route idRoute
+      compile $ do
+        makeItem ""
+          >>= loadAndApplyTemplate "templates/vertigo-chart.html" chartCtx
+          >>= loadAndApplyTemplate "templates/post.html" chartCtx
+          >>= loadAndApplyTemplate "templates/default.html" chartCtx
+          >>= relativizeUrls
 
     create ["archive.html"] $ do
         route idRoute
@@ -80,3 +93,9 @@ postCtx =
 
 myConfig :: Configuration
 myConfig = defaultConfiguration { destinationDirectory = "./docs/" }
+
+vertigoChartCtx :: IO (Context String)
+vertigoChartCtx = do
+  return $
+    constField "testing" "Hello"
+    <> constField "vertigo-chart-code" "alert('Hello');"
