@@ -79,9 +79,9 @@ At the top of this file is a record that maps post names to the names
 of <code>Haskell</code> packages that I need to have in scope. There’s only one
 entry at the time of writing, because I only have one Literate Haskell
 blog post:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode nix"><code class="sourceCode nix"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">shellPkgs</span> <span class="op">=</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="va">config-phases</span> <span class="op">=</span> <span class="op">[</span><span class="st">&quot;generic-lens&quot;</span> <span class="st">&quot;lens&quot;</span> <span class="st">&quot;postgresql-simple&quot;</span> <span class="st">&quot;katip&quot;</span><span class="op">];</span> <span class="op">};</span></span></code></pre></div>
+<pre class="nix"><code>let
+  shellPkgs =
+    { config-phases = [&quot;generic-lens&quot; &quot;lens&quot; &quot;postgresql-simple&quot; &quot;katip&quot;]; };</code></pre>
 <p>Later in the file, these lists are turned into derivations, so that I
 can say</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nix-shell</span> ./shells.nix <span class="at">-A</span> config-phases <span class="dt">\</span></span>
