@@ -160,4 +160,6 @@ datetime,discomfort,hints,sleep_deficit_8hr,sore_throat,headache,stress,caffine,
 2023-02-13 07:00:00,,,,,,,,,,,,,,,,,,"Ping goes to Miami conference"
 2023-02-14 07:00:00,0.2,0,,,,,,,,0.5,0.5,0,0,0,0,0,1,"First Cascade Dizziness visit"
 2023-02-16 07:00:00,0.2,0,1,2,2,1,0,2,4,,,0,0,0,0,0,1,"Start getting bad cold (102 fever)."
-2023-02-17 07:00:00,0.2,0,1,2,2,1,0,2,4,,,0,0,0,0,0,1,"Start getting bad cold (102 fever)"
+2023-02-17 07:00:00,0.2,0,1,2,3,1,0,2,4,,,0,0,0,0,0,1,"Start getting bad cold (102 fever)"
+2023-02-21 07:48:04,0.2,2,-1,0,0,1,0,1,3,0.1,0.1,0,0,1,0,0,0,"First day after bad cold"
+2023-02-22 07:48:04,0.2,2,2,0,0,1,0,1,3,0.1,0.1,0,0,1,0,0,0,""
