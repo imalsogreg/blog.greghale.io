@@ -168,7 +168,17 @@ function plotTransposedData(allRows) {
   }
   
   var plotDiv = document.getElementById('vertigo');
-  Plotly.newPlot(plotDiv, traceList, {margin: {t: 0}});
+  Plotly.newPlot(
+    plotDiv,
+    traceList,
+    {
+      margin: {t: 0},
+      yaxis: {fixedrange: true},
+      margin: { r: 50 },
+      modebar: {
+        orientation: 'v'
+      }
+    });
 
 }
 
