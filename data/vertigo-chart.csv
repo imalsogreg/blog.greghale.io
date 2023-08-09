@@ -212,3 +212,5 @@ datetime,discomfort,hints,sleep_deficit_8hr,sore_throat,headache,stress,caffine,
 2023-07-24 19:38:37,0.3,1,3,1,0,1,0,1,2,0.1,0.1,0.5,0.1,0.4,0.1,3,0,"Still uncomfortable laying down"
 2023-08-05 07:00:00,0.3,1,2, , ,2,1,2,2, , , , , , ,0,0,""
 2023-08-06 22:06:31,0.5,3,0.5,0,0,1,1,2,3,0,1.0,2,0.5,2.5,0.5,0,0,"1 drink yesterday"
+2023-08-08 07:35:10,1.1,0,0.5,0,0,1,0,1,3, , ,0.4,0.1,2.0,0.1,0,0,"Feels like day 2 of episode"
+2023-08-09 07:35:10,1.4,0,0.5,0,0,1,0,1,3, , ,0.8,0.1,2.0,0.1,0,0,"Constant low-medium nystagmus while lying down"
