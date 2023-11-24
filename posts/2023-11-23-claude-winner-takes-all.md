@@ -9,22 +9,26 @@ tags: science
 In my [last post](2023-03-24-gpt4-neuron-schema.html), ChatGPT and I worked through some
 ideas for domain specific languages (DSLs) for describing biologically realistic neural networks.
 
-[Anthropic](https://anthropic.ai)'s [Claude-2](https://claude.ai) has come on the scene
+[Anthropic](https://anthropic.com)'s [Claude-2](https://claude.ai) has come on the scene
 as another amazingly powerful chat assistant, and I wondered if I could give in the inverse
 problem - taking a neural network defined in a brand new DSL and asking Claude to tell
 me what it could about the high level properties of the network.
 
-tl;dl: I believe that the DSL is fairly readable and self-describing... but without comments
-it's not obvious what the the author's intention was and resulting network should do. To my
-amazement, Claude was able to see through the syntax (which is completely novel - this is not
-a DSL used in the wild anywhere yet), and understand the high-level dynamics of the network.
+tl;dr: I believe that the DSL is fairly readable and self-describing... but
+without comments it's not obvious what the the author's intention was and what
+the resulting network should do. To my amazement, Claude was able to see through
+the syntax (which is completely novel - this is not a DSL used in the wild
+anywhere yet), and understand the high-level dynamics of the network.
 
 I won't say what the goal of the network is here, I hope you'll try to work that out for
-yourself as you read my conversation with Claude. 
+yourself as you read my conversation with Claude. Are you smarter than the chat bot?
+I'm not. :)
 
 ## The Claude chat session
 
-| Greg: Could you guess what the high-level properties of this neural network are?
+#### Greg:
+
+Could you guess what the high-level properties of this neural network are?
 
 ```
 let pos = ./neuron_position.ffg
@@ -127,7 +131,7 @@ in
 
 <hr/>
 
-Claude: 
+#### Claude: 
 
 Based on the code provided, I can infer the following high-level properties about this neural network:
 
@@ -147,9 +151,13 @@ So in summary, it's a clustered network with local excitation and lateral inhibi
 
 <hr/>
 
-| Greg: What sort of network is it? Can you describe the properties of the clusters?
+#### Greg:
+
+What sort of network is it? Can you describe the properties of the clusters?
 
 <hr/>
+
+#### Claude:
 
 Based on the additional details in the code, I can provide some more specifics about the network and cluster properties:
 
@@ -185,34 +193,53 @@ Does this help characterize the key properties of the clusters and overall netwo
 
 <hr/>
 
-| Greg: Could you give a high-level description of the network's behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?
+#### Greg:
+
+Could you give a high-level description of the network's behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?
 
 <hr/>
+
+#### Claude:
 
 Here is a high-level description of the expected network behavior:
 
 "Competitive Clustered Recurrent Network"
 
-This network consists of multiple locally recurrent clusters that compete and inhibit each other via a global pool of inhibitory neurons. As such, it behaves as a series of interconnected attractor networks that maintain their own internal representations, while suppressing the activity of the other clusters.
+This network consists of multiple locally recurrent clusters that compete and
+inhibit each other via a global pool of inhibitory neurons. As such, it behaves
+as a series of interconnected attractor networks that maintain their own
+internal representations, while suppressing the activity of the other clusters.
 
 Some key behavioral properties:
 
-    Within a cluster, the excitatory-excitatory recurrence allows maintenance of an active representation or "memory" in that module after the input is removed.
-    The inhibitory connections between clusters implement a winner-take-all type computation, where the most strongly activated cluster will suppress activity in the other clusters.
-    This allows multiple separate representations to be held simultaneously across the different recurrent clusters.
-    The global inhibition supports competition between representations held in different clusters depending on the vigor of the activity, novelty, or other salient features.
+    Within a cluster, the excitatory-excitatory recurrence allows maintenance of
+    an active representation or "memory" in that module after the input is removed.
+    The inhibitory connections between clusters implement a winner-take-all type
+    computation, where the most strongly activated cluster will suppress activity
+    in the other clusters.
 
-In summary, the modular and competitive design allows this network to maintain multiple context-dependent memories or rules simultaneously, while utilizing a global suppression mechanism to dictate which module is currently dominating the overall network output. The recurrent excitation supports working memory within each module.
+    This allows multiple separate representations to be held simultaneously across
+    the different recurrent clusters. The global inhibition supports competition
+    between representations held in different clusters depending on the vigor of
+    the activity, novelty, or other salient features.
+
+In summary, the modular and competitive design allows this network to maintain
+multiple context-dependent memories or rules simultaneously, while utilizing a
+global suppression mechanism to dictate which module is currently dominating the
+overall network output. The recurrent excitation supports working memory within
+each module.
 
 Let me know if this helps characterize the overall purpose and high-level behavior you might expect from this type of competitive and clustered recurrent network architecture. I'm happy to clarify or expand my explanation further as needed!
 
 <hr/>
 
-| Greg: You are absolutely amazing.
+#### Greg:
+
+You are absolutely amazing.
 
 <hr/>
 
-| Claude:
+#### Claude:
 
 Thank you! I'm pleased I could provide an accurate and intuitive
 characterization of this network architecture. Being able to infer high-level
@@ -225,7 +252,7 @@ really helps further my understanding.
 ## Conclusion
 
 Claude appears to have immediately understood the network topology, recognizing
-it ask as "Competitive Clustered Recurrent Network". (I wolud call it a
+it ask as a "Competitive Clustered Recurrent Network". (I wolud call it a
 "winner-takes-all" network, same difference). It was able to infer the fact that
 excitatory connections within a cluster form a ring, and inhibitory connections
 between clusters are all-to-all.

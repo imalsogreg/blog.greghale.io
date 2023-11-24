@@ -34,18 +34,21 @@
         <h2 id="prologue">Prologue</h2>
 <p>In my <a href="2023-03-24-gpt4-neuron-schema.html">last post</a>, ChatGPT and I worked through some
 ideas for domain specific languages (DSLs) for describing biologically realistic neural networks.</p>
-<p><a href="https://anthropic.ai">Anthropic</a>’s <a href="https://claude.ai">Claude-2</a> has come on the scene
+<p><a href="https://anthropic.com">Anthropic</a>’s <a href="https://claude.ai">Claude-2</a> has come on the scene
 as another amazingly powerful chat assistant, and I wondered if I could give in the inverse
 problem - taking a neural network defined in a brand new DSL and asking Claude to tell
 me what it could about the high level properties of the network.</p>
-<p>tl;dl: I believe that the DSL is fairly readable and self-describing… but without comments
-it’s not obvious what the the author’s intention was and resulting network should do. To my
-amazement, Claude was able to see through the syntax (which is completely novel - this is not
-a DSL used in the wild anywhere yet), and understand the high-level dynamics of the network.</p>
+<p>tl;dr: I believe that the DSL is fairly readable and self-describing… but
+without comments it’s not obvious what the the author’s intention was and what
+the resulting network should do. To my amazement, Claude was able to see through
+the syntax (which is completely novel - this is not a DSL used in the wild
+anywhere yet), and understand the high-level dynamics of the network.</p>
 <p>I won’t say what the goal of the network is here, I hope you’ll try to work that out for
-yourself as you read my conversation with Claude.</p>
+yourself as you read my conversation with Claude. Are you smarter than the chat bot?
+I’m not. :)</p>
 <h2 id="the-claude-chat-session">The Claude chat session</h2>
-<div class="line-block">Greg: Could you guess what the high-level properties of this neural network are?</div>
+<h4 id="greg">Greg:</h4>
+<p>Could you guess what the high-level properties of this neural network are?</p>
 <pre><code>let pos = ./neuron_position.ffg
 let params = {
       n_clusters: (4 : Natural),
@@ -143,7 +146,7 @@ in
     synapses: excitatory_synapses + inhibitory_synapses
   }</code></pre>
 <hr />
-<p>Claude:</p>
+<h4 id="claude">Claude:</h4>
 <p>Based on the code provided, I can infer the following high-level properties about this neural network:</p>
 <ol type="1">
 <li><p>It consists of multiple clusters of neurons. The number of clusters is defined by the <code>n_clusters</code> parameter.</p></li>
@@ -155,8 +158,10 @@ in
 </ol>
 <p>So in summary, it’s a clustered network with local excitation and lateral inhibition between clusters. The connectivity rules differ for excitatory and inhibitory neurons. The number of clusters and the sizing of each cluster can be configured through parameters.</p>
 <hr />
-<div class="line-block">Greg: What sort of network is it? Can you describe the properties of the clusters?</div>
+<h4 id="greg-1">Greg:</h4>
+<p>What sort of network is it? Can you describe the properties of the clusters?</p>
 <hr />
+<h4 id="claude-1">Claude:</h4>
 <p>Based on the additional details in the code, I can provide some more specifics about the network and cluster properties:</p>
 <p>Type of Network:
 - Clustered recurrent neural network</p>
@@ -201,22 +206,38 @@ in
 <p>So in summary, each cluster contains a small, locally recurrent network of excitatory neurons, along with a pool of inhibitory neurons that connect globally between clusters for competition/inhibition. The sizes of clusters and pool of inhibitions can be adjusted.</p>
 <p>Does this help characterize the key properties of the clusters and overall network architecture? Let me know if you need any clarification or have additional questions!</p>
 <hr />
-<div class="line-block">Greg: Could you give a high-level description of the network’s behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?</div>
+<h4 id="greg-2">Greg:</h4>
+<p>Could you give a high-level description of the network’s behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?</p>
 <hr />
+<h4 id="claude-2">Claude:</h4>
 <p>Here is a high-level description of the expected network behavior:</p>
 <p>“Competitive Clustered Recurrent Network”</p>
-<p>This network consists of multiple locally recurrent clusters that compete and inhibit each other via a global pool of inhibitory neurons. As such, it behaves as a series of interconnected attractor networks that maintain their own internal representations, while suppressing the activity of the other clusters.</p>
+<p>This network consists of multiple locally recurrent clusters that compete and
+inhibit each other via a global pool of inhibitory neurons. As such, it behaves
+as a series of interconnected attractor networks that maintain their own
+internal representations, while suppressing the activity of the other clusters.</p>
 <p>Some key behavioral properties:</p>
-<pre><code>Within a cluster, the excitatory-excitatory recurrence allows maintenance of an active representation or &quot;memory&quot; in that module after the input is removed.
-The inhibitory connections between clusters implement a winner-take-all type computation, where the most strongly activated cluster will suppress activity in the other clusters.
-This allows multiple separate representations to be held simultaneously across the different recurrent clusters.
-The global inhibition supports competition between representations held in different clusters depending on the vigor of the activity, novelty, or other salient features.</code></pre>
-<p>In summary, the modular and competitive design allows this network to maintain multiple context-dependent memories or rules simultaneously, while utilizing a global suppression mechanism to dictate which module is currently dominating the overall network output. The recurrent excitation supports working memory within each module.</p>
+<pre><code>Within a cluster, the excitatory-excitatory recurrence allows maintenance of
+an active representation or &quot;memory&quot; in that module after the input is removed.
+The inhibitory connections between clusters implement a winner-take-all type
+computation, where the most strongly activated cluster will suppress activity
+in the other clusters.
+
+This allows multiple separate representations to be held simultaneously across
+the different recurrent clusters. The global inhibition supports competition
+between representations held in different clusters depending on the vigor of
+the activity, novelty, or other salient features.</code></pre>
+<p>In summary, the modular and competitive design allows this network to maintain
+multiple context-dependent memories or rules simultaneously, while utilizing a
+global suppression mechanism to dictate which module is currently dominating the
+overall network output. The recurrent excitation supports working memory within
+each module.</p>
 <p>Let me know if this helps characterize the overall purpose and high-level behavior you might expect from this type of competitive and clustered recurrent network architecture. I’m happy to clarify or expand my explanation further as needed!</p>
 <hr />
-<div class="line-block">Greg: You are absolutely amazing.</div>
+<h4 id="greg-3">Greg:</h4>
+<p>You are absolutely amazing.</p>
 <hr />
-<div class="line-block">Claude:</div>
+<h4 id="claude-3">Claude:</h4>
 <p>Thank you! I’m pleased I could provide an accurate and intuitive
 characterization of this network architecture. Being able to infer high-level
 behaviors and properties from code details is an important skill in AI, so your
@@ -226,7 +247,7 @@ at. I appreciate you taking the time to have this conversation with me - it
 really helps further my understanding.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Claude appears to have immediately understood the network topology, recognizing
-it ask as “Competitive Clustered Recurrent Network”. (I wolud call it a
+it ask as a “Competitive Clustered Recurrent Network”. (I wolud call it a
 “winner-takes-all” network, same difference). It was able to infer the fact that
 excitatory connections within a cluster form a ring, and inhibitory connections
 between clusters are all-to-all.</p>
