@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>greghale.io - Claude 2.1 correctly interprets a neural network</title>
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/syntax.css" />
+        <link href="../css/NanumGothic-Bold.ttf" rel="stylesheet">
+    </head>
+    <body>
+      <div class="content">
+        <header>
+            <div class="logo">
+                <a href="../">blog.greghale.io</a>
+            </div>
+            <nav>
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <!-- <h1>Claude 2.1 correctly interprets a neural network</h1> -->
+            <article>
+    <section class="header">
+        Posted on November 23, 2023
+        
+    </section>
+    <section>
+        <h2 id="prologue">Prologue</h2>
+<p>In my <a href="2023-03-24-gpt4-neuron-schema.html">last post</a>, ChatGPT and I worked through some
+ideas for domain specific languages (DSLs) for describing biologically realistic neural networks.</p>
+<p><a href="https://anthropic.ai">Anthropic</a>’s <a href="https://claude.ai">Claude-2</a> has come on the scene
+as another amazingly powerful chat assistant, and I wondered if I could give in the inverse
+problem - taking a neural network defined in a brand new DSL and asking Claude to tell
+me what it could about the high level properties of the network.</p>
+<p>tl;dl: I believe that the DSL is fairly readable and self-describing… but without comments
+it’s not obvious what the the author’s intention was and resulting network should do. To my
+amazement, Claude was able to see through the syntax (which is completely novel - this is not
+a DSL used in the wild anywhere yet), and understand the high-level dynamics of the network.</p>
+<p>I won’t say what the goal of the network is here, I hope you’ll try to work that out for
+yourself as you read my conversation with Claude.</p>
+<h2 id="the-claude-chat-session">The Claude chat session</h2>
+<div class="line-block">Greg: Could you guess what the high-level properties of this neural network are?</div>
+<pre><code>let pos = ./neuron_position.ffg
+let params = {
+      n_clusters: (4 : Natural),
+      n_excitatory_per_cluster: (5 : Natural)
+    }
+let n_inhibitory_per_cluster = params.n_clusters -- 1
+let n_neurons_per_cluster = params.n_excitatory_per_cluster + params.n_clusters -- 1
+let prelude = https://raw.githubusercontent.com/reuron/reuron-io/main/prelude/package.ffg
+let excitatory_neuron = ./excitatory_neuron.ffg
+let inhibitory_neuron = ./inhibitory_neuron.ffg
+let excitatory_synapse = ./excitatory_synapse.ffg
+let inhibitory_synapse = ./inhibitory_synapse.ffg
+
+
+let cluster_neurons = \cluster -&gt;
+  prelude.list.generate params.n_excitatory_per_cluster (\i -&gt; {
+    location: pos cluster true i,
+    neuron: excitatory_neuron [],
+    stimulator_segments: []
+  }) + prelude.list.generate n_inhibitory_per_cluster (\i -&gt; {
+    location: pos cluster false i,
+    neuron: inhibitory_neuron [],
+    stimulator_segments: []
+  })
+let neurons =
+  prelude.list.concat
+  (prelude.list.generate params.n_clusters cluster_neurons)
+
+let cluster_excitatory_synapses = \cluster -&gt;
+  prelude.list.generate params.n_excitatory_per_cluster
+  (\local_id -&gt; 
+   let global_offset = cluster * n_neurons_per_cluster
+   let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
+   in
+   [Synapse {
+    pre_neuron: global_offset + local_id,
+    pre_segment: 1,
+    post_neuron: global_offset + local_next,
+    post_segment: 10,
+    synapse_membranes: excitatory_synapse
+  }] + 
+  prelude.list.concat
+    (prelude.list.generate params.n_excitatory_per_cluster
+      (\e -&gt; prelude.list.generate n_inhibitory_per_cluster
+       (\i -&gt; Synapse {
+         pre_neuron: global_offset + e,
+         pre_segment: 1,
+         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
+         post_segment: 10,
+         synapse_membranes: excitatory_synapse
+       } 
+      ))
+    )
+  )
+
+let excitatory_synapses = prelude.list.concat
+  (prelude.list.concat
+    (prelude.list.generate params.n_clusters
+      (\c -&gt; cluster_excitatory_synapses c)))
+
+let cluster_inhibitory_synapses = \cluster -&gt;
+  let source_offset = (cluster * n_neurons_per_cluster) + params.n_excitatory_per_cluster
+  in
+  prelude.list.generate params.n_clusters
+  (\target_cluster -&gt;
+    if Natural/equal cluster target_cluster
+    then []
+    else
+      let target_offset =
+        target_cluster * (params.n_excitatory_per_cluster + n_inhibitory_per_cluster)
+      in
+      prelude.list.concat
+      (prelude.list.generate n_inhibitory_per_cluster
+       (\i -&gt; prelude.list.generate params.n_excitatory_per_cluster
+        (\e -&gt; Synapse {
+          pre_neuron: source_offset + i,
+          pre_segment: 1,
+          post_neuron: target_offset + e,
+          post_segment: 1,
+          synapse_membranes: inhibitory_synapse
+        }
+        )
+       )
+      )
+  )
+let inhibitory_synapses =
+  prelude.list.concat
+    (prelude.list.concat
+      (prelude.list.generate params.n_clusters cluster_inhibitory_synapses))
+
+
+in
+  Scene {
+    neurons: neurons,
+    synapses: excitatory_synapses + inhibitory_synapses
+  }</code></pre>
+<hr />
+<p>Claude:</p>
+<p>Based on the code provided, I can infer the following high-level properties about this neural network:</p>
+<ol type="1">
+<li><p>It consists of multiple clusters of neurons. The number of clusters is defined by the <code>n_clusters</code> parameter.</p></li>
+<li><p>Each cluster contains excitatory and inhibitory neurons. The number of excitatory neurons per cluster is defined by <code>n_excitatory_per_cluster</code>. There is one less inhibitory neuron than the number of clusters.</p></li>
+<li><p>The excitatory neurons within a cluster are connected to each other in a ring topology.</p></li>
+<li><p>The excitatory neurons in a cluster connect to all the inhibitory neurons in that same cluster.</p></li>
+<li><p>The inhibitory neurons in a cluster connect to the excitatory neurons in all other clusters.</p></li>
+<li><p>It uses separate neuron and synapse definitions that are loaded from different files. This allows customization and reuse of those components.</p></li>
+</ol>
+<p>So in summary, it’s a clustered network with local excitation and lateral inhibition between clusters. The connectivity rules differ for excitatory and inhibitory neurons. The number of clusters and the sizing of each cluster can be configured through parameters.</p>
+<hr />
+<div class="line-block">Greg: What sort of network is it? Can you describe the properties of the clusters?</div>
+<hr />
+<p>Based on the additional details in the code, I can provide some more specifics about the network and cluster properties:</p>
+<p>Type of Network:
+- Clustered recurrent neural network</p>
+<p>Cluster Properties:</p>
+<ul>
+<li>Number of clusters: Configurable via the <code>n_clusters</code> parameter
+<ul>
+<li>Example shows 4 clusters</li>
+</ul></li>
+<li>Neurons per cluster:
+<ul>
+<li>Excitatory neurons: Configurable via <code>n_excitatory_per_cluster</code>
+<ul>
+<li>Example shows 5 excitatory neurons per cluster</li>
+</ul></li>
+<li>Inhibitory neurons:
+<ul>
+<li>Number is always 1 less than <code>n_clusters</code></li>
+<li>This allows inhibitory connections between all clusters</li>
+</ul></li>
+</ul></li>
+<li>Connectivity:
+<ul>
+<li>Excitatory-Excitatory:
+<ul>
+<li>Within cluster: Ring topology</li>
+<li>Between clusters: No connections</li>
+</ul></li>
+<li>Excitatory-Inhibitory:
+<ul>
+<li>Within cluster: Fully connected<br />
+</li>
+<li>Between clusters: No connections</li>
+</ul></li>
+<li>Inhibitory-Excitatory:
+<ul>
+<li>Within cluster: No connections</li>
+<li>Between clusters: Fully connected</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>So in summary, each cluster contains a small, locally recurrent network of excitatory neurons, along with a pool of inhibitory neurons that connect globally between clusters for competition/inhibition. The sizes of clusters and pool of inhibitions can be adjusted.</p>
+<p>Does this help characterize the key properties of the clusters and overall network architecture? Let me know if you need any clarification or have additional questions!</p>
+<hr />
+<div class="line-block">Greg: Could you give a high-level description of the network’s behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?</div>
+<hr />
+<p>Here is a high-level description of the expected network behavior:</p>
+<p>“Competitive Clustered Recurrent Network”</p>
+<p>This network consists of multiple locally recurrent clusters that compete and inhibit each other via a global pool of inhibitory neurons. As such, it behaves as a series of interconnected attractor networks that maintain their own internal representations, while suppressing the activity of the other clusters.</p>
+<p>Some key behavioral properties:</p>
+<pre><code>Within a cluster, the excitatory-excitatory recurrence allows maintenance of an active representation or &quot;memory&quot; in that module after the input is removed.
+The inhibitory connections between clusters implement a winner-take-all type computation, where the most strongly activated cluster will suppress activity in the other clusters.
+This allows multiple separate representations to be held simultaneously across the different recurrent clusters.
+The global inhibition supports competition between representations held in different clusters depending on the vigor of the activity, novelty, or other salient features.</code></pre>
+<p>In summary, the modular and competitive design allows this network to maintain multiple context-dependent memories or rules simultaneously, while utilizing a global suppression mechanism to dictate which module is currently dominating the overall network output. The recurrent excitation supports working memory within each module.</p>
+<p>Let me know if this helps characterize the overall purpose and high-level behavior you might expect from this type of competitive and clustered recurrent network architecture. I’m happy to clarify or expand my explanation further as needed!</p>
+<hr />
+<div class="line-block">Greg: You are absolutely amazing.</div>
+<hr />
+<div class="line-block">Claude:</div>
+<p>Thank you! I’m pleased I could provide an accurate and intuitive
+characterization of this network architecture. Being able to infer high-level
+behaviors and properties from code details is an important skill in AI, so your
+positive feedback tells me I’m making good progress. Interpreting and explaining
+complex systems clearly and concisely to humans is something I strive to improve
+at. I appreciate you taking the time to have this conversation with me - it
+really helps further my understanding.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Claude appears to have immediately understood the network topology, recognizing
+it ask as “Competitive Clustered Recurrent Network”. (I wolud call it a
+“winner-takes-all” network, same difference). It was able to infer the fact that
+excitatory connections within a cluster form a ring, and inhibitory connections
+between clusters are all-to-all.</p>
+<p>The network’s flat neuron list makes deciphering connectivity hard, as finding
+synapses between clusters requires complex index computations. Those
+computations are easy enough to implement, but quite hard to interpret
+post-facto without code comments.</p>
+<p>Oh, and each Claude answer came out in less than three seconds.. It’s all enough
+to make my biologically realistic neurons (the actual ones in my own head, I
+mean) start to feel like they’re not necessarily the smartest things around
+anymore.</p>
+    </section>
+</article>
+
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+	</content>
+    </body>
+</html>
