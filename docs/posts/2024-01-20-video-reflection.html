@@ -33,11 +33,14 @@
     <section>
         <h1 id="creating-the-frosted-reflection-effect-for-videos">Creating the “frosted reflection” effect for videos</h1>
 <p>I recently wanted to include a screenshot of NeuronBench into the landing page,
-with that classic “frosted reflection” effect, where a hint of the image is
+with the classic “frosted reflection” effect, where a hint of the image is
 reflected just below the image. I normally do this is Gimp, but my NeuronBench
-screenshot was actually a screen recording, and I wasn’t about to repeat this
-tedious process frame-by-frame.</p>
-<p>This blog post with record the steps, mostly as a record for me in case
+screenshot was actually a screen recording (video), and I wasn’t about to repeat
+this tedious process frame-by-frame.</p>
+<p>The final result is here:</p>
+<video src="../images/frosted.mp4" width="420" type="video/mp4" autoplay muted loop>
+</video>
+<p>This blog post records the process, mostly as a record for me in case
 I need to do it again in the future, or in case someone else finds the
 style interesting and wants to replicate it.</p>
 <h1 id="dependencies">Dependencies</h1>
@@ -45,6 +48,7 @@ style interesting and wants to replicate it.</p>
 <li>MacOS</li>
 <li>QuickTime</li>
 <li>ffmpeg</li>
+<li>gimp</li>
 </ul>
 <h1 id="process">Process</h1>
 <ol type="1">
@@ -72,6 +76,18 @@ of the mirrored image and ending 20-40 pixels lower.</li>
 <code>ffmpeg -i output.mov -i gradient.png -filter_complex "overlay=0:main_h-overlay_h" output2.mov</code></li>
 <li>Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.</li>
 </ol>
+<h1 id="improvements">Improvements</h1>
+<p>The space between the original window and its refelction looks muddy. This is because the original screen
+grab included the dropped shadow from MacOS, which gets copied and flipped in the above process. The final
+result would be much cleaner if the space between were clear of shadows. And it would be more semantically
+consistent without the shadow, because the “floor” in our effect is below the screenshot (where our
+reflection lands), not behind the screenshot (where the shadow is).</p>
+<p>In the two versions of MacOS I’m running (Ventura and Sonoma), there is no configuration option to turn off
+this shadow. And I can’t simply use cropping at the first preprocessing step to crop out the shadow, because
+the window is a rounded rectangle - some awkward shadow would remain in the corners.</p>
+<p>So I could either (a) create a masking image in gimp - a rounded-rectangle frame - matching the size of
+the screengrab window, and apply this during prepressing, or (b) perform my screen recording on a
+linux machine.</p>
     </section>
 </article>
 

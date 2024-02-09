@@ -7,12 +7,22 @@ tags: VideoProcessing
 # Creating the "frosted reflection" effect for videos
 
 I recently wanted to include a screenshot of NeuronBench into the landing page,
-with that classic "frosted reflection" effect, where a hint of the image is
+with the classic "frosted reflection" effect, where a hint of the image is
 reflected just below the image. I normally do this is Gimp, but my NeuronBench
-screenshot was actually a screen recording, and I wasn't about to repeat this
-tedious process frame-by-frame.
+screenshot was actually a screen recording (video), and I wasn't about to repeat
+this tedious process frame-by-frame.
 
-This blog post with record the steps, mostly as a record for me in case
+The final result is here:
+
+<video
+  src="/images/frosted.mp4"
+  width="420"
+  type="video/mp4"
+  autoplay muted loop
+  >
+</video>
+
+This blog post records the process, mostly as a record for me in case
 I need to do it again in the future, or in case someone else finds the
 style interesting and wants to replicate it.
 
@@ -21,6 +31,7 @@ style interesting and wants to replicate it.
  - MacOS
  - QuickTime
  - ffmpeg
+ - gimp
 
 # Process
 
@@ -55,3 +66,19 @@ style interesting and wants to replicate it.
      ffmpeg -i output.mov -i gradient.png -filter_complex "overlay=0:main_h-overlay_h" output2.mov
      ```
   1. Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.
+
+# Improvements
+
+The space between the original window and its refelction looks muddy. This is because the original screen
+grab included the dropped shadow from MacOS, which gets copied and flipped in the above process. The final
+result would be much cleaner if the space between were clear of shadows. And it would be more semantically
+consistent without the shadow, because the "floor" in our effect is below the screenshot (where our
+reflection lands), not behind the screenshot (where the shadow is).
+
+In the two versions of MacOS I'm running (Ventura and Sonoma), there is no configuration option to turn off
+this shadow. And I can't simply use cropping at the first preprocessing step to crop out the shadow, because
+the window is a rounded rectangle - some awkward shadow would remain in the corners.
+
+So I could either (a) create a masking image in gimp - a rounded-rectangle frame - matching the size of
+the screengrab window, and apply this during prepressing, or (b) perform my screen recording on a
+linux machine.
