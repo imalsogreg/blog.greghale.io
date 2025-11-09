@@ -59,7 +59,6 @@ navigation = [
 ]
 home_title = "Greg Hale's Blog"
 home_content = """
-<div style="display: flex; flex-direction: column; gap: 20px;">
 <p>
 Hi! I studied the neuroscience of spatial representations for
 8 years before changing course and working as a software
@@ -70,16 +69,14 @@ programming, deep learning and language design/development.
 
 <p>
 Many of my interests came together for the
-<a href="https://neuronbench.com">NeuronBench</a> project - a
+[NeuronBench](https://neuronbench.com) project - a
 browser-based neuron simulator. I'd love
 for you to try it out!
 </p>
 
 <p>
-Lately most of my creative energy goes into my job
-at <a href="https://boundaryml.com">BoundaryML</a>, working on
-a language for building typesafe LLM apps.
-</p>
-</div>
+Lately most of my creative every goes into my job
+at [BoundaryML](https://boundaryml.com), working on
+a
 """
 social_icons = []
