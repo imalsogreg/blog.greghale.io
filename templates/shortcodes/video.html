@@ -1,0 +1,7 @@
+<video width="{{ width | default(value='640') }}"
+       {% if autoplay %}autoplay{% endif %}
+       {% if loop %}loop{% endif %}
+       {% if muted %}muted{% endif %}>
+    <source src="{{ src }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>

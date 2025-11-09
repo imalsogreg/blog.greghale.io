@@ -1,0 +1,58 @@
+{% import "macros/social_icon.svg.html" as macro_social -%}
+<!doctype html>
+<html lang="{{ lang }}" dir="{{ config.extra.papermod.language_direction }}">
+    <head>
+        {% block head %} {% include "partials/head.html" %} {% endblock %}
+    </head>
+    <body
+        class="{% if section or term or taxonomy %}list {% endif %}{% if config.extra.papermod.theme == 'dark' %} dark{% endif %}"
+        id="top"
+    >
+        {% block header %} {% include "partials/header.html" %} {% endblock %}
+        <main class="main">
+            {% block main %} {# Skip home_info.html to avoid duplicate title #}
+            <section class="first-entry home-info">
+                <div class="entry-content">
+                    {{ config.extra.papermod.home_content | safe }}
+                </div>
+            </section>
+
+            {# Show recent posts from the posts section #} {% set posts_section
+            = get_section(path="posts/_index.md") %} {% for page in
+            posts_section.pages | slice(end=5) %}
+            <article class="post-entry">
+                <header class="entry-header">
+                    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+                </header>
+                {% if page.description %}
+                <div class="entry-content">
+                    <p>{{ page.description }}</p>
+                </div>
+                {% elif page.summary %}
+                <div class="entry-content">
+                    <p>{{ page.summary | safe }}</p>
+                </div>
+                {% endif %}
+                <footer class="entry-footer">
+                    {% include "partials/post_meta.html" %}
+                </footer>
+                <a
+                    class="entry-link"
+                    aria-label="post link to {{ page.title }}"
+                    href="{{ page.permalink }}"
+                ></a>
+            </article>
+            {% endfor %}
+
+            <footer class="page-footer">
+                <nav class="pagination">
+                    <a class="next" href="{{ config.base_url }}/posts"
+                        >View All Posts »</a
+                    >
+                </nav>
+            </footer>
+            {% endblock %}
+        </main>
+        {% block footer %} {% include "partials/footer.html" %} {% endblock %}
+    </body>
+</html>

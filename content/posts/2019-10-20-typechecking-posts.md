@@ -1,8 +1,11 @@
----
-title: Typechecking code in a Hakyll blog
-description: Easy setup for hacking on Literate Haskell blog posts
-tags: haskell, nix
----
++++
+title = "Typechecking code in a Hakyll blog"
+description = "Easy setup for hacking on Literate Haskell blog posts"
+date = 2019-10-20
+
+[taxonomies]
+tags = ["haskell", "nix"]
++++
 
 # Typechecking code in a Hakyll blog
 
@@ -21,6 +24,8 @@ time.
 to do any work. Just create a file in `posts/` with the `.lhs`
 file extension.
 
+The format is described well in the
+[Haskell Wiki](https://wiki.haskell.org/Literate_programming).
 The only features I've used so far are
 
 ### Code blocks

@@ -1,43 +1,73 @@
 # blog.greghale.io
 
-The source code for my personal blog.
+Personal blog built with [Zola](https://www.getzola.org/) static site generator and the [PaperMod](https://github.com/cydave/zola-theme-papermod) theme.
 
-## Hacking
+## Setup
 
-Some of the entries need haskell dependencies. Use `shells.nix` to set
-these dependencies and to use them when editing a post.
+This project uses Nix for dependency management. To get started:
 
-For example, the `config-phases` post depends on `generic-lens`, so 
-we have an entry in `shells.nix` to specify that:
-
-```
- shellPkgs =
-    { config-phases = ["generic-lens" "lens" "postgresql-simple" "katip"]; };
+```bash
+nix-shell
 ```
 
-To work on the `config-phases` post, enter that shell by name:
+This will provide you with Zola and all necessary tools.
 
-```
-> nix-shell ./shells.nix -A config-phases
-```
+## Development
 
-Get all the way into a `ghcid` loop like this:
+To run the development server:
 
-```
-> nix-shell ./shells-nix -A config-phases --run 'ghcid --command "ghci posts/2019-10-17-config-phase.lhs"'
+```bash
+zola serve
 ```
 
-## Vertigo simulator
+The site will be available at `http://127.0.0.1:1111`
 
-I don't expect vertigo simulator to change often, so I just build it manually
-with reflex-platform, minify the javascript, and check the javascript into git.
+## Building
 
-``` sh
-> ../reflex-platform/try-reflex
-> ghcjs vertigo.hs -o vertigo-tmp -dedupe
+To build the static site:
+
+```bash
+zola build
 ```
 
-``` sh
-> nix-shell -p closure-compiler
-> closure-compiler -js vertigo-tmp.jsexe/all.js js/vertigo-simulator.js
+The generated site will be in the `public/` directory.
+
+## Content Structure
+
+- `content/posts/` - Blog posts
+- `static/` - Static assets (images, js, css, data files)
+- `templates/` - Custom template overrides
+- `themes/papermod/` - PaperMod theme (git submodule)
+
+## Writing Posts
+
+Posts are written in Markdown and placed in `content/posts/`. Each post should have frontmatter like:
+
+```markdown
++++
+title = "Post Title"
+description = "Short description"
+date = 2025-01-01
+
+[taxonomies]
+tags = ["tag1", "tag2"]
++++
+
+Your content here...
 ```
+
+## Deployment
+
+The site is configured to deploy to `blog.greghale.io`. After building with `zola build`, the contents of the `public/` directory should be deployed to your hosting provider.
+
+## Theme
+
+This blog uses the PaperMod theme for Zola, which provides:
+- Light/Dark theme toggle
+- Fast and responsive design
+- Code syntax highlighting
+- RSS feeds
+- Tag support
+- Search functionality
+
+Theme documentation: https://github.com/cydave/zola-theme-papermod

@@ -1,0 +1,42 @@
+{% extends "index.html" %} {% block head %} {{ super() }}
+<link rel="stylesheet" href="{{ get_url(path='css/custom.css') }}" />
+{% if page.extra.custom_js %} {% for js_file in page.extra.custom_js %}
+<script src="{{ get_url(path='js/' ~ js_file) }}" defer></script>
+{% endfor %} {% endif %} {% endblock %} {% block main %}
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
+            <a href="{{ get_url(path='@/posts/_index.md') }}">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </div>
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <div class="post-description">{{ page.description }}</div>
+        {% endif %}
+        <div class="post-meta">{% include "partials/post_meta.html" %}</div>
+    </header>
+    {% if page.extra.toc | default(value=false) %}
+    <aside id="toc">
+        <div class="toc-title">Table of Contents</div>
+        {{ page.toc | safe }}
+    </aside>
+    {% endif %}
+    <div class="post-content">{{ page.content | safe }}</div>
+    <footer class="post-footer">
+        {% if page.taxonomies.tags %}
+        <ul class="post-tags">
+            {% for tag in page.taxonomies.tags %}
+            <li>
+                <a href="{{ config.base_url }}/tags/{{ tag | slugify }}/"
+                    >{{ tag }}</a
+                >
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% if config.extra.papermod.show_post_nav_links %} {%
+        include "partials/post_nav_links.html" %} {% endif %}
+    </footer>
+</article>
+{% endblock %}
