@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greg Hale&#x27;s Blog - VideoProcessing</title>
+      <link>https://blog.greghale.io</link>
+      <description>Personal blog of Greg Hale</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.greghale.io/tags/videoprocessing/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Frosted Vertical Reflections in ffmpeg</title>
+          <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/video-reflection/</link>
+          <guid>https://blog.greghale.io/posts/video-reflection/</guid>
+          <description xml:base="https://blog.greghale.io/posts/video-reflection/">&lt;h1 id=&quot;creating-the-frosted-reflection-effect-for-videos&quot;&gt;Creating the &quot;frosted reflection&quot; effect for videos&lt;&#x2F;h1&gt;
+&lt;p&gt;I recently wanted to include a screenshot of NeuronBench into the landing page,
+with the classic &quot;frosted reflection&quot; effect, where a hint of the image is
+reflected just below the image. I normally do this is Gimp, but my NeuronBench
+screenshot was actually a screen recording (video), and I wasn&#x27;t about to repeat
+this tedious process frame-by-frame.&lt;&#x2F;p&gt;
+&lt;p&gt;The final result is here:&lt;&#x2F;p&gt;
+&lt;video width=&quot;420&quot;
+       autoplay
+       loop
+       muted&gt;
+    &lt;source src=&quot;&amp;#x2F;images&amp;#x2F;frosted.mp4&quot; type=&quot;video&#x2F;mp4&quot;&gt;
+    Your browser does not support the video tag.
+&lt;&#x2F;video&gt;
+&lt;p&gt;This blog post records the process, mostly as a record for me in case
+I need to do it again in the future, or in case someone else finds the
+style interesting and wants to replicate it.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;dependencies&quot;&gt;Dependencies&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;MacOS&lt;&#x2F;li&gt;
+&lt;li&gt;QuickTime&lt;&#x2F;li&gt;
+&lt;li&gt;ffmpeg&lt;&#x2F;li&gt;
+&lt;li&gt;gimp&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;process&quot;&gt;Process&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Clean background: In the system settings, set the Wallpaper to solid white,
+matching the background color of the webpage where I&#x27;ll embed this video.
+Then clear most of the desktop icons off of the desktop.&lt;&#x2F;li&gt;
+&lt;li&gt;Run the app: In my case: &lt;code&gt;cargo run --bin bevy --release&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Take the screen capture: In QuickTime, close the default file-chooser modal
+and select &lt;code&gt;File &amp;gt; New Screen Recording&lt;&#x2F;code&gt;. Frame the application window with
+generous space (avoid clipping the shadow dropped by the window). Click the
+&quot;Stop&quot; icon in the menu bar when done.&lt;&#x2F;li&gt;
+&lt;li&gt;Trim the time: &lt;code&gt;Edit &amp;gt; Trim&lt;&#x2F;code&gt; in QuickTime. Save.&lt;&#x2F;li&gt;
+&lt;li&gt;Crop the video:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i screengrab_trimmed.mov  -filter:v &amp;quot;crop=1332:1200:0:0&amp;quot; -c:a copy screengrab_cropped.mov
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Apply the gaussian blur, flip and composite:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i screengrab_cropped.mov -filter_complex &amp;quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&amp;quot; output.mov
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+At this point, we have a stack of the original screen grab, with its mirror image blurred beneath.
+Next we need that blurred mirror image to fade to white.&lt;&#x2F;li&gt;
+&lt;li&gt;Determine the image dimensions:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+We will use this to create our gratient as a .png file with matching size in Gimp.&lt;&#x2F;li&gt;
+&lt;li&gt;Create a gradient that goes from transparent to solid white, starting at the top
+of the mirrored image and ending 20-40 pixels lower.&lt;&#x2F;li&gt;
+&lt;li&gt;Overlay the gradient onto the movie.&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i output.mov -i gradient.png -filter_complex &amp;quot;overlay=0:main_h-overlay_h&amp;quot; output2.mov
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;improvements&quot;&gt;Improvements&lt;&#x2F;h1&gt;
+&lt;p&gt;The space between the original window and its refelction looks muddy. This is because the original screen
+grab included the dropped shadow from MacOS, which gets copied and flipped in the above process. The final
+result would be much cleaner if the space between were clear of shadows. And it would be more semantically
+consistent without the shadow, because the &quot;floor&quot; in our effect is below the screenshot (where our
+reflection lands), not behind the screenshot (where the shadow is).&lt;&#x2F;p&gt;
+&lt;p&gt;In the two versions of MacOS I&#x27;m running (Ventura and Sonoma), there is no configuration option to turn off
+this shadow. And I can&#x27;t simply use cropping at the first preprocessing step to crop out the shadow, because
+the window is a rounded rectangle - some awkward shadow would remain in the corners.&lt;&#x2F;p&gt;
+&lt;p&gt;So I could either (a) create a masking image in gimp - a rounded-rectangle frame - matching the size of
+the screengrab window, and apply this during prepressing, or (b) perform my screen recording on a
+linux machine.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
