@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="en" dir="auto">
     <head>
-         <meta charset="utf-8">
+          <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Greg Hale&#x27;s Blog</title>
+<title>Frosted Vertical Reflections in ffmpeg</title>
 
 
 <meta name="keywords" content="programming, AI, haskell, health">
 
 
 
-<meta name="description" content="Personal blog of Greg Hale">
+<meta name="description" content="How I create a frosted reflection effect for videos.">
 
 
 
 
 
-<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;">
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">
 
 
 <link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
@@ -80,9 +80,11 @@
 
 
  
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
     </head>
     <body
-        class="list "
+        class=""
         id="top"
     >
          
@@ -164,113 +166,20 @@
 </header>
  
         <main class="main">
-             
-            <section class="first-entry home-info">
-                <div class="entry-content">
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-<p>
-Hi! I studied the neuroscience of spatial representations for
-8 years before changing course and working as a software
-engineer. I'm still passionate about neuroscience, especially
-now in the age of pervasive AI. I also love functional
-programming, deep learning and language design/development.
-</p>
-
-<p>
-Many of my interests came together for the
-<a href="https://neuronbench.com">NeuronBench</a> project - a
-browser-based neuron simulator. I'd love
-for you to try it out!
-</p>
-
-<p>
-Lately most of my creative energy goes into my job
-at <a href="https://boundaryml.com">BoundaryML</a>, working on
-a language for building typesafe LLM apps.
-</p>
-</div>
-
-                </div>
-            </section>
-
-              
-            <article class="post-entry">
-                <header class="entry-header">
-                    <h2><a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;ai-consciousness&#x2F;">Human and AI Consciousness</a></h2>
-                </header>
-                
-                <div class="entry-content">
-                    <p>Staying open-minded about the chances</p>
-                </div>
-                
-                <footer class="entry-footer">
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-<span title="2025-10-24 00:00:00 +0000">October 24, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;
-
-                </footer>
-                <a
-                    class="entry-link"
-                    aria-label="post link to Human and AI Consciousness"
-                    href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;ai-consciousness&#x2F;"
-                ></a>
-            </article>
             
-            <article class="post-entry">
-                <header class="entry-header">
-                    <h2><a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">jj loves vibe coding</a></h2>
-                </header>
-                
-                <div class="entry-content">
-                    <p>Why jj&#x27;s interface is so great for vibe coding.</p>
-                </div>
-                
-                <footer class="entry-footer">
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-<span title="2025-10-10 00:00:00 +0000">October 10, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;
-
-                </footer>
-                <a
-                    class="entry-link"
-                    aria-label="post link to jj loves vibe coding"
-                    href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;"
-                ></a>
-            </article>
-            
-            <article class="post-entry">
-                <header class="entry-header">
-                    <h2><a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">Frosted Vertical Reflections in ffmpeg</a></h2>
-                </header>
-                
-                <div class="entry-content">
-                    <p>How I create a frosted reflection effect for videos.</p>
-                </div>
-                
-                <footer class="entry-footer">
-                    
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">Frosted Vertical Reflections in ffmpeg</a>
+        </div>
+        <h1 class="post-title">Frosted Vertical Reflections in ffmpeg</h1>
+        
+        <div class="post-description">How I create a frosted reflection effect for videos.</div>
+        
+        <div class="post-meta">
 
 
 
@@ -284,90 +193,109 @@ a language for building typesafe LLM apps.
 
 
 <span title="2024-01-20 00:00:00 +0000">January 20, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;
-
-                </footer>
-                <a
-                    class="entry-link"
-                    aria-label="post link to Frosted Vertical Reflections in ffmpeg"
-                    href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;"
-                ></a>
-            </article>
+</div>
+    </header>
+    
+    <div class="post-content"><h1 id="creating-the-frosted-reflection-effect-for-videos">Creating the "frosted reflection" effect for videos</h1>
+<p>I recently wanted to include a screenshot of NeuronBench into the landing page,
+with the classic "frosted reflection" effect, where a hint of the image is
+reflected just below the image. I normally do this is Gimp, but my NeuronBench
+screenshot was actually a screen recording (video), and I wasn't about to repeat
+this tedious process frame-by-frame.</p>
+<p>The final result is here:</p>
+<video width="420"
+       autoplay
+       loop
+       muted>
+    <source src="&#x2F;images&#x2F;frosted.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<p>This blog post records the process, mostly as a record for me in case
+I need to do it again in the future, or in case someone else finds the
+style interesting and wants to replicate it.</p>
+<h1 id="dependencies">Dependencies</h1>
+<ul>
+<li>MacOS</li>
+<li>QuickTime</li>
+<li>ffmpeg</li>
+<li>gimp</li>
+</ul>
+<h1 id="process">Process</h1>
+<ol>
+<li>Clean background: In the system settings, set the Wallpaper to solid white,
+matching the background color of the webpage where I'll embed this video.
+Then clear most of the desktop icons off of the desktop.</li>
+<li>Run the app: In my case: <code>cargo run --bin bevy --release</code>.</li>
+<li>Take the screen capture: In QuickTime, close the default file-chooser modal
+and select <code>File &gt; New Screen Recording</code>. Frame the application window with
+generous space (avoid clipping the shadow dropped by the window). Click the
+"Stop" icon in the menu bar when done.</li>
+<li>Trim the time: <code>Edit &gt; Trim</code> in QuickTime. Save.</li>
+<li>Crop the video:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_trimmed.mov  -filter:v &quot;crop=1332:1200:0:0&quot; -c:a copy screengrab_cropped.mov
+</span></code></pre>
+</li>
+<li>Apply the gaussian blur, flip and composite:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_cropped.mov -filter_complex &quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&quot; output.mov
+</span></code></pre>
+At this point, we have a stack of the original screen grab, with its mirror image blurred beneath.
+Next we need that blurred mirror image to fade to white.</li>
+<li>Determine the image dimensions:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
+</span></code></pre>
+We will use this to create our gratient as a .png file with matching size in Gimp.</li>
+<li>Create a gradient that goes from transparent to solid white, starting at the top
+of the mirrored image and ending 20-40 pixels lower.</li>
+<li>Overlay the gradient onto the movie.<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i output.mov -i gradient.png -filter_complex &quot;overlay=0:main_h-overlay_h&quot; output2.mov
+</span></code></pre>
+</li>
+<li>Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.</li>
+</ol>
+<h1 id="improvements">Improvements</h1>
+<p>The space between the original window and its refelction looks muddy. This is because the original screen
+grab included the dropped shadow from MacOS, which gets copied and flipped in the above process. The final
+result would be much cleaner if the space between were clear of shadows. And it would be more semantically
+consistent without the shadow, because the "floor" in our effect is below the screenshot (where our
+reflection lands), not behind the screenshot (where the shadow is).</p>
+<p>In the two versions of MacOS I'm running (Ventura and Sonoma), there is no configuration option to turn off
+this shadow. And I can't simply use cropping at the first preprocessing step to crop out the shadow, because
+the window is a rounded rectangle - some awkward shadow would remain in the corners.</p>
+<p>So I could either (a) create a masking image in gimp - a rounded-rectangle frame - matching the size of
+the screengrab window, and apply this during prepressing, or (b) perform my screen recording on a
+linux machine.</p>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
             
-            <article class="post-entry">
-                <header class="entry-header">
-                    <h2><a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;">Claude 2.1 correctly interprets a neural network</a></h2>
-                </header>
-                
-                <div class="entry-content">
-                    <p>I asked Claude-2 to explain the behavior of a neural network from its spec in a novel language.</p>
-                </div>
-                
-                <footer class="entry-footer">
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-<span title="2023-11-23 00:00:00 +0000">November 23, 2023</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;
-
-                </footer>
-                <a
-                    class="entry-link"
-                    aria-label="post link to Claude 2.1 correctly interprets a neural network"
-                    href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;"
-                ></a>
-            </article>
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/videoprocessing/"
+                    >VideoProcessing</a
+                >
+            </li>
             
-            <article class="post-entry">
-                <header class="entry-header">
-                    <h2><a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo-chart&#x2F;">Vertigo Chart</a></h2>
-                </header>
-                
-                <div class="entry-content">
-                    <p>Tracking vertigo symptoms and possible triggers</p>
-                </div>
-                
-                <footer class="entry-footer">
-                    
+        </ul>
+          
 
 
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Claude 2.1 correctly interprets a neural network</span>
+    </a>
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>jj loves vibe coding</span>
+    </a>
+    
+</nav>
 
+ 
+    </footer>
+</article>
 
-
-
-
-
-
-
-
-
-<span title="2023-01-25 00:00:00 +0000">January 25, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;
-
-                </footer>
-                <a
-                    class="entry-link"
-                    aria-label="post link to Vertigo Chart"
-                    href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo-chart&#x2F;"
-                ></a>
-            </article>
-            
-
-            <footer class="page-footer">
-                <nav class="pagination">
-                    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io/posts"
-                        >View All Posts »</a
-                    >
-                </nav>
-            </footer>
-            
         </main>
          <footer class="footer">
     
