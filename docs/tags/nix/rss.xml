@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greg Hale&#x27;s Blog - nix</title>
+      <link>https://blog.greghale.io</link>
+      <description>Personal blog of Greg Hale</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.greghale.io/tags/nix/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Typechecking code in a Hakyll blog</title>
+          <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/typechecking-posts/</link>
+          <guid>https://blog.greghale.io/posts/typechecking-posts/</guid>
+          <description xml:base="https://blog.greghale.io/posts/typechecking-posts/">&lt;h1 id=&quot;typechecking-code-in-a-hakyll-blog&quot;&gt;Typechecking code in a Hakyll blog&lt;&#x2F;h1&gt;
+&lt;p&gt;After years of programming in Haskell, my natural ability to
+scrutinize my code for type errors (and even more mundane things,
+like parse errors and spelling errors) has atrophied. Usually
+my friends &lt;code&gt;ghc&lt;&#x2F;code&gt; and &lt;code&gt;ghcid&lt;&#x2F;code&gt; take care of this for me so I can
+think about other things.&lt;&#x2F;p&gt;
+&lt;p&gt;Recovering this workflow when writing &lt;em&gt;blog posts&lt;&#x2F;em&gt; took a little
+time.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;literate-haskell&quot;&gt;Literate Haskell&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Hakyll&lt;&#x2F;code&gt; handles Literate Haskell files already - you don&#x27;t have
+to do any work. Just create a file in &lt;code&gt;posts&#x2F;&lt;&#x2F;code&gt; with the &lt;code&gt;.lhs&lt;&#x2F;code&gt;
+file extension.&lt;&#x2F;p&gt;
+&lt;p&gt;The format is described well in the
+&lt;a href=&quot;https:&#x2F;&#x2F;wiki.haskell.org&#x2F;Literate_programming&quot;&gt;Haskell Wiki&lt;&#x2F;a&gt;.
+The only features I&#x27;ve used so far are&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;code-blocks&quot;&gt;Code blocks&lt;&#x2F;h3&gt;
+&lt;p&gt;Most of my code blocks are long, so I prefer the latex-like
+command over bird-tracks&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;span&gt;example = do
+&lt;&#x2F;span&gt;&lt;span&gt;  x &amp;lt;- getTheX
+&lt;&#x2F;span&gt;&lt;span&gt;  useX x
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;hidden-imports&quot;&gt;Hidden imports&lt;&#x2F;h3&gt;
+&lt;p&gt;Of course we need to import some modules if &lt;code&gt;ghc&lt;&#x2F;code&gt; is to
+typecheck our &lt;code&gt;.lhs&lt;&#x2F;code&gt; file. Since the imports are often not
+important to the explanation in the blog, I hide them.&lt;&#x2F;p&gt;
+&lt;p&gt;Imaginary functions that I will later use in the blog post
+but which aren&#x27;t important to the topic at hand can be defined
+here, too.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\long&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\def&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;#1{}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;span&gt;{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
+&lt;&#x2F;span&gt;&lt;span&gt;import qualified Servant.Server as Servant
+&lt;&#x2F;span&gt;&lt;span&gt;import Servant.API ((:&amp;lt;|&amp;gt;), (:&amp;gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;import qualified Database.PostgreSQL.Simple as PG
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;processInputs :: Inputs -&amp;gt; IO Outputs
+&lt;&#x2F;span&gt;&lt;span&gt;processInputs = undefined
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;nix-shell&quot;&gt;nix-shell&lt;&#x2F;h2&gt;
+&lt;p&gt;A separate &lt;code&gt;nix-shell&lt;&#x2F;code&gt; is available for every post, in &lt;code&gt;shells.nix&lt;&#x2F;code&gt;.
+At the top of this file is a record that maps post names to the names
+of &lt;code&gt;Haskell&lt;&#x2F;code&gt; packages that I need to have in scope. There&#x27;s only one
+entry at the time of writing, because I only have one Literate Haskell
+blog post:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nix&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-nix &quot;&gt;&lt;code class=&quot;language-nix&quot; data-lang=&quot;nix&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;shellPkgs &lt;&#x2F;span&gt;&lt;span&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;    { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;config-phases &lt;&#x2F;span&gt;&lt;span&gt;= [&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;generic-lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;postgresql-simple&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;katip&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;]; };
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Later in the file, these lists are turned into derivations, so that I
+can say&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nix-shell&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;shells.nix&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; config-phases \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --run &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ghcid --command &amp;quot;ghci posts&#x2F;2019-10-17-config-phase.lhs&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and now &lt;code&gt;ghcid&lt;&#x2F;code&gt; is recompiling my post and showing me the type errors
+every time the post is saved.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

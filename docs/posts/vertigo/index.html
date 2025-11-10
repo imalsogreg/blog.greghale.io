@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Vertigo</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="The feeling and science behind my Vertigo saga">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+<script src="https://blog.greghale.io/js/vertigo-sim.js" defer></script>
+  
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo&#x2F;">Vertigo</a>
+        </div>
+        <h1 class="post-title">Vertigo</h1>
+        
+        <div class="post-description">The feeling and science behind my Vertigo saga</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2019-12-20 00:00:00 +0000">December 20, 2019</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><p>In April 2019, I came down with a nasty case of vertigo. The acute phase lasted
+a month, and after that it would come and go, never reaching the original peak
+but also never recovering fully. After a long journey with several specialists,
+an otolaryngologist at Johns Hopkins cracked the case, and my Vertigo journey
+ended. Mostly. Along the way, I learned a surprising amount of fun science. In
+this blog post, I'll share a bit about those learning and how this disease
+felt.</p>
+<h2 id="the-symptoms">The symptoms</h2>
+<p>The main symptom of vertigo is the spinning and dizziness. Being dizzy can be
+fun for a while, but of course it gets old quickly. The chronic dizziness of
+Vertigo makes it difficult to work or care for kids. Driving was impossible.</p>
+<div id="vertigo-simulator"></div>
+<p>"<em>Thanks, I hate it</em>" is the correct reaction.</p>
+<p>Even when the world was not spinning, my head never felt fully fixed in space.
+The sensation is hard to describe - imagine objects in the distance always
+vibrating just a little bit.</p>
+<p>The last symptom I felt is much harder to describe. It's something like
+electrical noise or static. There's no actual sound, though, or any other
+feeling I can easily compare it to without sounding a little crazy. Imagine a
+beam of television static blasting from a spot at the back, left side of your
+head. The doctors didn't say that other Vertigo patients had something similar.
+But for me, it came with the Vertigo and left with the Vertigo.</p>
+<h2 id="the-inner-ear">The inner ear</h2>
+<p>Let's see what broke. <a href="https://en.wikipedia.org/wiki/Hair_cell">Hair cells</a> in
+the cochlea that are excited by the fluid oscillations caused by sound waves,
+letting us hear. The vestibular organs contain the same type of cell responding
+to a different fluid movement - the movement of fluid rotating in the
+semicircular canals in response to head rotation.</p>
+<p><img src="/images/2019-12-20-britannica.jpg" alt="Vestibular organs: https://www.britannica.com/science/utricle" /></p>
+<p>The <em>semicircular canals</em> are
+large enough to see in an MRI scan. If you'd like to see <em>my</em>
+semi-circular canals, feast your eyes.</p>
+<p><img src="/images/2019-12-20-canalsMRI.jpg" alt="My MRI Brain scan, Mercy Neurology department" /></p>
+<p>To detect static head orientation, we need to make use of gravity. In the inner
+ear, we see these same cells again, now embedded in jelly and capped by heavy
+calcium crystals called <em>otoconia</em>. As a head tilts one way or the other,
+these crystals shift their position, activating sets of hair cells sensitive to
+that particular tilt.</p>
+<h2 id="trouble-in-inner-ear-paradise">Trouble in inner-ear paradise</h2>
+<p>There is no physical barrier between the otoconia crystals in their jelly, and
+the fluid of the semicircular canals.</p>
+<p>Like any open office plan, this setup has problems. The otoconia crystals
+sometimes dislodge from their jelly and float into the semicircular canal. The
+heavy crystals interfere with the motion of the fluid in the canals during head
+rotation, producing out-of-whack rotation signals.</p>
+<h2 id="one-weird-trick">One weird trick...</h2>
+<p>Here is an idea so crazy that it just might work. We know the shapes of the
+semicircular canals, we know where otoconia are supposed to live, and we know
+that otoconia fall under the influence of gravity. Maybe we could rotate the
+head through a series of positions to guide the otoconia back to their jelly?</p>
+<p>One of my complaints about science is that our elegant models tend to fall over
+in the face of real world complexity. But in this case, the model does work, and
+a large number of Vertigo cases can be cured exactly this way. That's one of the
+things I was most delighted by in this whole journey.</p>
+<p>Loose crystals from one sensory organ tresspassing into the working end of
+another sesnory organ is a simple model. What made my vertigo story so
+delightful to me was the way the model works in practice, to suggest a cure that
+requires no drugs or prolonged therapy. The treatment is called the Epley
+Maneuver.</p>
+<p>If (a) crystals can get into the semicircular canals, (b) this cause problems
+when crystals move and interfere with fluid sensors and (c) the shapes of the
+canals are well known, then perhaps by rotating the head a certain way we could
+coax the crystals back through the canals and into the utricle where they
+belong, a bit like the toy with a marble navigated through a maze on a balance
+board you control with knobs?</p>
+<p><img src="/images/2019-12-20-lucky-labrynth.jpg" alt="Lucky Labrynth" /></p>
+<p>Well, for that subset of vertigo cases where loose crystals are the cause, it
+does work. And one has to wonder, when Epley first tried it successfully, was
+this a Eureka! moment for him, or with total confidence in the crystal
+hypothesis did he shrug the maneuver's success off as trivial.</p>
+<p>When the right side (most commonly, the hindmost of the three canals) is the
+problem, the crystals tend to settle at a low point in the ring, and we want to
+get them around the top of the ring and back into the utricle. The maneuver goes like this:</p>
+<ul>
+<li>Sit straight up</li>
+<li>Turn the head 45 degrees to the right</li>
+<li>Keeping the turn, lay back fairly quickly, letting the head hang below the sholders</li>
+<li>After the nystagmus subsides, remain lying down and turn the head toward the opposite side</li>
+<li>After the next wave of nystagmus subsides, roll onto your left side, keeping your
+head turned toward your left shoulder</li>
+<li>After the next wave of nystagmus subsides, lift your body to a sitting position</li>
+</ul>
+<p>To see why this works, try the procedure on the model head below. The model
+has two loose crystals in his right canal. The controls are tricky, but if you
+get the sequence right, they will land on the green "utricle" and be stable
+there as long as the head stays upright.</p>
+<iframe srcdoc="
+<html>
+<body style='margin:0px'>
+<div id='epley_container' onClick='go()' style='position:relative'>
+  <p id='click_to_start' style='position:absolute'>Click to start</p>
+  <img id='instructions' src='/images/2019-12-20-instructions.svg' style='position:absolute'/>
+</div>
+<script src='/js/cannon.min.js'></script>
+<script src='/js/three.min.js'></script>
+<script src='/js/TrackballControls.js'></script>
+<script src='/js/epley.js'></script>
+</body>
+</html>
+" width="600px" height="410px"></iframe>
+<p>If the head can bec back to the upright position without the red crystals
+falling back down, you win!</p>
+<h2 id="feels">Feels</h2>
+<p>As you can see in the simulation, when the head is still, gravity brings the
+crystals to their lowest location. A few minutes after lying down in bed, things
+in the inner ear are settled down. The fluid motion sensors are not being
+activated. Everything feels back to normal.</p>
+<p>Being still in bed is so comfortable, in fact, that you can start to wonder if
+the whole condition is clearing up and you can go back to normal activities
+soon. But, for quite some time, sitting up very reliably brings back the vertigo
+and all the discomfort. This ends up training you not to leave the bed, to spend
+a long time after waking up in an anxious state, temporarily cured and hoping
+that you will still be ok when you get up, but knowing that probably won't
+happen. It's emotionally hard, and during this episode, I gained a ton of
+sympathy for people with chronic illness.</p>
+<h3 id="treatment">Treatment</h3>
+<p>Here is a rough breakdown of the medical care I received, with the cost after insurance.</p>
+<p>Date        Center                  Cost</p>
+<hr />
+<p>2019-06-02  Urgent Care             $150
+2019-06-02  Union Memorial Hospital $800
+2019-06-20  Mercy Otolaryngology    $100
+2019-07-20  Mercy Neurology         $150
+2019-08-02  Mercy Radiology         $150
+2019-12-03  Hopkins Otolaryngology  $100</p>
+<p>The first two trips happened because the dizziness came on so strongly that my
+wife and I thought there may be a serious issue. Urgent Care also didn't want to
+rule anything out, and they urged us to go to the ER (it was fairly late at
+night, and I couldn't reach my family physician).</p>
+<p>I was perscribed nausea medicine and told that I probably had viral
+labrynthitis, which should resolve itself it 3 to 14 days. While the strongest
+phase did die down after a couple of weeks, I had the residual feelings
+mentioned above. They could come and go, maybe once a month I had a week of
+symptoms.</p>
+<p>So I kept seeing other specialists. An otolaryngologist at Mercy Medical agreed
+that it was viral labrynthitis and prescribed low-dose valium and waiting. We
+decided not to take the valium - due to the wait times before our visits, the
+visit tended to happen on the tail end of a bout of vertigo, and I was scared of
+taking anything psychoactive when the symptoms were subsiding anyway.</p>
+<p>The trip to Mercy Neurology was recommended because of the stranger symytoms I
+mentioned above. The nails-on-the-board, the beam of corrupt information - these
+things hinted that there may be something wrong with my noodle. But the battery
+of tests didn't turn up anything, and my MRI scans looked normal.</p>
+<p>In summary, the treatment from June through August was kind and caring, but
+didn't make much progress in clearing up the symptoms.</p>
+<h3 id="the-fix">The Fix</h3>
+<p>As it happens, my wife studied the neurons of the vestibular system<sup class="footnote-reference"><a href="#xpl2016">1</a></sup>
+and the hair cells of the utricle<sup class="footnote-reference"><a href="#xpl2016b">2</a></sup> in her doctoral and postdoc labs,
+which were hospital-affiliated. She managed to use some of her connections to
+get me an appointment at Johns Hopkins Otolaryngology. I'll add that she did
+this without much help from me - in a typical partners dynamic, I was resistent
+to seeing more doctors after having had so little success in the past.</p>
+<p>I'm grateful she did, though. Becuase the doctor I saw, Yuri Agrawal, finally
+diagnosed the issue and solved it during the office visit with the Epley
+maneuver.</p>
+<p>I noticed the impact when I left the office and got into my car. I was between
+episodes at the time - I thought that I felt mostly fine, not dizzy. In truth, I
+had adapted to much of the vertigo. And after the treatment, all of the residual
+symptoms that I had gotten used to disappeared. I felt like I could perfectly
+focus on distant points. I could move my head around quickly and easily focus on
+several objects a second (during a dizziness episode, I couldn't drive; between
+episodes, I drove rigidly, giving myself lots of extra time before making turns,
+since it took longer for me to look around at all the surroundings). The general
+sense of "displacement" was gone. It had been 5 months since I started feeling
+bad, and now, I felt like I had super-powers. There was a lot of happy giggling
+on my solo drive home from Hopkins Medical.</p>
+<p>Thank you, Dr. Agrawal!</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>This blog post may sound like medical advice. I really want to emphasize - I'm not
+a doctor. I have no idea how common BPPV is compared to other causes of vertigo,
+so I have no idea how likely the Epley maneuver is to work for you if you're
+having vertigo. Talk to a doctor.</p>
+<p>During my visit with Dr. Agrawal, which had the fast pacing of a doctor who
+leads a dual life as head of a research lab, she explained some of the inner ear
+biology that kicked off my exploration, and recommended I look up Richard
+Rabbitt, who has done really interesting physical simulation<sup class="footnote-reference"><a href="#rabbitt">3</a></sup> of the Epley
+maneuver.</p>
+<p>There are a lot of inaccuracies in my simulation. To get a much better (though
+not interactive) view of how and why the Epley Maneuver works. You can also meet
+Dr. John Epley himself!<sup class="footnote-reference"><a href="#epley_youtube">4</a></sup></p>
+<p>I wanted to share my story, and to try out some ideas that had gotten into my
+head (the vertigo simulator and the interactive Epley model above), in the
+context of this unpleasant episode in my life.</p>
+<p>One takeaway - there can be light at the end of the tunnel, and sometimes
+although a partner's involvement in your medical choices can feel a little
+overbearing, they may often be right. As I tearfully told her after my
+treatment, since I'm naturally reluctant to see doctors, if she hadn't been so
+persistent then I might have gone the rest of my life with on-and-off BPPV.</p>
+<h2 id="one-year-later">One Year Later</h2>
+<p>Since I wrote this posts, a year passed. I'm sad to say that the Epley
+maneuver wasn't the end of my Vertigo story. I had 3 more bouts of Vertigo,
+spaced about two months apart, and leasting for 1 or 2 weeks. Strangely,
+each episode was followed by strong hearing loss in my left ear. Further
+trips to Hopkins Otolaryngology lead to no clear diagnosis. My symptoms
+resemble either Menier's Disease, BPPV, or vestibular migraine at different
+times.</p>
+<p>To try to get a diagnosis, I've been tracking my food, stress and sleep.
+It seems like sleep deprivation, alcohol or alcohol consumption may be a
+triggers. I would like to narrow it down, but I recently started a new job
+and I'm reluctant to do the right experiments to bring on vertigo episodes
+that interfere with my work and my ability to drive my family around.</p>
+<p>On the bright side, now that I'm avoiding all the possible triggers that I'm
+aware of, it's been 6 months since I've had an episode.</p>
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnote-definition" id="xpl2016"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/26936982">Sodium channel diversity in the vestibular ganglion: NaV1.5,
+NaV1.8, and tetrodotoxin-sensitive
+currents</a> on PubMed</p>
+</div>
+<div class="footnote-definition" id="xpl2016b"><sup class="footnote-definition-label">2</sup>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=liu+holt+utricle">Functional development of mechanosensitive hair cells in stem
+cell-derived organoids parallels native vestibular hair
+cells</a> on PubMed</p>
+</div>
+<div class="footnote-definition" id="rabbitt"><sup class="footnote-definition-label">3</sup>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/28877495">Wave mechanics of the vestibular semicircular
+canals</a> on PubMed</p>
+</div>
+<div class="footnote-definition" id="epley_youtube"><sup class="footnote-definition-label">4</sup>
+<p>An educational VHS video destribing BPPV and the Epley Maneuver.
+John Epley gives part of the introduction. <a href="https://www.ncbi.nlm.nih.gov/pubmed/28877495">https://www.ncbi.nlm.nih.gov/pubmed/28877495</a></p>
+</div>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/haskell/"
+                    >Haskell</a
+                >
+            </li>
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/health/"
+                    >Health</a
+                >
+            </li>
+            
+        </ul>
+          
+
+
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;typechecking-posts&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Typechecking code in a Hakyll blog</span>
+    </a>
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo-chart&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>Vertigo Chart</span>
+    </a>
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>

@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Claude 2.1 correctly interprets a neural network</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="I asked Claude-2 to explain the behavior of a neural network from its spec in a novel language.">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;">Claude 2.1 correctly interprets a neural network</a>
+        </div>
+        <h1 class="post-title">Claude 2.1 correctly interprets a neural network</h1>
+        
+        <div class="post-description">I asked Claude-2 to explain the behavior of a neural network from its spec in a novel language.</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2023-11-23 00:00:00 +0000">November 23, 2023</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><h2 id="prologue">Prologue</h2>
+<p>In my <a href="https://blog.greghale.io/posts/claude-winner-takes-all/2023-03-24-gpt4-neuron-schema.html">last post</a>, ChatGPT and I worked through some
+ideas for domain specific languages (DSLs) for describing biologically realistic neural networks.</p>
+<p><a href="https://anthropic.com">Anthropic</a>'s <a href="https://claude.ai">Claude-2</a> has come on the scene
+as another amazingly powerful chat assistant, and I wondered if I could give in the inverse
+problem - taking a neural network defined in a brand new DSL and asking Claude to tell
+me what it could about the high level properties of the network.</p>
+<p>tl;dr: I believe that the DSL is fairly readable and self-describing... but
+without comments it's not obvious what the the author's intention was and what
+the resulting network should do. To my amazement, Claude was able to see through
+the syntax (which is completely novel - this is not a DSL used in the wild
+anywhere yet), and understand the high-level dynamics of the network.</p>
+<p>I won't say what the goal of the network is here, I hope you'll try to work that out for
+yourself as you read my conversation with Claude. Are you smarter than the chat bot?
+I'm not. :)</p>
+<h2 id="the-claude-chat-session">The Claude chat session</h2>
+<h4 id="greg">Greg:</h4>
+<p>Could you guess what the high-level properties of this neural network are?</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>let pos = ./neuron_position.ffg
+</span><span>let params = {
+</span><span>      n_clusters: (4 : Natural),
+</span><span>      n_excitatory_per_cluster: (5 : Natural)
+</span><span>    }
+</span><span>let n_inhibitory_per_cluster = params.n_clusters -- 1
+</span><span>let n_neurons_per_cluster = params.n_excitatory_per_cluster + params.n_clusters -- 1
+</span><span>let prelude = https://raw.githubusercontent.com/reuron/reuron-io/main/prelude/package.ffg
+</span><span>let excitatory_neuron = ./excitatory_neuron.ffg
+</span><span>let inhibitory_neuron = ./inhibitory_neuron.ffg
+</span><span>let excitatory_synapse = ./excitatory_synapse.ffg
+</span><span>let inhibitory_synapse = ./inhibitory_synapse.ffg
+</span><span>
+</span><span>
+</span><span>let cluster_neurons = \cluster -&gt;
+</span><span>  prelude.list.generate params.n_excitatory_per_cluster (\i -&gt; {
+</span><span>    location: pos cluster true i,
+</span><span>    neuron: excitatory_neuron [],
+</span><span>    stimulator_segments: []
+</span><span>  }) + prelude.list.generate n_inhibitory_per_cluster (\i -&gt; {
+</span><span>    location: pos cluster false i,
+</span><span>    neuron: inhibitory_neuron [],
+</span><span>    stimulator_segments: []
+</span><span>  })
+</span><span>let neurons =
+</span><span>  prelude.list.concat
+</span><span>  (prelude.list.generate params.n_clusters cluster_neurons)
+</span><span>
+</span><span>let cluster_excitatory_synapses = \cluster -&gt;
+</span><span>  prelude.list.generate params.n_excitatory_per_cluster
+</span><span>  (\local_id -&gt; 
+</span><span>   let global_offset = cluster * n_neurons_per_cluster
+</span><span>   let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
+</span><span>   in
+</span><span>   [Synapse {
+</span><span>    pre_neuron: global_offset + local_id,
+</span><span>    pre_segment: 1,
+</span><span>    post_neuron: global_offset + local_next,
+</span><span>    post_segment: 10,
+</span><span>    synapse_membranes: excitatory_synapse
+</span><span>  }] + 
+</span><span>  prelude.list.concat
+</span><span>    (prelude.list.generate params.n_excitatory_per_cluster
+</span><span>      (\e -&gt; prelude.list.generate n_inhibitory_per_cluster
+</span><span>       (\i -&gt; Synapse {
+</span><span>         pre_neuron: global_offset + e,
+</span><span>         pre_segment: 1,
+</span><span>         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
+</span><span>         post_segment: 10,
+</span><span>         synapse_membranes: excitatory_synapse
+</span><span>       } 
+</span><span>      ))
+</span><span>    )
+</span><span>  )
+</span><span>
+</span><span>let excitatory_synapses = prelude.list.concat
+</span><span>  (prelude.list.concat
+</span><span>    (prelude.list.generate params.n_clusters
+</span><span>      (\c -&gt; cluster_excitatory_synapses c)))
+</span><span>
+</span><span>let cluster_inhibitory_synapses = \cluster -&gt;
+</span><span>  let source_offset = (cluster * n_neurons_per_cluster) + params.n_excitatory_per_cluster
+</span><span>  in
+</span><span>  prelude.list.generate params.n_clusters
+</span><span>  (\target_cluster -&gt;
+</span><span>    if Natural/equal cluster target_cluster
+</span><span>    then []
+</span><span>    else
+</span><span>      let target_offset =
+</span><span>        target_cluster * (params.n_excitatory_per_cluster + n_inhibitory_per_cluster)
+</span><span>      in
+</span><span>      prelude.list.concat
+</span><span>      (prelude.list.generate n_inhibitory_per_cluster
+</span><span>       (\i -&gt; prelude.list.generate params.n_excitatory_per_cluster
+</span><span>        (\e -&gt; Synapse {
+</span><span>          pre_neuron: source_offset + i,
+</span><span>          pre_segment: 1,
+</span><span>          post_neuron: target_offset + e,
+</span><span>          post_segment: 1,
+</span><span>          synapse_membranes: inhibitory_synapse
+</span><span>        }
+</span><span>        )
+</span><span>       )
+</span><span>      )
+</span><span>  )
+</span><span>let inhibitory_synapses =
+</span><span>  prelude.list.concat
+</span><span>    (prelude.list.concat
+</span><span>      (prelude.list.generate params.n_clusters cluster_inhibitory_synapses))
+</span><span>
+</span><span>
+</span><span>in
+</span><span>  Scene {
+</span><span>    neurons: neurons,
+</span><span>    synapses: excitatory_synapses + inhibitory_synapses
+</span><span>  }
+</span></code></pre>
+<hr/>
+<h4 id="claude">Claude:</h4>
+<p>Based on the code provided, I can infer the following high-level properties about this neural network:</p>
+<ol>
+<li>
+<p>It consists of multiple clusters of neurons. The number of clusters is defined by the <code>n_clusters</code> parameter.</p>
+</li>
+<li>
+<p>Each cluster contains excitatory and inhibitory neurons. The number of excitatory neurons per cluster is defined by <code>n_excitatory_per_cluster</code>. There is one less inhibitory neuron than the number of clusters.</p>
+</li>
+<li>
+<p>The excitatory neurons within a cluster are connected to each other in a ring topology.</p>
+</li>
+<li>
+<p>The excitatory neurons in a cluster connect to all the inhibitory neurons in that same cluster.</p>
+</li>
+<li>
+<p>The inhibitory neurons in a cluster connect to the excitatory neurons in all other clusters.</p>
+</li>
+<li>
+<p>It uses separate neuron and synapse definitions that are loaded from different files. This allows customization and reuse of those components.</p>
+</li>
+</ol>
+<p>So in summary, it's a clustered network with local excitation and lateral inhibition between clusters. The connectivity rules differ for excitatory and inhibitory neurons. The number of clusters and the sizing of each cluster can be configured through parameters.</p>
+<hr/>
+<h4 id="greg-1">Greg:</h4>
+<p>What sort of network is it? Can you describe the properties of the clusters?</p>
+<hr/>
+<h4 id="claude-1">Claude:</h4>
+<p>Based on the additional details in the code, I can provide some more specifics about the network and cluster properties:</p>
+<p>Type of Network:</p>
+<ul>
+<li>Clustered recurrent neural network</li>
+</ul>
+<p>Cluster Properties:</p>
+<ul>
+<li>
+<p>Number of clusters: Configurable via the <code>n_clusters</code> parameter</p>
+<ul>
+<li>Example shows 4 clusters</li>
+</ul>
+</li>
+<li>
+<p>Neurons per cluster:</p>
+<ul>
+<li>Excitatory neurons: Configurable via <code>n_excitatory_per_cluster</code>
+<ul>
+<li>Example shows 5 excitatory neurons per cluster</li>
+</ul>
+</li>
+<li>Inhibitory neurons:
+<ul>
+<li>Number is always 1 less than <code>n_clusters</code></li>
+<li>This allows inhibitory connections between all clusters</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Connectivity:</p>
+<ul>
+<li>Excitatory-Excitatory:
+<ul>
+<li>Within cluster: Ring topology</li>
+<li>Between clusters: No connections</li>
+</ul>
+</li>
+<li>Excitatory-Inhibitory:
+<ul>
+<li>Within cluster: Fully connected</li>
+<li>Between clusters: No connections</li>
+</ul>
+</li>
+<li>Inhibitory-Excitatory:
+<ul>
+<li>Within cluster: No connections</li>
+<li>Between clusters: Fully connected</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>So in summary, each cluster contains a small, locally recurrent network of excitatory neurons, along with a pool of inhibitory neurons that connect globally between clusters for competition/inhibition. The sizes of clusters and pool of inhibitions can be adjusted.</p>
+<p>Does this help characterize the key properties of the clusters and overall network architecture? Let me know if you need any clarification or have additional questions!</p>
+<hr/>
+<h4 id="greg-2">Greg:</h4>
+<p>Could you give a high-level description of the network's behavior? If you had to produce a catchy title for this network (as opposed to other topologies), what would you choose?</p>
+<hr/>
+<h4 id="claude-2">Claude:</h4>
+<p>Here is a high-level description of the expected network behavior:</p>
+<p>"Competitive Clustered Recurrent Network"</p>
+<p>This network consists of multiple locally recurrent clusters that compete and
+inhibit each other via a global pool of inhibitory neurons. As such, it behaves
+as a series of interconnected attractor networks that maintain their own
+internal representations, while suppressing the activity of the other clusters.</p>
+<p>Some key behavioral properties:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Within a cluster, the excitatory-excitatory recurrence allows maintenance of
+</span><span>an active representation or &quot;memory&quot; in that module after the input is removed.
+</span><span>The inhibitory connections between clusters implement a winner-take-all type
+</span><span>computation, where the most strongly activated cluster will suppress activity
+</span><span>in the other clusters.
+</span><span>
+</span><span>This allows multiple separate representations to be held simultaneously across
+</span><span>the different recurrent clusters. The global inhibition supports competition
+</span><span>between representations held in different clusters depending on the vigor of
+</span><span>the activity, novelty, or other salient features.
+</span></code></pre>
+<p>In summary, the modular and competitive design allows this network to maintain
+multiple context-dependent memories or rules simultaneously, while utilizing a
+global suppression mechanism to dictate which module is currently dominating the
+overall network output. The recurrent excitation supports working memory within
+each module.</p>
+<p>Let me know if this helps characterize the overall purpose and high-level behavior you might expect from this type of competitive and clustered recurrent network architecture. I'm happy to clarify or expand my explanation further as needed!</p>
+<hr/>
+<h4 id="greg-3">Greg:</h4>
+<p>You are absolutely amazing.</p>
+<hr/>
+<h4 id="claude-3">Claude:</h4>
+<p>Thank you! I'm pleased I could provide an accurate and intuitive
+characterization of this network architecture. Being able to infer high-level
+behaviors and properties from code details is an important skill in AI, so your
+positive feedback tells me I'm making good progress. Interpreting and explaining
+complex systems clearly and concisely to humans is something I strive to improve
+at. I appreciate you taking the time to have this conversation with me - it
+really helps further my understanding.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Claude appears to have immediately understood the network topology, recognizing
+it ask as a "Competitive Clustered Recurrent Network". (I wolud call it a
+"winner-takes-all" network, same difference). It was able to infer the fact that
+excitatory connections within a cluster form a ring, and inhibitory connections
+between clusters are all-to-all.</p>
+<p>The network's flat neuron list makes deciphering connectivity hard, as finding
+synapses between clusters requires complex index computations. Those
+computations are easy enough to implement, but quite hard to interpret
+post-facto without code comments.</p>
+<p>Oh, and each Claude answer came out in less than three seconds.. It's all enough
+to make my biologically realistic neurons (the actual ones in my own head, I
+mean) start to feel like they're not necessarily the smartest things around
+anymore.</p>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/science/"
+                    >science</a
+                >
+            </li>
+            
+        </ul>
+          
+
+
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;vertigo-chart&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Vertigo Chart</span>
+    </a>
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>Frosted Vertical Reflections in ffmpeg</span>
+    </a>
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>
