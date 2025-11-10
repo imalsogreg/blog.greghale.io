@@ -149,11 +149,6 @@ takeover of software engineering is happening over several years,
 not several months. So I do still have to write code and collaborate
 with people.
 
-Recently, writing code with the help of AI agents has shone light on
-some of the aspects of `git` that have always felt a bit awkward,
-and made me think about the `jj`, a `git` replacement that I briefly
-used at Kadena.
-
 There is a trend among my programmer friends: the ones who are
 the best at `git` tend to be the most excited about `jj`. **Interesting**.
 `git` power users had conquered all `git`'s complexities.
@@ -173,6 +168,8 @@ it too.
 
 Some developers (even some great developers!) who don't self-identify
 as `git` gurus are likely to ask Claude Code to turn a vibe-coded
-work item into a `git` commit. It's a wonderful finding that
+work item into a `git` commit - meaning they'll prefer to prompt
+"add all the files to git and commit and push it to github", instead
+of running `git` manually. It's a wonderful finding that
 Claude is trustworthy enough to drive `git` for us, but it's also
 an indigtment of the `git` user interface.

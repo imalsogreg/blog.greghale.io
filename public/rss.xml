@@ -254,10 +254,6 @@ LLMs will be writing all the code?&lt;&#x2F;p&gt;
 takeover of software engineering is happening over several years,
 not several months. So I do still have to write code and collaborate
 with people.&lt;&#x2F;p&gt;
-&lt;p&gt;Recently, writing code with the help of AI agents has shone light on
-some of the aspects of &lt;code&gt;git&lt;&#x2F;code&gt; that have always felt a bit awkward,
-and made me think about the &lt;code&gt;jj&lt;&#x2F;code&gt;, a &lt;code&gt;git&lt;&#x2F;code&gt; replacement that I briefly
-used at Kadena.&lt;&#x2F;p&gt;
 &lt;p&gt;There is a trend among my programmer friends: the ones who are
 the best at &lt;code&gt;git&lt;&#x2F;code&gt; tend to be the most excited about &lt;code&gt;jj&lt;&#x2F;code&gt;. &lt;strong&gt;Interesting&lt;&#x2F;strong&gt;.
 &lt;code&gt;git&lt;&#x2F;code&gt; power users had conquered all &lt;code&gt;git&lt;&#x2F;code&gt;&#x27;s complexities.
@@ -275,7 +271,9 @@ slide decks and blog posts to try to convince their friends to use
 it too.&lt;&#x2F;p&gt;
 &lt;p&gt;Some developers (even some great developers!) who don&#x27;t self-identify
 as &lt;code&gt;git&lt;&#x2F;code&gt; gurus are likely to ask Claude Code to turn a vibe-coded
-work item into a &lt;code&gt;git&lt;&#x2F;code&gt; commit. It&#x27;s a wonderful finding that
+work item into a &lt;code&gt;git&lt;&#x2F;code&gt; commit - meaning they&#x27;ll prefer to prompt
+&quot;add all the files to git and commit and push it to github&quot;, instead
+of running &lt;code&gt;git&lt;&#x2F;code&gt; manually. It&#x27;s a wonderful finding that
 Claude is trustworthy enough to drive &lt;code&gt;git&lt;&#x2F;code&gt; for us, but it&#x27;s also
 an indigtment of the &lt;code&gt;git&lt;&#x2F;code&gt; user interface.&lt;&#x2F;p&gt;
 </description>
