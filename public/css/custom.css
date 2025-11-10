@@ -1,0 +1,32 @@
+/* Footnote styling */
+.footnote-definition {
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footnote-definition-label {
+    font-weight: bold;
+    margin-right: 0.5em;
+    min-width: 1.5em;
+    flex-shrink: 0;
+}
+
+sup.footnote-definition-label {
+    position: relative;
+    top: 0;
+    vertical-align: baseline;
+    font-size: 1em;
+}
+
+.footnote-reference {
+    vertical-align: super;
+    font-size: 0.75em;
+}
+
+/* Add some spacing before the footnotes section */
+#footnotes {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border);
+}

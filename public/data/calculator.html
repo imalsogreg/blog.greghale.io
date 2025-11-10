@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <script src="./calculator.js", language="javascript"></script>
+    </head>
+    <body>
+        <!- 
+         fields:
+         datetime,discomfort,hints,sleep_deficit_8hr,sore_throat,headache,stress,caffine,sugar,salt,dh_left,dh_right,accel_ul,accel_dr,accel_ur,accel_dl,h_loss_l,h_loss_r,notes
+        ->
+        <h1>Vertigo Calculator</h1>
+        <div>
+            <label for="datetime">Date and Time:</label>
+            <input type="datetime-local" id="datetime" name="datetime">
+            <br>
+            <label for="discomfort">Discomfort Level:</label>
+            <input type="number" id="discomfort" name="discomfort">
+            <br>
+            <label for="hints">Hints:</label>
+            <input type="number" id="hints" name="hints">
+            <br>
+            <label for="sleep_deficit_8hr">Sleep Deficit (hrs):</label>
+            <input type="number" id="sleep_deficit_8hr" name="sleep_deficit_8hr">
+            <br>
+            <label for="sore_throat">Sore Throat:</label>
+            <input type="number" id="sore_throat" name="sore_throat">
+            <br>
+            <label for="headache">Headache:</label>
+            <input type="number" id="headache" name="headache">
+            <br>
+            <label for="stress">Stress Level:</label>
+            <input type="number" id="stress" name="stress">
+            <br>
+            <label for="caffine">Caffeine:</label>
+            <input type="number" id="caffine" name="caffine">
+            <br>
+            <label for="sugar">Sugar:</label>
+            <input type="number" id="sugar" name="sugar">
+            <br>
+            <label for="salt">Salt:</label>
+            <input type="number" id="salt" name="salt">
+            <br>
+            <label for="dh_left">Dix-Hallpike Left:</label>
+            <input type="number" id="dh_left" name="dh_left">
+            <br>
+            <label for="dh_right">Dix-Hallpike Right:</label>
+            <input type="number" id="dh_right" name="dh_right">
+            <br>
+            <label for="accel_ul">Acceleration Upper Left:</label>
+            <input type="number" id="accel_ul" name="accel_ul">
+            <br>
+            <label for="accel_dr">Acceleration Down Right:</label>
+            <input type="number" id="accel_dr" name="accel_dr">
+            <br>
+            <label for="accel_ur">Acceleration Upper Right:</label>
+            <input type="number" id="accel_ur" name="accel_ur">
+            <br>
+            <label for="accel_dl">Acceleration Down Left:</label>
+            <input type="number" id="accel_dl" name="accel_dl">
+            <br>
+            <label for="h_loss_l">Hearing Loss Left:</label>
+            <input type="number" id="h_loss_l" name="h_loss_l">
+            <br>
+            <label for="h_loss_r">Hearing Loss Right:</label>
+            <input type="number" id="h_loss_r" name="h_loss_r">
+            <br>
+            <label for="notes">Notes:</label>
+            <input type="text" id="notes" name="notes">
+        </div>
+        <div>
+            <pre id="output"></pre>
+        </div>
+    </body>
+</html>

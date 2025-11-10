@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>greghale.io - Organizing configs by usage phase</title>
+        <link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/syntax.css" />
+        <link href="../css/NanumGothic-Bold.ttf" rel="stylesheet">
+    </head>
+    <body>
+      <div class="content">
+        <header>
+            <div class="logo">
+                <a href="../">blog.greghale.io</a>
+            </div>
+            <nav>
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <!-- <h1>Organizing configs by usage phase</h1> -->
+            <article>
+    <section class="header">
+        Posted on October 17, 2019
+        
+    </section>
+    <section>
+        <h1>
+Organizing configs by usage phase
+</h1>
+<h2>
+Configuration sprawl
+</h2>
+<p>Have you found your configuration handling begins to sprawl as you add more
+configuration to your program? This example makes two database connections
+and allows the hostname and logging level to be configured. Imagine how
+<code>main</code> might grow over time as different people follow the patterns they
+find here while adding more parameters.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">ConfigExample1</span> <span class="ot">=</span> <span class="dt">ConfigExample1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  {<span class="ot"> hostname   ::</span> <span class="dt">Text</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> userDBUser ::</span> <span class="dt">String</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> userDBPass ::</span> <span class="dt">String</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> userDBDB   ::</span> <span class="dt">String</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> userDBPort ::</span> <span class="dt">Integer</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> userDBHost ::</span> <span class="dt">String</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> logLevel ::</span> <span class="dt">Katip.Severity</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDBUser ::</span> <span class="dt">String</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDBHost ::</span> <span class="dt">String</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDBPort ::</span> <span class="dt">Integer</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDBDB   ::</span> <span class="dt">String</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDBPass ::</span> <span class="dt">String</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  } <span class="kw">deriving</span> (<span class="dt">Generic</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ConfigExample1</span>{<span class="op">..</span>} <span class="ot">&lt;-</span> loadConfig <span class="st">&quot;local.yaml&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span> <span class="st">&quot;Connecting to User Database&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  userDB <span class="ot">&lt;-</span> PG.connect <span class="dt">PG.ConnectInfo</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      { PG.connectUser     <span class="ot">=</span> userDBUser</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      , PG.connectHost     <span class="ot">=</span> userDBHost</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      , PG.connectPort     <span class="ot">=</span> <span class="fu">fromIntegral</span> userDBPort</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      , PG.connectPassword <span class="ot">=</span> userDBPass</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      , PG.connectDatabase <span class="ot">=</span> userDBDB</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- ... a block of initialization code</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- ... maybe written by other team members</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">--</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  analysisDB <span class="ot">&lt;-</span> PG.connect <span class="dt">PG.ConnectInfo</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>      { PG.connectUser     <span class="ot">=</span> analysisDBUser</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      , PG.connectHost     <span class="ot">=</span> analysisDBHost</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      , PG.connectPort     <span class="ot">=</span> <span class="fu">fromIntegral</span> analysisDBPort</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>      , PG.connectPassword <span class="ot">=</span> analysisDBPass</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      , PG.connectDatabase <span class="ot">=</span> analysisDBDB</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      }  </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  runBusinessLogic analysisDB userDB logLevel (Text.unpack hostname)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>runBusinessLogic</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ot">  ::</span> <span class="dt">PG.Connection</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="ot">-&gt;</span> <span class="dt">PG.Connection</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="ot">-&gt;</span> <span class="dt">Katip.Severity</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>runBusinessLogic userDB analysisDB logLevel myHostname <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">undefined</span></span></code></pre></div>
+<p>What problems will we run into as we try to scale this program up?</p>
+<ul>
+<li><em>Flat format</em> Without organization, it’s easy for config files
+and their parsers to become confusing</li>
+<li><em>Unchecked Redundancy</em> The fields of <code>ConfigExample1</code> correspond to
+the arguments of <code>runBusinessLogic</code>, but the correspondence is
+loose (we have a collection of <code>Text</code> and <code>Int</code> fields in the config
+but a <code>PG.Connection</code> in the arguments.</li>
+<li><em>Ad-hoc resource acquisition</em> The code used for reading config fields
+and creating resources from them can get messy quickly</li>
+</ul>
+<h2>
+Organizing configuration
+</h2>
+<p>We can address these problems and add a lot of structure to our
+configuration. Let’s start by drawing a connection between
+the configuration phase, and the running phase. We’ll start by
+using a single configuration type that abstracts over the <em>phase</em>
+at which it is used:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">ConfigF</span> (<span class="ot">p ::</span> <span class="dt">Phase</span>) <span class="ot">=</span> <span class="dt">Config</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  {<span class="ot"> userDB     ::</span> <span class="dt">AtPhase</span> p <span class="dt">PG.Connection</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> analysisDB ::</span> <span class="dt">AtPhase</span> p <span class="dt">PG.Connection</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> hostname   ::</span> <span class="dt">Text</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  ,<span class="ot"> logLevel   ::</span> <span class="dt">Katip.Severity</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  } <span class="kw">deriving</span> (<span class="dt">Generic</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Config</span>    <span class="ot">=</span> <span class="dt">ConfigF</span> <span class="dt">'ConfigTime</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Resources</span> <span class="ot">=</span> <span class="dt">ConfigF</span> <span class="dt">'RunTime</span></span></code></pre></div>
+<p>Some of our configuration fields are regular Haskell datatypes, like
+<code>Text</code> and <code>Katip.Severity</code>. These values are specified and used in
+the same way. But the <code>userDB</code> and <code>analysisDB</code> fields are defined
+in terms of <code>Phase</code> and <code>AtPhase</code>, which we are about to define.</p>
+<p>Accepting some complexity here allows us to share a single type definition
+for specifying two things (a) the configuration <em>data</em> and (b) the
+configuration <em>result</em>, in one go.</p>
+<p>Our <code>main</code> function will look more like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>main' <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  cfg ::</span> <span class="dt">Config</span>    <span class="ot">&lt;-</span> loadConfig <span class="st">&quot;local.yaml&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  res ::</span> <span class="dt">Resources</span> <span class="ot">&lt;-</span> buildConfig cfg</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  runBusinessLogic' res</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ot">runBusinessLogic' ::</span> <span class="dt">Resources</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>runBusinessLogic' <span class="ot">=</span> <span class="fu">undefined</span></span></code></pre></div>
+<p>Whether the added complexity is worth it depends on a few things.</p>
+<ul>
+<li>
+<em>Configuration complexity</em> If your configuration is simple,
+then you don’t benefit from deduplicating the configuration
+and runtime types
+</li>
+<li>
+<em>Complexity budget</em> We’ll be adding a typeclass and
+a type family. If there are other aspects of your codebase
+that use your complexity budget, or if the budget is low
+for other reasons, then it’s best to treat this technique
+as a fun curiosity. Use your budget on something with a
+higher power-to-weight ratio, like <a href="https://dhall-lang.org">dhall</a>
+</li>
+</ul>
+<p>Let’s build the required machinery.</p>
+<p>First, we use <code>DataKinds</code> to
+define a new kind <code>Phase</code>
+inhabited by two types <code>’ConfigTime</code> and <code>’RunTime</code>
+to specialize our application’s configuration for one phase or the other.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Phase</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">ConfigTime</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">RunTime</span></span></code></pre></div>
+<p>Next, a type family will let us associate a configuration type
+to a runtime type for some particular resource.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">HasPhases</span> t <span class="kw">where</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">type</span> <span class="dt">AtPhase</span> (<span class="ot">p ::</span> <span class="dt">Phase</span>) t</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">HasPhases</span> <span class="dt">PG.Connection</span> <span class="kw">where</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">type</span> <span class="dt">AtPhase</span> <span class="dt">'ConfigTime</span> <span class="dt">PG.Connection</span> <span class="ot">=</span> <span class="dt">PG.ConnectInfo</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">type</span> <span class="dt">AtPhase</span> <span class="dt">'RunTime</span>    <span class="dt">PG.Connection</span> <span class="ot">=</span> <span class="dt">PG.Connection</span></span></code></pre></div>
+<p>Another typeclass allows the construction of a resource
+from its configuration data. The two type parameters correspond
+to the configtime and runtime types.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">ToRuntime</span> cty rty <span class="kw">where</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  toRuntime ::</span> cty <span class="ot">-&gt;</span> <span class="dt">IO</span> rty</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Catch-all instance for regular (not phase-specific) types</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">ToRuntime</span> ty ty <span class="kw">where</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  toRuntime <span class="ot">=</span> <span class="fu">return</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">ToRuntime</span> <span class="dt">PG.ConnectInfo</span> <span class="dt">PG.Connection</span> <span class="kw">where</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  toRuntime <span class="ot">=</span> PG.connect</span></code></pre></div>
+<p>There is a catch-all instance for cases when the configtime
+type is the same as the runtime type. When we eventually
+process our configuration record, the catch-all instance will
+apply to any field with a regular type, like our
+<code>hostname</code> field. (It would also match any
+<code>AtPhase</code> fields where configtime type is equal
+to the runtime type.. but if we ever use <code>AtPhase</code>,
+we would do that <em>in order to</em> let the types differ
+across phases, so we won’t encounter this case. Sorry for
+the aside, I hope it makes sense)</p>
+<h2>
+generic-lens
+</h2>
+<p>In order to have our <code>buildConfig</code> function, we
+will use some fabulous magic from
+<a href="http://hackage.haskell.org/package/generic-lens">generic-lens</a>.
+Specifically, <a href="http://hackage.haskell.org/package/generic-lens-1.2.0.1/docs/Data-Generics-Product-Constraints.html#v:constraints"><code>constraints</code></a>
+allows us to traverse a record, applying an effectful function
+at every field with a type satisfying some particular constraint.</p>
+<p>We choose that constraint to be our <code>ToRuntime</code> class.</p>
+<p>Now we can write <code>buildConfig</code> without repeating any
+details about the internals of our configuration record.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell literate"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ot">buildConfig ::</span> <span class="dt">ConfigF</span> <span class="dt">ConfigTime</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">ConfigF</span> <span class="dt">RunTime</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>buildConfig <span class="ot">=</span> GenericLens.constraints <span class="op">@</span><span class="dt">ToRuntime</span> toRuntime</span></code></pre></div>
+<h2>
+Summing up
+</h2>
+<p>Summing up, we have removed a few types of duplication and
+informality from the process of building runtime resources
+from configuration data.</p>
+<p>We parameterized a single configuration record by the
+phase, either configuration time or runtime.</p>
+<p>And we concentrated the work of instantiating a runtime
+resource record from the configuration record into a very generic
+function.</p>
+<p>Was it worth it? In effect, we sacrificed <code>Haskell98</code>’s
+simplicity at the altar of the DRY (Don’t Repeat Yourself)
+principle. Repetition is legitimately dangerous, especially
+in a codebase with multiple authors, written in a language
+where type safety encourages us to skimp on testing. The
+competing interests here (redundancy vs. complexity) depend
+on just how much redundancy you are cleaning up.</p>
+<p>Thanks to Sarah Brofeldt (<a href="https://github.com/srhb">@srhb</a>),
+who fleshed out the idea with me and did much of the implementation.
+Simple as it may look, we had to explore quite a few paths before
+we found this solution.</p>
+<p>Thanks also to K.A. Buhr for his very helpful
+<a href="https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436">answer</a> on StackOverflow.
+<a href="https://github.com/rossabaker">Ross Baker</a>
+read a draft of this post and gave great suggestions
+for improvement - Thanks!</p>
+<h2>
+Related work
+</h2>
+<ul>
+<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/11/trees-that-grow.pdf">Trees that Grow</a></li>
+<li><a href="https://reasonablypolymorphic.com/blog/higher-kinded-data/">Higher-Kinded Data</a></li>
+</ul>
+    </section>
+</article>
+
+
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+	</content>
+    </body>
+</html>
