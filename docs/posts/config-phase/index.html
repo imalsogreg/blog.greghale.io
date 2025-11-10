@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Organizing configs by usage phase</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="A pattern for connecting configuration data to capabilities">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;config-phase&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;config-phase&#x2F;">Organizing configs by usage phase</a>
+        </div>
+        <h1 class="post-title">Organizing configs by usage phase</h1>
+        
+        <div class="post-description">A pattern for connecting configuration data to capabilities</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2019-10-17 00:00:00 +0000">October 17, 2019</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><h1 id="organizing-configs-by-usage-phase">Organizing configs by usage phase</h1>
+<h2 id="configuration-sprawl">Configuration sprawl</h2>
+<p>Have you found your configuration handling begins to sprawl as you add more
+configuration to your program? This example makes two database connections
+and allows the hostname and logging level to be configured. Imagine how
+<code>main</code> might grow over time as different people follow the patterns they
+find here while adding more parameters.</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
+</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
+</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
+</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> ScopedTypeVariables, DefaultSignatures #-}
+</span><span style="color:#b48ead;">import           </span><span>Data.Text                         (</span><span style="color:#b48ead;">Text</span><span>)
+</span><span style="color:#b48ead;">import           </span><span>GHC.Generics                      (</span><span style="color:#b48ead;">Generic</span><span>)
+</span><span style="color:#b48ead;">import           </span><span>Control.Lens
+</span><span style="color:#b48ead;">import qualified </span><span>Data.Text                         </span><span style="color:#b48ead;">as </span><span>Text
+</span><span style="color:#b48ead;">import qualified </span><span>Katip
+</span><span style="color:#b48ead;">import qualified </span><span>Database.PostgreSQL.Simple        </span><span style="color:#b48ead;">as </span><span>PG
+</span><span style="color:#b48ead;">import qualified </span><span>Data.Generics.Product.Constraints </span><span style="color:#b48ead;">as </span><span>GenericLens
+</span><span>
+</span><span style="color:#b48ead;">data </span><span style="color:#d08770;">ConfigExample1 </span><span>= </span><span style="color:#d08770;">ConfigExample1
+</span><span>  { hostname   :: </span><span style="color:#d08770;">Text
+</span><span>  , userDBUser :: </span><span style="color:#d08770;">String
+</span><span>  , userDBPass :: </span><span style="color:#d08770;">String
+</span><span>  , userDBDB   :: </span><span style="color:#d08770;">String
+</span><span>  , userDBPort :: </span><span style="color:#d08770;">Integer
+</span><span>  , userDBHost :: </span><span style="color:#d08770;">String
+</span><span>  , logLevel :: </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
+</span><span>  , analysisDBUser :: </span><span style="color:#d08770;">String
+</span><span>  , analysisDBHost :: </span><span style="color:#d08770;">String
+</span><span>  , analysisDBPort :: </span><span style="color:#d08770;">Integer
+</span><span>  , analysisDBDB   :: </span><span style="color:#d08770;">String
+</span><span>  , analysisDBPass :: </span><span style="color:#d08770;">String
+</span><span>  } </span><span style="color:#b48ead;">deriving</span><span> (</span><span style="color:#a3be8c;">Generic</span><span>)
+</span><span>
+</span><span>
+</span><span style="color:#8fa1b3;">main </span><span style="color:#b48ead;">:: IO </span><span>()
+</span><span>main = </span><span style="color:#b48ead;">do
+</span><span>  </span><span style="color:#d08770;">ConfigExample1</span><span>{..} &lt;- loadConfig &quot;</span><span style="color:#a3be8c;">local.yaml</span><span>&quot;
+</span><span>  print &quot;</span><span style="color:#a3be8c;">Connecting to User Database</span><span>&quot;
+</span><span>  userDB &lt;- </span><span style="color:#d08770;">PG</span><span>.connect </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
+</span><span>      { </span><span style="color:#d08770;">PG</span><span>.connectUser     = userDBUser
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectHost     = userDBHost
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPort     = fromIntegral userDBPort
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPassword = userDBPass
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectDatabase = userDBDB
+</span><span>      }
+</span><span>  </span><span style="color:#65737e;">-- ... a block of initialization code
+</span><span>  </span><span style="color:#65737e;">-- ... maybe written by other team members
+</span><span>  </span><span style="color:#65737e;">--
+</span><span>  analysisDB &lt;- </span><span style="color:#d08770;">PG</span><span>.connect </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
+</span><span>      { </span><span style="color:#d08770;">PG</span><span>.connectUser     = analysisDBUser
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectHost     = analysisDBHost
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPort     = fromIntegral analysisDBPort
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPassword = analysisDBPass
+</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectDatabase = analysisDBDB
+</span><span>      }  
+</span><span>  runBusinessLogic analysisDB userDB logLevel (</span><span style="color:#d08770;">Text</span><span>.unpack hostname)
+</span><span>
+</span><span>
+</span><span>
+</span><span>runBusinessLogic
+</span><span>  :: </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
+</span><span>  -&gt; </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
+</span><span>  -&gt; </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
+</span><span>  -&gt; </span><span style="color:#d08770;">String
+</span><span>  -&gt; </span><span style="color:#d08770;">IO ()
+</span><span>runBusinessLogic userDB analysisDB logLevel myHostname = </span><span style="color:#b48ead;">do
+</span><span>  undefined
+</span></code></pre>
+<p>What problems will we run into as we try to scale this program up?</p>
+<ul>
+<li><strong>Flat format</strong> Without organization, it's easy for config files
+and their parsers to become confusing</li>
+<li><strong>Unchecked Redundancy</strong> The fields of <code>ConfigExample1</code> correspond to
+the arguments of <code>runBusinessLogic</code>, but the correspondence is
+loose (we have a collection of <code>Text</code> and <code>Int</code> fields in the config
+but a <code>PG.Connection</code> in the arguments.</li>
+<li><strong>Ad-hoc resource acquisition</strong> The code used for reading config fields
+and creating resources from them can get messy quickly</li>
+</ul>
+<h2 id="organizing-configuration">Organizing configuration</h2>
+<p>We can address these problems and add a lot of structure to our
+configuration. Let's start by drawing a connection between
+the configuration phase, and the running phase. We'll start by
+using a single configuration type that abstracts over the <em>phase</em>
+at which it is used:</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">data </span><span style="color:#d08770;">ConfigF</span><span> (p :: </span><span style="color:#d08770;">Phase</span><span>) = </span><span style="color:#d08770;">Config
+</span><span>  { userDB     :: </span><span style="color:#d08770;">AtPhase</span><span> p </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
+</span><span>  , analysisDB :: </span><span style="color:#d08770;">AtPhase</span><span> p </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
+</span><span>  , hostname   :: </span><span style="color:#d08770;">Text
+</span><span>  , logLevel   :: </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
+</span><span>  } </span><span style="color:#b48ead;">deriving</span><span> (</span><span style="color:#a3be8c;">Generic</span><span>)
+</span><span>
+</span><span style="color:#b48ead;">type </span><span style="color:#d08770;">Config    </span><span>= </span><span style="color:#d08770;">ConfigF</span><span> &#39;</span><span style="color:#d08770;">ConfigTime
+</span><span style="color:#b48ead;">type </span><span style="color:#d08770;">Resources </span><span>= </span><span style="color:#d08770;">ConfigF</span><span> &#39;</span><span style="color:#d08770;">RunTime
+</span></code></pre>
+<p>Some of our configuration fields are regular Haskell datatypes, like
+<code>Text</code> and <code>Katip.Severity</code>. These values are specified and used in
+the same way. But the <code>userDB</code> and <code>analysisDB</code> fields are defined
+in terms of <code>Phase</code> and <code>AtPhase</code>, which we are about to define.</p>
+<p>Accepting some complexity here allows us to share a single type definition
+for specifying two things (a) the configuration <em>data</em> and (b) the
+configuration <em>result</em>, in one go.</p>
+<p>Our <code>main</code> function will look more like this:</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span>main&#39; = </span><span style="color:#b48ead;">do
+</span><span>  </span><span style="color:#8fa1b3;">cfg </span><span style="color:#b48ead;">:: Config</span><span>    &lt;- </span><span style="color:#bf616a;">loadConfig</span><span> &quot;</span><span style="color:#bf616a;">local</span><span>.</span><span style="color:#bf616a;">yaml</span><span>&quot;
+</span><span>  </span><span style="color:#8fa1b3;">res </span><span style="color:#b48ead;">:: Resources</span><span> &lt;- </span><span style="color:#bf616a;">buildConfig cfg
+</span><span>  runBusinessLogic&#39; res
+</span><span>
+</span><span style="color:#8fa1b3;">runBusinessLogic&#39; </span><span style="color:#b48ead;">:: Resources -&gt; IO </span><span>()
+</span><span>runBusinessLogic&#39; = undefined
+</span></code></pre>
+<p>Whether the added complexity is worth it depends on a few things.</p>
+<ul>
+<li><strong>Configuration complexity</strong> If your configuration is simple,
+then you don't benefit from deduplicating the configuration
+and runtime types</li>
+<li><strong>Complexity budget</strong> We'll be adding a typeclass and
+a type family. If there are other aspects of your codebase
+that use your complexity budget, or if the budget is low
+for other reasons, then it's best to treat this technique
+as a fun curiosity. Use your budget on something with a
+higher power-to-weight ratio, like <a href="https://dhall-lang.org">dhall</a></li>
+</ul>
+<p>Let's build the required machinery.</p>
+<p>First, we use <code>DataKinds</code> to
+define a new kind <code>Phase</code>
+inhabited by two types <code>'ConfigTime</code> and <code>'RunTime</code>
+to specialize our application's configuration for one phase or the other.</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">data </span><span style="color:#d08770;">Phase
+</span><span>  = </span><span style="color:#d08770;">ConfigTime
+</span><span>  | </span><span style="color:#d08770;">RunTime
+</span></code></pre>
+<p>Next, a type family will let us associate a configuration type
+to a runtime type for some particular resource.</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">HasPhases </span><span style="color:#bf616a;">t </span><span style="color:#b48ead;">where
+</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> (p :: </span><span style="color:#d08770;">Phase</span><span>) t
+</span><span>
+</span><span style="color:#b48ead;">instance HasPhases PG</span><span>.</span><span style="color:#b48ead;">Connection where
+</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> &#39;</span><span style="color:#d08770;">ConfigTime PG</span><span>.</span><span style="color:#d08770;">Connection </span><span>= </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
+</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> &#39;</span><span style="color:#d08770;">RunTime    PG</span><span>.</span><span style="color:#d08770;">Connection </span><span>= </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
+</span></code></pre>
+<p>Another typeclass allows the construction of a resource
+from its configuration data. The two type parameters correspond
+to the configtime and runtime types.</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">ToRuntime </span><span style="color:#bf616a;">cty rty </span><span style="color:#b48ead;">where
+</span><span>  </span><span style="color:#8fa1b3;">toRuntime </span><span style="color:#b48ead;">:: </span><span style="color:#bf616a;">cty </span><span style="color:#b48ead;">-&gt; IO </span><span style="color:#bf616a;">rty
+</span><span>
+</span><span style="color:#65737e;">-- | Catch-all instance for regular (not phase-specific) types
+</span><span style="color:#b48ead;">instance ToRuntime </span><span style="color:#bf616a;">ty ty </span><span style="color:#b48ead;">where
+</span><span>  toRuntime = return
+</span><span>
+</span><span style="color:#b48ead;">instance ToRuntime PG</span><span>.</span><span style="color:#b48ead;">ConnectInfo PG</span><span>.</span><span style="color:#b48ead;">Connection where
+</span><span>  toRuntime = </span><span style="color:#d08770;">PG</span><span>.connect
+</span></code></pre>
+<p>There is a catch-all instance for cases when the configtime
+type is the same as the runtime type. When we eventually
+process our configuration record, the catch-all instance will
+apply to any field with a regular type, like our
+<code>hostname</code> field. (It would also match any
+<code>AtPhase</code> fields where configtime type is equal
+to the runtime type.. but if we ever use <code>AtPhase</code>,
+we would do that <em>in order to</em> let the types differ
+across phases, so we won't encounter this case. Sorry for
+the aside, I hope it makes sense)</p>
+<h2 id="generic-lens">generic-lens</h2>
+<p>In order to have our <code>buildConfig</code> function, we
+will use some fabulous magic from
+<a href="http://hackage.haskell.org/package/generic-lens">generic-lens</a>.
+Specifically, <a href="http://hackage.haskell.org/package/generic-lens-1.2.0.1/docs/Data-Generics-Product-Constraints.html#v:constraints"><code>constraints</code></a>
+allows us to traverse a record, applying an effectful function
+at every field with a type satisfying some particular constraint.</p>
+<p>We choose that constraint to be our <code>ToRuntime</code> class.</p>
+<p>Now we can write <code>buildConfig</code> without repeating any
+details about the internals of our configuration record.</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#8fa1b3;">buildConfig </span><span style="color:#b48ead;">:: ConfigF ConfigTime -&gt; IO</span><span> (</span><span style="color:#b48ead;">ConfigF RunTime</span><span>)
+</span><span>buildConfig = </span><span style="color:#d08770;">GenericLens</span><span>.constraints @</span><span style="color:#d08770;">ToRuntime</span><span> toRuntime
+</span></code></pre>
+<h2 id="summing-up">Summing up</h2>
+<p>Summing up, we have removed a few types of duplication and
+informality from the process of building runtime resources
+from configuration data.</p>
+<p>We parameterized a single configuration record by the
+phase, either configuration time or runtime.</p>
+<p>And we concentrated the work of instantiating a runtime
+resource record from the configuration record into a very generic
+function.</p>
+<p>Was it worth it? In effect, we sacrificed <code>Haskell98</code>'s
+simplicity at the altar of the DRY (Don't Repeat Yourself)
+principle. Repetition is legitimately dangerous, especially
+in a codebase with multiple authors, written in a language
+where type safety encourages us to skimp on testing. The
+competing interests here (redundancy vs. complexity) depend
+on just how much redundancy you are cleaning up.</p>
+<p>Thanks to Sarah Brofeldt (<a href="https://github.com/srhb">@srhb</a>),
+who fleshed out the idea with me and did much of the implementation.
+Simple as it may look, we had to explore quite a few paths before
+we found this solution.</p>
+<p>Thanks also to K.A. Buhr for his very helpful
+<a href="https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436">answer</a> on StackOverflow.
+<a href="https://github.com/rossabaker">Ross Baker</a>
+read a draft of this post and gave great suggestions
+for improvement - Thanks!</p>
+<h2 id="related-work">Related work</h2>
+<ul>
+<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/11/trees-that-grow.pdf">Trees that Grow</a></li>
+<li><a href="https://reasonablypolymorphic.com/blog/higher-kinded-data/">Higher-Kinded Data</a></li>
+</ul>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/haskell/"
+                    >Haskell</a
+                >
+            </li>
+            
+        </ul>
+          
+
+
+<nav class="paginav">
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;typechecking-posts&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>Typechecking code in a Hakyll blog</span>
+    </a>
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>

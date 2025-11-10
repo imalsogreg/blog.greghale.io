@@ -8,6 +8,9 @@ description = "Personal blog of Greg Hale"
 # The default language
 default_language = "en"
 
+# Output directory for the built site
+output_dir = "docs"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
 

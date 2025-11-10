@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>jj loves vibe coding</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="Why jj&#x27;s interface is so great for vibe coding.">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">jj loves vibe coding</a>
+        </div>
+        <h1 class="post-title">jj loves vibe coding</h1>
+        
+        <div class="post-description">Why jj&#x27;s interface is so great for vibe coding.</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2025-10-10 00:00:00 +0000">October 10, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><p>AI coding assistants have sped up our coding. Parallel agents
+are dividing the development times down further. Version control
+is becoming more of a bottleneck. By <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> VCS is putting a new
+fundamental limit on how fast software development can go. This isn't
+just an intuitive claim, it's something that actively bugged me
+at work and reminded me of an odd tool we used for <em>human</em> based
+VCS at Kadena: <code>jj</code>.</p>
+<p>So, while implementing a meaty feature for the <a href="https://github.com/boundaryml/baml">BAML</a> language with Claude Code, and
+feeling the tedium of managing <code>git</code>'s staging area and branches,
+I decided to dust off <code>jj</code> and try in this new AI coding context.
+The results have been great. Here's why:</p>
+<h2 id="1-automatic-change-tracking">1. Automatic change tracking</h2>
+<p>Long ago, you accepted the fact that you just have to run <code>git add</code>
+for every changed file. Not with <code>jj</code>!
+<code>jj</code> tracks all changes for you, a massive time saver when most of
+your keystrokes are prompting the AI, rather than directly writing
+source code.</p>
+<h2 id="2-low-friction-commits">2. Low-friction commits</h2>
+<p>With <code>jj</code> you can create commits before the work, and changes get
+written into that commit. It feels a bit like creating a directory,
+then <code>cd</code>ing into that directory to create files there.</p>
+<p>When you go back to <code>git</code> after this mindest change, you have the
+opposite feeling: working with <code>git</code> feels creating a bunch of files,
+then creating a folder, and moving files into the folder after the fact.</p>
+<p>To highlight this difference in mindset: it's extremely common for me to
+write a prompt asking for a new work
+item, realize this work should be in its own commit, and quickly run
+<code>jj new</code> to open a new commit before Claude Code has finished
+its reasoning and begun to write code. Having a zero-friction way to
+chunk up work is pure joy.</p>
+<h2 id="3-easy-commit-shuffling-rebasing">3. Easy commit shuffling (rebasing)</h2>
+<p>Rebasing is scary in <code>git</code> because it's easy to rewrite history and
+damage the repository. Rebases in <code>jj</code> are safe and common.</p>
+<p>This is how you move a single commit to some other place in the history:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase -r SOME_COMMIT --destination SOME_COMMIT
+</span></code></pre>
+<p>Or move a whole series of commits to some other place in the
+history:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
+</span></code></pre>
+<p>With parallel agents, rebasing is very common, and the improved
+user experience in <code>jj</code> reduces rebase toil.</p>
+<h2 id="4-easy-undo">4. Easy Undo</h2>
+<p>Whatever you just did in <code>jj</code>, if you realize it didn't go the way
+you expected, <code>undo</code> has you covered:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj undo
+</span></code></pre>
+<p>Especially helpful while you're still learning the ropes. A lot of noise
+is made about ChatGPT stealing traffic from StackOverflow. <code>jj</code>
+will cut into this market share further by removing the need to search
+for how to undo all the different <code>git</code> accidents that happen in
+work projects.</p>
+<p>If the AI goes down a bad path and writes a bunch of code you dislike,
+<code>abandon</code> abandons the work item.</p>
+<p>Abandon the current commit:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon
+</span></code></pre>
+<p>Abandon some other commit in the history:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon -r SOME_COMMIT
+</span></code></pre>
+<p>And if you forgot to introduce a new commit before starting the agent
+on a coding task unrelated to one you had in-progress, it's easy
+to split the work into two separate commits:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
+</span></code></pre>
+<h1 id="jj-loves-vibe-coding">jj loves vibe coding</h1>
+<p>Running <code>jj</code> feels like "managing" something:
+high level, details-managed-for-you, simple. Running <code>git</code>
+feels like "implementing" something. Low level, down in the
+weeds, wrestling with the tools.</p>
+<p>Vibe coding is managing a coding assistant, so <code>jj</code> is a great fit.</p>
+<p>The purpose of this blog post is to summarize why I like
+<code>jj</code> for vibe coding, not to provide a balanced comparison
+between <code>jj</code> and <code>git</code>. That's why I've said nothing good about <code>git</code>
+here and nothing bad about <code>jj</code>. When considering whether to adopt <code>jj</code>
+at work or for your personal projects, of course you'll need
+to try it yourself and read some tutorials.</p>
+<p>Here are a few things to know if you're hearing about <code>jj</code> for the
+first time and considering a switch:</p>
+<ul>
+<li><code>jj</code> is compatible with <code>git</code> and uses the <code>.git</code> directory for
+tracking repository state. So you can freely use <code>jj</code> even if
+the rest of the team uses <code>git</code>.</li>
+<li><code>jj</code> has a learning curve! It's easier to learn than <code>git</code>, but
+not trivial. It took me a few weeks to reach the same
+level of productivity that I built up over many years using
+<code>git</code>.</li>
+<li>There is an excellent <a href="https://steveklabnik.github.io/jujutsu-tutorial/">tutorial from Steve Klabnik</a> and an excellent
+<a href="https://www.youtube.com/watch?v=2otjrTzRfVk&amp;t=327s">video from Chris Krycho</a>.</li>
+<li>Get started at the <a href="https://github.com/jj-vcs/jj">jj GitHub repo</a></li>
+</ul>
+<h2 id="we-have-coding-assistants-so-why-learn-a-new-tool">We have coding assistants - so why learn a new tool?</h2>
+<p>As someone who works on <a href="https://boundaryml.com">developer tools</a> at
+the twilight of humanity's involvement in the software development
+process, I've worried about the utility of learning new tools,
+writing new languages, or making any bets on human productivity.
+Isn't it better to move back to languages and
+tools with billions of tokens on the internet for training LLMs, if
+LLMs will be writing all the code?</p>
+<p>Well, new languages and tools <em>are</em> coming out. And the complete AI
+takeover of software engineering is happening over several years,
+not several months. So I do still have to write code and collaborate
+with people.</p>
+<p>There is a trend among my programmer friends: the ones who are
+the best at <code>git</code> tend to be the most excited about <code>jj</code>. <strong>Interesting</strong>.
+<code>git</code> power users had conquered all <code>git</code>'s complexities.
+They understood the underlying model, were unbothered the differences
+between the commands for creating and deleting branches, knew all the
+different and unrelated jobs done by <code>git checkout</code>, and had bookmarked
+the StackOverflow pages for removing a change from the staging area.</p>
+<p>You might think a <code>git</code> guru would be the last person who wants to
+relinquish all that muscle memory and switch to a new tool and an
+new set of commands to memorize for version control. <strong>Nope</strong>. Those
+colleagues have had their tastes and sensibilities forged in the crucible
+of <code>git</code>, and when <code>jj</code> arrived, they immediately saw the value and
+accepted the switch cost. They fell in love and started making
+slide decks and blog posts to try to convince their friends to use
+it too.</p>
+<p>Some developers (even some great developers!) who don't self-identify
+as <code>git</code> gurus are likely to ask Claude Code to turn a vibe-coded
+work item into a <code>git</code> commit - meaning they'll prefer to prompt
+"add all the files to git and commit and push it to github", instead
+of running <code>git</code> manually. It's a wonderful finding that
+Claude is trustworthy enough to drive <code>git</code> for us, but it's also
+an indigtment of the <code>git</code> user interface.</p>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/ai/"
+                    >AI</a
+                >
+            </li>
+            
+        </ul>
+          
+
+
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Frosted Vertical Reflections in ffmpeg</span>
+    </a>
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;ai-consciousness&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>Human and AI Consciousness</span>
+    </a>
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>

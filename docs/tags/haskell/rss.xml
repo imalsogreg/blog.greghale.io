@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greg Hale&#x27;s Blog - Haskell</title>
+      <link>https://blog.greghale.io</link>
+      <description>Personal blog of Greg Hale</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.greghale.io/tags/haskell/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Vertigo</title>
+          <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/vertigo/</link>
+          <guid>https://blog.greghale.io/posts/vertigo/</guid>
+          <description xml:base="https://blog.greghale.io/posts/vertigo/">&lt;p&gt;In April 2019, I came down with a nasty case of vertigo. The acute phase lasted
+a month, and after that it would come and go, never reaching the original peak
+but also never recovering fully. After a long journey with several specialists,
+an otolaryngologist at Johns Hopkins cracked the case, and my Vertigo journey
+ended. Mostly. Along the way, I learned a surprising amount of fun science. In
+this blog post, I&#x27;ll share a bit about those learning and how this disease
+felt.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-symptoms&quot;&gt;The symptoms&lt;&#x2F;h2&gt;
+&lt;p&gt;The main symptom of vertigo is the spinning and dizziness. Being dizzy can be
+fun for a while, but of course it gets old quickly. The chronic dizziness of
+Vertigo makes it difficult to work or care for kids. Driving was impossible.&lt;&#x2F;p&gt;
+&lt;div id=&quot;vertigo-simulator&quot;&gt;&lt;&#x2F;div&gt;
+&lt;p&gt;&quot;&lt;em&gt;Thanks, I hate it&lt;&#x2F;em&gt;&quot; is the correct reaction.&lt;&#x2F;p&gt;
+&lt;p&gt;Even when the world was not spinning, my head never felt fully fixed in space.
+The sensation is hard to describe - imagine objects in the distance always
+vibrating just a little bit.&lt;&#x2F;p&gt;
+&lt;p&gt;The last symptom I felt is much harder to describe. It&#x27;s something like
+electrical noise or static. There&#x27;s no actual sound, though, or any other
+feeling I can easily compare it to without sounding a little crazy. Imagine a
+beam of television static blasting from a spot at the back, left side of your
+head. The doctors didn&#x27;t say that other Vertigo patients had something similar.
+But for me, it came with the Vertigo and left with the Vertigo.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-inner-ear&quot;&gt;The inner ear&lt;&#x2F;h2&gt;
+&lt;p&gt;Let&#x27;s see what broke. &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hair_cell&quot;&gt;Hair cells&lt;&#x2F;a&gt; in
+the cochlea that are excited by the fluid oscillations caused by sound waves,
+letting us hear. The vestibular organs contain the same type of cell responding
+to a different fluid movement - the movement of fluid rotating in the
+semicircular canals in response to head rotation.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2019-12-20-britannica.jpg&quot; alt=&quot;Vestibular organs: https:&#x2F;&#x2F;www.britannica.com&#x2F;science&#x2F;utricle&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;em&gt;semicircular canals&lt;&#x2F;em&gt; are
+large enough to see in an MRI scan. If you&#x27;d like to see &lt;em&gt;my&lt;&#x2F;em&gt;
+semi-circular canals, feast your eyes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2019-12-20-canalsMRI.jpg&quot; alt=&quot;My MRI Brain scan, Mercy Neurology department&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;To detect static head orientation, we need to make use of gravity. In the inner
+ear, we see these same cells again, now embedded in jelly and capped by heavy
+calcium crystals called &lt;em&gt;otoconia&lt;&#x2F;em&gt;. As a head tilts one way or the other,
+these crystals shift their position, activating sets of hair cells sensitive to
+that particular tilt.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;trouble-in-inner-ear-paradise&quot;&gt;Trouble in inner-ear paradise&lt;&#x2F;h2&gt;
+&lt;p&gt;There is no physical barrier between the otoconia crystals in their jelly, and
+the fluid of the semicircular canals.&lt;&#x2F;p&gt;
+&lt;p&gt;Like any open office plan, this setup has problems. The otoconia crystals
+sometimes dislodge from their jelly and float into the semicircular canal. The
+heavy crystals interfere with the motion of the fluid in the canals during head
+rotation, producing out-of-whack rotation signals.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;one-weird-trick&quot;&gt;One weird trick...&lt;&#x2F;h2&gt;
+&lt;p&gt;Here is an idea so crazy that it just might work. We know the shapes of the
+semicircular canals, we know where otoconia are supposed to live, and we know
+that otoconia fall under the influence of gravity. Maybe we could rotate the
+head through a series of positions to guide the otoconia back to their jelly?&lt;&#x2F;p&gt;
+&lt;p&gt;One of my complaints about science is that our elegant models tend to fall over
+in the face of real world complexity. But in this case, the model does work, and
+a large number of Vertigo cases can be cured exactly this way. That&#x27;s one of the
+things I was most delighted by in this whole journey.&lt;&#x2F;p&gt;
+&lt;p&gt;Loose crystals from one sensory organ tresspassing into the working end of
+another sesnory organ is a simple model. What made my vertigo story so
+delightful to me was the way the model works in practice, to suggest a cure that
+requires no drugs or prolonged therapy. The treatment is called the Epley
+Maneuver.&lt;&#x2F;p&gt;
+&lt;p&gt;If (a) crystals can get into the semicircular canals, (b) this cause problems
+when crystals move and interfere with fluid sensors and (c) the shapes of the
+canals are well known, then perhaps by rotating the head a certain way we could
+coax the crystals back through the canals and into the utricle where they
+belong, a bit like the toy with a marble navigated through a maze on a balance
+board you control with knobs?&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;2019-12-20-lucky-labrynth.jpg&quot; alt=&quot;Lucky Labrynth&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Well, for that subset of vertigo cases where loose crystals are the cause, it
+does work. And one has to wonder, when Epley first tried it successfully, was
+this a Eureka! moment for him, or with total confidence in the crystal
+hypothesis did he shrug the maneuver&#x27;s success off as trivial.&lt;&#x2F;p&gt;
+&lt;p&gt;When the right side (most commonly, the hindmost of the three canals) is the
+problem, the crystals tend to settle at a low point in the ring, and we want to
+get them around the top of the ring and back into the utricle. The maneuver goes like this:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sit straight up&lt;&#x2F;li&gt;
+&lt;li&gt;Turn the head 45 degrees to the right&lt;&#x2F;li&gt;
+&lt;li&gt;Keeping the turn, lay back fairly quickly, letting the head hang below the sholders&lt;&#x2F;li&gt;
+&lt;li&gt;After the nystagmus subsides, remain lying down and turn the head toward the opposite side&lt;&#x2F;li&gt;
+&lt;li&gt;After the next wave of nystagmus subsides, roll onto your left side, keeping your
+head turned toward your left shoulder&lt;&#x2F;li&gt;
+&lt;li&gt;After the next wave of nystagmus subsides, lift your body to a sitting position&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;To see why this works, try the procedure on the model head below. The model
+has two loose crystals in his right canal. The controls are tricky, but if you
+get the sequence right, they will land on the green &quot;utricle&quot; and be stable
+there as long as the head stays upright.&lt;&#x2F;p&gt;
+&lt;iframe srcdoc=&quot;
+&lt;html&gt;
+&lt;body style=&#x27;margin:0px&#x27;&gt;
+&lt;div id=&#x27;epley_container&#x27; onClick=&#x27;go()&#x27; style=&#x27;position:relative&#x27;&gt;
+  &lt;p id=&#x27;click_to_start&#x27; style=&#x27;position:absolute&#x27;&gt;Click to start&lt;&#x2F;p&gt;
+  &lt;img id=&#x27;instructions&#x27; src=&#x27;&#x2F;images&#x2F;2019-12-20-instructions.svg&#x27; style=&#x27;position:absolute&#x27;&#x2F;&gt;
+&lt;&#x2F;div&gt;
+&lt;script src=&#x27;&#x2F;js&#x2F;cannon.min.js&#x27;&gt;&lt;&#x2F;script&gt;
+&lt;script src=&#x27;&#x2F;js&#x2F;three.min.js&#x27;&gt;&lt;&#x2F;script&gt;
+&lt;script src=&#x27;&#x2F;js&#x2F;TrackballControls.js&#x27;&gt;&lt;&#x2F;script&gt;
+&lt;script src=&#x27;&#x2F;js&#x2F;epley.js&#x27;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+&quot; width=&quot;600px&quot; height=&quot;410px&quot;&gt;&lt;&#x2F;iframe&gt;
+&lt;p&gt;If the head can bec back to the upright position without the red crystals
+falling back down, you win!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;feels&quot;&gt;Feels&lt;&#x2F;h2&gt;
+&lt;p&gt;As you can see in the simulation, when the head is still, gravity brings the
+crystals to their lowest location. A few minutes after lying down in bed, things
+in the inner ear are settled down. The fluid motion sensors are not being
+activated. Everything feels back to normal.&lt;&#x2F;p&gt;
+&lt;p&gt;Being still in bed is so comfortable, in fact, that you can start to wonder if
+the whole condition is clearing up and you can go back to normal activities
+soon. But, for quite some time, sitting up very reliably brings back the vertigo
+and all the discomfort. This ends up training you not to leave the bed, to spend
+a long time after waking up in an anxious state, temporarily cured and hoping
+that you will still be ok when you get up, but knowing that probably won&#x27;t
+happen. It&#x27;s emotionally hard, and during this episode, I gained a ton of
+sympathy for people with chronic illness.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;treatment&quot;&gt;Treatment&lt;&#x2F;h3&gt;
+&lt;p&gt;Here is a rough breakdown of the medical care I received, with the cost after insurance.&lt;&#x2F;p&gt;
+&lt;p&gt;Date        Center                  Cost&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;2019-06-02  Urgent Care             $150
+2019-06-02  Union Memorial Hospital $800
+2019-06-20  Mercy Otolaryngology    $100
+2019-07-20  Mercy Neurology         $150
+2019-08-02  Mercy Radiology         $150
+2019-12-03  Hopkins Otolaryngology  $100&lt;&#x2F;p&gt;
+&lt;p&gt;The first two trips happened because the dizziness came on so strongly that my
+wife and I thought there may be a serious issue. Urgent Care also didn&#x27;t want to
+rule anything out, and they urged us to go to the ER (it was fairly late at
+night, and I couldn&#x27;t reach my family physician).&lt;&#x2F;p&gt;
+&lt;p&gt;I was perscribed nausea medicine and told that I probably had viral
+labrynthitis, which should resolve itself it 3 to 14 days. While the strongest
+phase did die down after a couple of weeks, I had the residual feelings
+mentioned above. They could come and go, maybe once a month I had a week of
+symptoms.&lt;&#x2F;p&gt;
+&lt;p&gt;So I kept seeing other specialists. An otolaryngologist at Mercy Medical agreed
+that it was viral labrynthitis and prescribed low-dose valium and waiting. We
+decided not to take the valium - due to the wait times before our visits, the
+visit tended to happen on the tail end of a bout of vertigo, and I was scared of
+taking anything psychoactive when the symptoms were subsiding anyway.&lt;&#x2F;p&gt;
+&lt;p&gt;The trip to Mercy Neurology was recommended because of the stranger symytoms I
+mentioned above. The nails-on-the-board, the beam of corrupt information - these
+things hinted that there may be something wrong with my noodle. But the battery
+of tests didn&#x27;t turn up anything, and my MRI scans looked normal.&lt;&#x2F;p&gt;
+&lt;p&gt;In summary, the treatment from June through August was kind and caring, but
+didn&#x27;t make much progress in clearing up the symptoms.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-fix&quot;&gt;The Fix&lt;&#x2F;h3&gt;
+&lt;p&gt;As it happens, my wife studied the neurons of the vestibular system&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#xpl2016&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;
+and the hair cells of the utricle&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#xpl2016b&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; in her doctoral and postdoc labs,
+which were hospital-affiliated. She managed to use some of her connections to
+get me an appointment at Johns Hopkins Otolaryngology. I&#x27;ll add that she did
+this without much help from me - in a typical partners dynamic, I was resistent
+to seeing more doctors after having had so little success in the past.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m grateful she did, though. Becuase the doctor I saw, Yuri Agrawal, finally
+diagnosed the issue and solved it during the office visit with the Epley
+maneuver.&lt;&#x2F;p&gt;
+&lt;p&gt;I noticed the impact when I left the office and got into my car. I was between
+episodes at the time - I thought that I felt mostly fine, not dizzy. In truth, I
+had adapted to much of the vertigo. And after the treatment, all of the residual
+symptoms that I had gotten used to disappeared. I felt like I could perfectly
+focus on distant points. I could move my head around quickly and easily focus on
+several objects a second (during a dizziness episode, I couldn&#x27;t drive; between
+episodes, I drove rigidly, giving myself lots of extra time before making turns,
+since it took longer for me to look around at all the surroundings). The general
+sense of &quot;displacement&quot; was gone. It had been 5 months since I started feeling
+bad, and now, I felt like I had super-powers. There was a lot of happy giggling
+on my solo drive home from Hopkins Medical.&lt;&#x2F;p&gt;
+&lt;p&gt;Thank you, Dr. Agrawal!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;disclaimer&quot;&gt;Disclaimer&lt;&#x2F;h2&gt;
+&lt;p&gt;This blog post may sound like medical advice. I really want to emphasize - I&#x27;m not
+a doctor. I have no idea how common BPPV is compared to other causes of vertigo,
+so I have no idea how likely the Epley maneuver is to work for you if you&#x27;re
+having vertigo. Talk to a doctor.&lt;&#x2F;p&gt;
+&lt;p&gt;During my visit with Dr. Agrawal, which had the fast pacing of a doctor who
+leads a dual life as head of a research lab, she explained some of the inner ear
+biology that kicked off my exploration, and recommended I look up Richard
+Rabbitt, who has done really interesting physical simulation&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#rabbitt&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; of the Epley
+maneuver.&lt;&#x2F;p&gt;
+&lt;p&gt;There are a lot of inaccuracies in my simulation. To get a much better (though
+not interactive) view of how and why the Epley Maneuver works. You can also meet
+Dr. John Epley himself!&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#epley_youtube&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I wanted to share my story, and to try out some ideas that had gotten into my
+head (the vertigo simulator and the interactive Epley model above), in the
+context of this unpleasant episode in my life.&lt;&#x2F;p&gt;
+&lt;p&gt;One takeaway - there can be light at the end of the tunnel, and sometimes
+although a partner&#x27;s involvement in your medical choices can feel a little
+overbearing, they may often be right. As I tearfully told her after my
+treatment, since I&#x27;m naturally reluctant to see doctors, if she hadn&#x27;t been so
+persistent then I might have gone the rest of my life with on-and-off BPPV.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;one-year-later&quot;&gt;One Year Later&lt;&#x2F;h2&gt;
+&lt;p&gt;Since I wrote this posts, a year passed. I&#x27;m sad to say that the Epley
+maneuver wasn&#x27;t the end of my Vertigo story. I had 3 more bouts of Vertigo,
+spaced about two months apart, and leasting for 1 or 2 weeks. Strangely,
+each episode was followed by strong hearing loss in my left ear. Further
+trips to Hopkins Otolaryngology lead to no clear diagnosis. My symptoms
+resemble either Menier&#x27;s Disease, BPPV, or vestibular migraine at different
+times.&lt;&#x2F;p&gt;
+&lt;p&gt;To try to get a diagnosis, I&#x27;ve been tracking my food, stress and sleep.
+It seems like sleep deprivation, alcohol or alcohol consumption may be a
+triggers. I would like to narrow it down, but I recently started a new job
+and I&#x27;m reluctant to do the right experiments to bring on vertigo episodes
+that interfere with my work and my ability to drive my family around.&lt;&#x2F;p&gt;
+&lt;p&gt;On the bright side, now that I&#x27;m avoiding all the possible triggers that I&#x27;m
+aware of, it&#x27;s been 6 months since I&#x27;ve had an episode.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;&#x2F;h2&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;xpl2016&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;26936982&quot;&gt;Sodium channel diversity in the vestibular ganglion: NaV1.5,
+NaV1.8, and tetrodotoxin-sensitive
+currents&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;xpl2016b&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;?term=liu+holt+utricle&quot;&gt;Functional development of mechanosensitive hair cells in stem
+cell-derived organoids parallels native vestibular hair
+cells&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;rabbitt&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;Wave mechanics of the vestibular semicircular
+canals&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;epley_youtube&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;4&lt;&#x2F;sup&gt;
+&lt;p&gt;An educational VHS video destribing BPPV and the Epley Maneuver.
+John Epley gives part of the introduction. &lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</description>
+      </item>
+      <item>
+          <title>Typechecking code in a Hakyll blog</title>
+          <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/typechecking-posts/</link>
+          <guid>https://blog.greghale.io/posts/typechecking-posts/</guid>
+          <description xml:base="https://blog.greghale.io/posts/typechecking-posts/">&lt;h1 id=&quot;typechecking-code-in-a-hakyll-blog&quot;&gt;Typechecking code in a Hakyll blog&lt;&#x2F;h1&gt;
+&lt;p&gt;After years of programming in Haskell, my natural ability to
+scrutinize my code for type errors (and even more mundane things,
+like parse errors and spelling errors) has atrophied. Usually
+my friends &lt;code&gt;ghc&lt;&#x2F;code&gt; and &lt;code&gt;ghcid&lt;&#x2F;code&gt; take care of this for me so I can
+think about other things.&lt;&#x2F;p&gt;
+&lt;p&gt;Recovering this workflow when writing &lt;em&gt;blog posts&lt;&#x2F;em&gt; took a little
+time.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;literate-haskell&quot;&gt;Literate Haskell&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Hakyll&lt;&#x2F;code&gt; handles Literate Haskell files already - you don&#x27;t have
+to do any work. Just create a file in &lt;code&gt;posts&#x2F;&lt;&#x2F;code&gt; with the &lt;code&gt;.lhs&lt;&#x2F;code&gt;
+file extension.&lt;&#x2F;p&gt;
+&lt;p&gt;The format is described well in the
+&lt;a href=&quot;https:&#x2F;&#x2F;wiki.haskell.org&#x2F;Literate_programming&quot;&gt;Haskell Wiki&lt;&#x2F;a&gt;.
+The only features I&#x27;ve used so far are&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;code-blocks&quot;&gt;Code blocks&lt;&#x2F;h3&gt;
+&lt;p&gt;Most of my code blocks are long, so I prefer the latex-like
+command over bird-tracks&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;span&gt;example = do
+&lt;&#x2F;span&gt;&lt;span&gt;  x &amp;lt;- getTheX
+&lt;&#x2F;span&gt;&lt;span&gt;  useX x
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;hidden-imports&quot;&gt;Hidden imports&lt;&#x2F;h3&gt;
+&lt;p&gt;Of course we need to import some modules if &lt;code&gt;ghc&lt;&#x2F;code&gt; is to
+typecheck our &lt;code&gt;.lhs&lt;&#x2F;code&gt; file. Since the imports are often not
+important to the explanation in the blog, I hide them.&lt;&#x2F;p&gt;
+&lt;p&gt;Imaginary functions that I will later use in the blog post
+but which aren&#x27;t important to the topic at hand can be defined
+here, too.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\long&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\def&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;#1{}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;span&gt;{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
+&lt;&#x2F;span&gt;&lt;span&gt;import qualified Servant.Server as Servant
+&lt;&#x2F;span&gt;&lt;span&gt;import Servant.API ((:&amp;lt;|&amp;gt;), (:&amp;gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;import qualified Database.PostgreSQL.Simple as PG
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;processInputs :: Inputs -&amp;gt; IO Outputs
+&lt;&#x2F;span&gt;&lt;span&gt;processInputs = undefined
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;nix-shell&quot;&gt;nix-shell&lt;&#x2F;h2&gt;
+&lt;p&gt;A separate &lt;code&gt;nix-shell&lt;&#x2F;code&gt; is available for every post, in &lt;code&gt;shells.nix&lt;&#x2F;code&gt;.
+At the top of this file is a record that maps post names to the names
+of &lt;code&gt;Haskell&lt;&#x2F;code&gt; packages that I need to have in scope. There&#x27;s only one
+entry at the time of writing, because I only have one Literate Haskell
+blog post:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nix&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-nix &quot;&gt;&lt;code class=&quot;language-nix&quot; data-lang=&quot;nix&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;shellPkgs &lt;&#x2F;span&gt;&lt;span&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;    { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;config-phases &lt;&#x2F;span&gt;&lt;span&gt;= [&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;generic-lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;postgresql-simple&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;katip&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;]; };
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Later in the file, these lists are turned into derivations, so that I
+can say&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nix-shell&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;shells.nix&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; config-phases \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --run &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ghcid --command &amp;quot;ghci posts&#x2F;2019-10-17-config-phase.lhs&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and now &lt;code&gt;ghcid&lt;&#x2F;code&gt; is recompiling my post and showing me the type errors
+every time the post is saved.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Organizing configs by usage phase</title>
+          <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/config-phase/</link>
+          <guid>https://blog.greghale.io/posts/config-phase/</guid>
+          <description xml:base="https://blog.greghale.io/posts/config-phase/">&lt;h1 id=&quot;organizing-configs-by-usage-phase&quot;&gt;Organizing configs by usage phase&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;configuration-sprawl&quot;&gt;Configuration sprawl&lt;&#x2F;h2&gt;
+&lt;p&gt;Have you found your configuration handling begins to sprawl as you add more
+configuration to your program? This example makes two database connections
+and allows the hostname and logging level to be configured. Imagine how
+&lt;code&gt;main&lt;&#x2F;code&gt; might grow over time as different people follow the patterns they
+find here while adding more parameters.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
+&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
+&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
+&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; ScopedTypeVariables, DefaultSignatures #-}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;Data.Text                         (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Text&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;GHC.Generics                      (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;Control.Lens
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Data.Text                         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;Text
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Katip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Database.PostgreSQL.Simple        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;PG
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Data.Generics.Product.Constraints &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;GenericLens
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1
+&lt;&#x2F;span&gt;&lt;span&gt;  { hostname   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text
+&lt;&#x2F;span&gt;&lt;span&gt;  , userDBUser :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , userDBPass :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , userDBDB   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , userDBPort :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Integer
+&lt;&#x2F;span&gt;&lt;span&gt;  , userDBHost :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , logLevel :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBUser :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBHost :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBPort :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Integer
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBDB   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBPass :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;deriving&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: IO &lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;main = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1&lt;&#x2F;span&gt;&lt;span&gt;{..} &amp;lt;- loadConfig &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;local.yaml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  print &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Connecting to User Database&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  userDB &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
+&lt;&#x2F;span&gt;&lt;span&gt;      { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectUser     = userDBUser
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectHost     = userDBHost
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPort     = fromIntegral userDBPort
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPassword = userDBPass
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectDatabase = userDBDB
+&lt;&#x2F;span&gt;&lt;span&gt;      }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- ... a block of initialization code
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- ... maybe written by other team members
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;--
+&lt;&#x2F;span&gt;&lt;span&gt;  analysisDB &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
+&lt;&#x2F;span&gt;&lt;span&gt;      { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectUser     = analysisDBUser
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectHost     = analysisDBHost
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPort     = fromIntegral analysisDBPort
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPassword = analysisDBPass
+&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectDatabase = analysisDBDB
+&lt;&#x2F;span&gt;&lt;span&gt;      }  
+&lt;&#x2F;span&gt;&lt;span&gt;  runBusinessLogic analysisDB userDB logLevel (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text&lt;&#x2F;span&gt;&lt;span&gt;.unpack hostname)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic
+&lt;&#x2F;span&gt;&lt;span&gt;  :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
+&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
+&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
+&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
+&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;IO ()
+&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic userDB analysisDB logLevel myHostname = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;  undefined
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;What problems will we run into as we try to scale this program up?&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Flat format&lt;&#x2F;strong&gt; Without organization, it&#x27;s easy for config files
+and their parsers to become confusing&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Unchecked Redundancy&lt;&#x2F;strong&gt; The fields of &lt;code&gt;ConfigExample1&lt;&#x2F;code&gt; correspond to
+the arguments of &lt;code&gt;runBusinessLogic&lt;&#x2F;code&gt;, but the correspondence is
+loose (we have a collection of &lt;code&gt;Text&lt;&#x2F;code&gt; and &lt;code&gt;Int&lt;&#x2F;code&gt; fields in the config
+but a &lt;code&gt;PG.Connection&lt;&#x2F;code&gt; in the arguments.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Ad-hoc resource acquisition&lt;&#x2F;strong&gt; The code used for reading config fields
+and creating resources from them can get messy quickly&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;organizing-configuration&quot;&gt;Organizing configuration&lt;&#x2F;h2&gt;
+&lt;p&gt;We can address these problems and add a lot of structure to our
+configuration. Let&#x27;s start by drawing a connection between
+the configuration phase, and the running phase. We&#x27;ll start by
+using a single configuration type that abstracts over the &lt;em&gt;phase&lt;&#x2F;em&gt;
+at which it is used:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; (p :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase&lt;&#x2F;span&gt;&lt;span&gt;) = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Config
+&lt;&#x2F;span&gt;&lt;span&gt;  { userDB     :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
+&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDB :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
+&lt;&#x2F;span&gt;&lt;span&gt;  , hostname   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text
+&lt;&#x2F;span&gt;&lt;span&gt;  , logLevel   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;deriving&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Config    &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Resources &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Some of our configuration fields are regular Haskell datatypes, like
+&lt;code&gt;Text&lt;&#x2F;code&gt; and &lt;code&gt;Katip.Severity&lt;&#x2F;code&gt;. These values are specified and used in
+the same way. But the &lt;code&gt;userDB&lt;&#x2F;code&gt; and &lt;code&gt;analysisDB&lt;&#x2F;code&gt; fields are defined
+in terms of &lt;code&gt;Phase&lt;&#x2F;code&gt; and &lt;code&gt;AtPhase&lt;&#x2F;code&gt;, which we are about to define.&lt;&#x2F;p&gt;
+&lt;p&gt;Accepting some complexity here allows us to share a single type definition
+for specifying two things (a) the configuration &lt;em&gt;data&lt;&#x2F;em&gt; and (b) the
+configuration &lt;em&gt;result&lt;&#x2F;em&gt;, in one go.&lt;&#x2F;p&gt;
+&lt;p&gt;Our &lt;code&gt;main&lt;&#x2F;code&gt; function will look more like this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span&gt;main&amp;#39; = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;cfg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Config&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;loadConfig&lt;&#x2F;span&gt;&lt;span&gt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;local&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;res &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Resources&lt;&#x2F;span&gt;&lt;span&gt; &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildConfig cfg
+&lt;&#x2F;span&gt;&lt;span&gt;  runBusinessLogic&amp;#39; res
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;runBusinessLogic&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Resources -&amp;gt; IO &lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic&amp;#39; = undefined
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Whether the added complexity is worth it depends on a few things.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Configuration complexity&lt;&#x2F;strong&gt; If your configuration is simple,
+then you don&#x27;t benefit from deduplicating the configuration
+and runtime types&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Complexity budget&lt;&#x2F;strong&gt; We&#x27;ll be adding a typeclass and
+a type family. If there are other aspects of your codebase
+that use your complexity budget, or if the budget is low
+for other reasons, then it&#x27;s best to treat this technique
+as a fun curiosity. Use your budget on something with a
+higher power-to-weight ratio, like &lt;a href=&quot;https:&#x2F;&#x2F;dhall-lang.org&quot;&gt;dhall&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Let&#x27;s build the required machinery.&lt;&#x2F;p&gt;
+&lt;p&gt;First, we use &lt;code&gt;DataKinds&lt;&#x2F;code&gt; to
+define a new kind &lt;code&gt;Phase&lt;&#x2F;code&gt;
+inhabited by two types &lt;code&gt;&#x27;ConfigTime&lt;&#x2F;code&gt; and &lt;code&gt;&#x27;RunTime&lt;&#x2F;code&gt;
+to specialize our application&#x27;s configuration for one phase or the other.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase
+&lt;&#x2F;span&gt;&lt;span&gt;  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime
+&lt;&#x2F;span&gt;&lt;span&gt;  | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Next, a type family will let us associate a configuration type
+to a runtime type for some particular resource.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;HasPhases &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; (p :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase&lt;&#x2F;span&gt;&lt;span&gt;) t
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance HasPhases PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Connection where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime    PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Another typeclass allows the construction of a resource
+from its configuration data. The two type parameters correspond
+to the configtime and runtime types.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ToRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cty rty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;toRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; IO &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rty
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- | Catch-all instance for regular (not phase-specific) types
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance ToRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ty ty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
+&lt;&#x2F;span&gt;&lt;span&gt;  toRuntime = return
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance ToRuntime PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ConnectInfo PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Connection where
+&lt;&#x2F;span&gt;&lt;span&gt;  toRuntime = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;There is a catch-all instance for cases when the configtime
+type is the same as the runtime type. When we eventually
+process our configuration record, the catch-all instance will
+apply to any field with a regular type, like our
+&lt;code&gt;hostname&lt;&#x2F;code&gt; field. (It would also match any
+&lt;code&gt;AtPhase&lt;&#x2F;code&gt; fields where configtime type is equal
+to the runtime type.. but if we ever use &lt;code&gt;AtPhase&lt;&#x2F;code&gt;,
+we would do that &lt;em&gt;in order to&lt;&#x2F;em&gt; let the types differ
+across phases, so we won&#x27;t encounter this case. Sorry for
+the aside, I hope it makes sense)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;generic-lens&quot;&gt;generic-lens&lt;&#x2F;h2&gt;
+&lt;p&gt;In order to have our &lt;code&gt;buildConfig&lt;&#x2F;code&gt; function, we
+will use some fabulous magic from
+&lt;a href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens&quot;&gt;generic-lens&lt;&#x2F;a&gt;.
+Specifically, &lt;a href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens-1.2.0.1&#x2F;docs&#x2F;Data-Generics-Product-Constraints.html#v:constraints&quot;&gt;&lt;code&gt;constraints&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;
+allows us to traverse a record, applying an effectful function
+at every field with a type satisfying some particular constraint.&lt;&#x2F;p&gt;
+&lt;p&gt;We choose that constraint to be our &lt;code&gt;ToRuntime&lt;&#x2F;code&gt; class.&lt;&#x2F;p&gt;
+&lt;p&gt;Now we can write &lt;code&gt;buildConfig&lt;&#x2F;code&gt; without repeating any
+details about the internals of our configuration record.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;buildConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: ConfigF ConfigTime -&amp;gt; IO&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ConfigF RunTime&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;buildConfig = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;GenericLens&lt;&#x2F;span&gt;&lt;span&gt;.constraints @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ToRuntime&lt;&#x2F;span&gt;&lt;span&gt; toRuntime
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;summing-up&quot;&gt;Summing up&lt;&#x2F;h2&gt;
+&lt;p&gt;Summing up, we have removed a few types of duplication and
+informality from the process of building runtime resources
+from configuration data.&lt;&#x2F;p&gt;
+&lt;p&gt;We parameterized a single configuration record by the
+phase, either configuration time or runtime.&lt;&#x2F;p&gt;
+&lt;p&gt;And we concentrated the work of instantiating a runtime
+resource record from the configuration record into a very generic
+function.&lt;&#x2F;p&gt;
+&lt;p&gt;Was it worth it? In effect, we sacrificed &lt;code&gt;Haskell98&lt;&#x2F;code&gt;&#x27;s
+simplicity at the altar of the DRY (Don&#x27;t Repeat Yourself)
+principle. Repetition is legitimately dangerous, especially
+in a codebase with multiple authors, written in a language
+where type safety encourages us to skimp on testing. The
+competing interests here (redundancy vs. complexity) depend
+on just how much redundancy you are cleaning up.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to Sarah Brofeldt (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;srhb&quot;&gt;@srhb&lt;&#x2F;a&gt;),
+who fleshed out the idea with me and did much of the implementation.
+Simple as it may look, we had to explore quite a few paths before
+we found this solution.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks also to K.A. Buhr for his very helpful
+&lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;51388962&#x2F;how-to-derive-generic-traversals-that-involve-a-type-family&#x2F;51409436#51409436&quot;&gt;answer&lt;&#x2F;a&gt; on StackOverflow.
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rossabaker&quot;&gt;Ross Baker&lt;&#x2F;a&gt;
+read a draft of this post and gave great suggestions
+for improvement - Thanks!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;related-work&quot;&gt;Related work&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;uploads&#x2F;prod&#x2F;2016&#x2F;11&#x2F;trees-that-grow.pdf&quot;&gt;Trees that Grow&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;reasonablypolymorphic.com&#x2F;blog&#x2F;higher-kinded-data&#x2F;&quot;&gt;Higher-Kinded Data&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>
