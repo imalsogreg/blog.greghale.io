@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greg Hale&#x27;s Blog - AI</title>
+      <link>https://blog.greghale.io</link>
+      <description>Personal blog of Greg Hale</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.greghale.io/tags/ai/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 10 Oct 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>jj loves vibe coding</title>
+          <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/posts/jj-for-vibe-coding/</link>
+          <guid>https://blog.greghale.io/posts/jj-for-vibe-coding/</guid>
+          <description xml:base="https://blog.greghale.io/posts/jj-for-vibe-coding/">&lt;p&gt;AI coding assistants have sped up our coding. Parallel agents
+are dividing the development times down further. Version control
+is becoming more of a bottleneck. By &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Amdahl%27s_law&quot;&gt;Amdahl&#x27;s Law&lt;&#x2F;a&gt; VCS is putting a new
+fundamental limit on how fast software development can go. This isn&#x27;t
+just an intuitive claim, it&#x27;s something that actively bugged me
+at work and reminded me of an odd tool we used for &lt;em&gt;human&lt;&#x2F;em&gt; based
+VCS at Kadena: &lt;code&gt;jj&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;So, while implementing a meaty feature for the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boundaryml&#x2F;baml&quot;&gt;BAML&lt;&#x2F;a&gt; language with Claude Code, and
+feeling the tedium of managing &lt;code&gt;git&lt;&#x2F;code&gt;&#x27;s staging area and branches,
+I decided to dust off &lt;code&gt;jj&lt;&#x2F;code&gt; and try in this new AI coding context.
+The results have been great. Here&#x27;s why:&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-automatic-change-tracking&quot;&gt;1. Automatic change tracking&lt;&#x2F;h2&gt;
+&lt;p&gt;Long ago, you accepted the fact that you just have to run &lt;code&gt;git add&lt;&#x2F;code&gt;
+for every changed file. Not with &lt;code&gt;jj&lt;&#x2F;code&gt;!
+&lt;code&gt;jj&lt;&#x2F;code&gt; tracks all changes for you, a massive time saver when most of
+your keystrokes are prompting the AI, rather than directly writing
+source code.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-low-friction-commits&quot;&gt;2. Low-friction commits&lt;&#x2F;h2&gt;
+&lt;p&gt;With &lt;code&gt;jj&lt;&#x2F;code&gt; you can create commits before the work, and changes get
+written into that commit. It feels a bit like creating a directory,
+then &lt;code&gt;cd&lt;&#x2F;code&gt;ing into that directory to create files there.&lt;&#x2F;p&gt;
+&lt;p&gt;When you go back to &lt;code&gt;git&lt;&#x2F;code&gt; after this mindest change, you have the
+opposite feeling: working with &lt;code&gt;git&lt;&#x2F;code&gt; feels creating a bunch of files,
+then creating a folder, and moving files into the folder after the fact.&lt;&#x2F;p&gt;
+&lt;p&gt;To highlight this difference in mindset: it&#x27;s extremely common for me to
+write a prompt asking for a new work
+item, realize this work should be in its own commit, and quickly run
+&lt;code&gt;jj new&lt;&#x2F;code&gt; to open a new commit before Claude Code has finished
+its reasoning and begun to write code. Having a zero-friction way to
+chunk up work is pure joy.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-easy-commit-shuffling-rebasing&quot;&gt;3. Easy commit shuffling (rebasing)&lt;&#x2F;h2&gt;
+&lt;p&gt;Rebasing is scary in &lt;code&gt;git&lt;&#x2F;code&gt; because it&#x27;s easy to rewrite history and
+damage the repository. Rebases in &lt;code&gt;jj&lt;&#x2F;code&gt; are safe and common.&lt;&#x2F;p&gt;
+&lt;p&gt;This is how you move a single commit to some other place in the history:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj rebase -r SOME_COMMIT --destination SOME_COMMIT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or move a whole series of commits to some other place in the
+history:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;With parallel agents, rebasing is very common, and the improved
+user experience in &lt;code&gt;jj&lt;&#x2F;code&gt; reduces rebase toil.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-easy-undo&quot;&gt;4. Easy Undo&lt;&#x2F;h2&gt;
+&lt;p&gt;Whatever you just did in &lt;code&gt;jj&lt;&#x2F;code&gt;, if you realize it didn&#x27;t go the way
+you expected, &lt;code&gt;undo&lt;&#x2F;code&gt; has you covered:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj undo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Especially helpful while you&#x27;re still learning the ropes. A lot of noise
+is made about ChatGPT stealing traffic from StackOverflow. &lt;code&gt;jj&lt;&#x2F;code&gt;
+will cut into this market share further by removing the need to search
+for how to undo all the different &lt;code&gt;git&lt;&#x2F;code&gt; accidents that happen in
+work projects.&lt;&#x2F;p&gt;
+&lt;p&gt;If the AI goes down a bad path and writes a bunch of code you dislike,
+&lt;code&gt;abandon&lt;&#x2F;code&gt; abandons the work item.&lt;&#x2F;p&gt;
+&lt;p&gt;Abandon the current commit:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj abandon
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Abandon some other commit in the history:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj abandon -r SOME_COMMIT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And if you forgot to introduce a new commit before starting the agent
+on a coding task unrelated to one you had in-progress, it&#x27;s easy
+to split the work into two separate commits:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;jj-loves-vibe-coding&quot;&gt;jj loves vibe coding&lt;&#x2F;h1&gt;
+&lt;p&gt;Running &lt;code&gt;jj&lt;&#x2F;code&gt; feels like &quot;managing&quot; something:
+high level, details-managed-for-you, simple. Running &lt;code&gt;git&lt;&#x2F;code&gt;
+feels like &quot;implementing&quot; something. Low level, down in the
+weeds, wrestling with the tools.&lt;&#x2F;p&gt;
+&lt;p&gt;Vibe coding is managing a coding assistant, so &lt;code&gt;jj&lt;&#x2F;code&gt; is a great fit.&lt;&#x2F;p&gt;
+&lt;p&gt;The purpose of this blog post is to summarize why I like
+&lt;code&gt;jj&lt;&#x2F;code&gt; for vibe coding, not to provide a balanced comparison
+between &lt;code&gt;jj&lt;&#x2F;code&gt; and &lt;code&gt;git&lt;&#x2F;code&gt;. That&#x27;s why I&#x27;ve said nothing good about &lt;code&gt;git&lt;&#x2F;code&gt;
+here and nothing bad about &lt;code&gt;jj&lt;&#x2F;code&gt;. When considering whether to adopt &lt;code&gt;jj&lt;&#x2F;code&gt;
+at work or for your personal projects, of course you&#x27;ll need
+to try it yourself and read some tutorials.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are a few things to know if you&#x27;re hearing about &lt;code&gt;jj&lt;&#x2F;code&gt; for the
+first time and considering a switch:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;jj&lt;&#x2F;code&gt; is compatible with &lt;code&gt;git&lt;&#x2F;code&gt; and uses the &lt;code&gt;.git&lt;&#x2F;code&gt; directory for
+tracking repository state. So you can freely use &lt;code&gt;jj&lt;&#x2F;code&gt; even if
+the rest of the team uses &lt;code&gt;git&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;jj&lt;&#x2F;code&gt; has a learning curve! It&#x27;s easier to learn than &lt;code&gt;git&lt;&#x2F;code&gt;, but
+not trivial. It took me a few weeks to reach the same
+level of productivity that I built up over many years using
+&lt;code&gt;git&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;There is an excellent &lt;a href=&quot;https:&#x2F;&#x2F;steveklabnik.github.io&#x2F;jujutsu-tutorial&#x2F;&quot;&gt;tutorial from Steve Klabnik&lt;&#x2F;a&gt; and an excellent
+&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2otjrTzRfVk&amp;amp;t=327s&quot;&gt;video from Chris Krycho&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Get started at the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jj-vcs&#x2F;jj&quot;&gt;jj GitHub repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;we-have-coding-assistants-so-why-learn-a-new-tool&quot;&gt;We have coding assistants - so why learn a new tool?&lt;&#x2F;h2&gt;
+&lt;p&gt;As someone who works on &lt;a href=&quot;https:&#x2F;&#x2F;boundaryml.com&quot;&gt;developer tools&lt;&#x2F;a&gt; at
+the twilight of humanity&#x27;s involvement in the software development
+process, I&#x27;ve worried about the utility of learning new tools,
+writing new languages, or making any bets on human productivity.
+Isn&#x27;t it better to move back to languages and
+tools with billions of tokens on the internet for training LLMs, if
+LLMs will be writing all the code?&lt;&#x2F;p&gt;
+&lt;p&gt;Well, new languages and tools &lt;em&gt;are&lt;&#x2F;em&gt; coming out. And the complete AI
+takeover of software engineering is happening over several years,
+not several months. So I do still have to write code and collaborate
+with people.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, writing code with the help of AI agents has shone light on
+some of the aspects of &lt;code&gt;git&lt;&#x2F;code&gt; that have always felt a bit awkward,
+and made me think about the &lt;code&gt;jj&lt;&#x2F;code&gt;, a &lt;code&gt;git&lt;&#x2F;code&gt; replacement that I briefly
+used at Kadena.&lt;&#x2F;p&gt;
+&lt;p&gt;There is a trend among my programmer friends: the ones who are
+the best at &lt;code&gt;git&lt;&#x2F;code&gt; tend to be the most excited about &lt;code&gt;jj&lt;&#x2F;code&gt;. &lt;strong&gt;Interesting&lt;&#x2F;strong&gt;.
+&lt;code&gt;git&lt;&#x2F;code&gt; power users had conquered all &lt;code&gt;git&lt;&#x2F;code&gt;&#x27;s complexities.
+They understood the underlying model, were unbothered the differences
+between the commands for creating and deleting branches, knew all the
+different and unrelated jobs done by &lt;code&gt;git checkout&lt;&#x2F;code&gt;, and had bookmarked
+the StackOverflow pages for removing a change from the staging area.&lt;&#x2F;p&gt;
+&lt;p&gt;You might think a &lt;code&gt;git&lt;&#x2F;code&gt; guru would be the last person who wants to
+relinquish all that muscle memory and switch to a new tool and an
+new set of commands to memorize for version control. &lt;strong&gt;Nope&lt;&#x2F;strong&gt;. Those
+colleagues have had their tastes and sensibilities forged in the crucible
+of &lt;code&gt;git&lt;&#x2F;code&gt;, and when &lt;code&gt;jj&lt;&#x2F;code&gt; arrived, they immediately saw the value and
+accepted the switch cost. They fell in love and started making
+slide decks and blog posts to try to convince their friends to use
+it too.&lt;&#x2F;p&gt;
+&lt;p&gt;Some developers (even some great developers!) who don&#x27;t self-identify
+as &lt;code&gt;git&lt;&#x2F;code&gt; gurus are likely to ask Claude Code to turn a vibe-coded
+work item into a &lt;code&gt;git&lt;&#x2F;code&gt; commit. It&#x27;s a wonderful finding that
+Claude is trustworthy enough to drive &lt;code&gt;git&lt;&#x2F;code&gt; for us, but it&#x27;s also
+an indigtment of the &lt;code&gt;git&lt;&#x2F;code&gt; user interface.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

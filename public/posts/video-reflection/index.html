@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Frosted Vertical Reflections in ffmpeg</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="How I create a frosted reflection effect for videos.">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">Frosted Vertical Reflections in ffmpeg</a>
+        </div>
+        <h1 class="post-title">Frosted Vertical Reflections in ffmpeg</h1>
+        
+        <div class="post-description">How I create a frosted reflection effect for videos.</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2024-01-20 00:00:00 +0000">January 20, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><h1 id="creating-the-frosted-reflection-effect-for-videos">Creating the "frosted reflection" effect for videos</h1>
+<p>I recently wanted to include a screenshot of NeuronBench into the landing page,
+with the classic "frosted reflection" effect, where a hint of the image is
+reflected just below the image. I normally do this is Gimp, but my NeuronBench
+screenshot was actually a screen recording (video), and I wasn't about to repeat
+this tedious process frame-by-frame.</p>
+<p>The final result is here:</p>
+<video width="420"
+       autoplay
+       loop
+       muted>
+    <source src="&#x2F;images&#x2F;frosted.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<p>This blog post records the process, mostly as a record for me in case
+I need to do it again in the future, or in case someone else finds the
+style interesting and wants to replicate it.</p>
+<h1 id="dependencies">Dependencies</h1>
+<ul>
+<li>MacOS</li>
+<li>QuickTime</li>
+<li>ffmpeg</li>
+<li>gimp</li>
+</ul>
+<h1 id="process">Process</h1>
+<ol>
+<li>Clean background: In the system settings, set the Wallpaper to solid white,
+matching the background color of the webpage where I'll embed this video.
+Then clear most of the desktop icons off of the desktop.</li>
+<li>Run the app: In my case: <code>cargo run --bin bevy --release</code>.</li>
+<li>Take the screen capture: In QuickTime, close the default file-chooser modal
+and select <code>File &gt; New Screen Recording</code>. Frame the application window with
+generous space (avoid clipping the shadow dropped by the window). Click the
+"Stop" icon in the menu bar when done.</li>
+<li>Trim the time: <code>Edit &gt; Trim</code> in QuickTime. Save.</li>
+<li>Crop the video:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_trimmed.mov  -filter:v &quot;crop=1332:1200:0:0&quot; -c:a copy screengrab_cropped.mov
+</span></code></pre>
+</li>
+<li>Apply the gaussian blur, flip and composite:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_cropped.mov -filter_complex &quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&quot; output.mov
+</span></code></pre>
+At this point, we have a stack of the original screen grab, with its mirror image blurred beneath.
+Next we need that blurred mirror image to fade to white.</li>
+<li>Determine the image dimensions:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
+</span></code></pre>
+We will use this to create our gratient as a .png file with matching size in Gimp.</li>
+<li>Create a gradient that goes from transparent to solid white, starting at the top
+of the mirrored image and ending 20-40 pixels lower.</li>
+<li>Overlay the gradient onto the movie.<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i output.mov -i gradient.png -filter_complex &quot;overlay=0:main_h-overlay_h&quot; output2.mov
+</span></code></pre>
+</li>
+<li>Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.</li>
+</ol>
+<h1 id="improvements">Improvements</h1>
+<p>The space between the original window and its refelction looks muddy. This is because the original screen
+grab included the dropped shadow from MacOS, which gets copied and flipped in the above process. The final
+result would be much cleaner if the space between were clear of shadows. And it would be more semantically
+consistent without the shadow, because the "floor" in our effect is below the screenshot (where our
+reflection lands), not behind the screenshot (where the shadow is).</p>
+<p>In the two versions of MacOS I'm running (Ventura and Sonoma), there is no configuration option to turn off
+this shadow. And I can't simply use cropping at the first preprocessing step to crop out the shadow, because
+the window is a rounded rectangle - some awkward shadow would remain in the corners.</p>
+<p>So I could either (a) create a masking image in gimp - a rounded-rectangle frame - matching the size of
+the screengrab window, and apply this during prepressing, or (b) perform my screen recording on a
+linux machine.</p>
+</div>
+    <footer class="post-footer">
+        
+        <ul class="post-tags">
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/videoprocessing/"
+                    >VideoProcessing</a
+                >
+            </li>
+            
+        </ul>
+          
+
+
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;claude-winner-takes-all&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Claude 2.1 correctly interprets a neural network</span>
+    </a>
+    
+    
+    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">
+        <span class="title">Next »</span>
+        <br>
+        <span>jj loves vibe coding</span>
+    </a>
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>
