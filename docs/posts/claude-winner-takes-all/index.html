@@ -244,7 +244,7 @@ I'm not. :)</p>
 </span><span>
 </span><span>let cluster_excitatory_synapses = \cluster -&gt;
 </span><span>  prelude.list.generate params.n_excitatory_per_cluster
-</span><span>  (\local_id -&gt; 
+</span><span>  (\local_id -&gt;
 </span><span>   let global_offset = cluster * n_neurons_per_cluster
 </span><span>   let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
 </span><span>   in
@@ -254,7 +254,7 @@ I'm not. :)</p>
 </span><span>    post_neuron: global_offset + local_next,
 </span><span>    post_segment: 10,
 </span><span>    synapse_membranes: excitatory_synapse
-</span><span>  }] + 
+</span><span>  }] +
 </span><span>  prelude.list.concat
 </span><span>    (prelude.list.generate params.n_excitatory_per_cluster
 </span><span>      (\e -&gt; prelude.list.generate n_inhibitory_per_cluster
@@ -264,7 +264,7 @@ I'm not. :)</p>
 </span><span>         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
 </span><span>         post_segment: 10,
 </span><span>         synapse_membranes: excitatory_synapse
-</span><span>       } 
+</span><span>       }
 </span><span>      ))
 </span><span>    )
 </span><span>  )
@@ -450,6 +450,11 @@ post-facto without code comments.</p>
 to make my biologically realistic neurons (the actual ones in my own head, I
 mean) start to feel like they're not necessarily the smartest things around
 anymore.</p>
+<h1 id="update-2025-11-12">Update (2025-11-12)</h1>
+<p>It's been an eternity in LLM-years, and I decided to run my original
+prompt past Claude 4.5. It thought for 15 seconds, and solved the
+problem precisely with way less interaction from me:</p>
+<p><img src="/images/attractor-revisited.png" alt="Chat session with Claude 4.5 about my covert attractor network" /></p>
 </div>
     <footer class="post-footer">
         

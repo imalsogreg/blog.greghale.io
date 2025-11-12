@@ -7,6 +7,7 @@ let
 in
 pkgs.mkShell {
   buildInputs = [
+    pkgs.git
     pkgs.zola
   ];
 }

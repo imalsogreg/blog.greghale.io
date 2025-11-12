@@ -62,7 +62,7 @@ I&#x27;m not. :)&lt;&#x2F;p&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;let cluster_excitatory_synapses = \cluster -&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;  prelude.list.generate params.n_excitatory_per_cluster
-&lt;&#x2F;span&gt;&lt;span&gt;  (\local_id -&amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;  (\local_id -&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;   let global_offset = cluster * n_neurons_per_cluster
 &lt;&#x2F;span&gt;&lt;span&gt;   let local_next = Natural&#x2F;mod (local_id + 1) params.n_excitatory_per_cluster
 &lt;&#x2F;span&gt;&lt;span&gt;   in
@@ -72,7 +72,7 @@ I&#x27;m not. :)&lt;&#x2F;p&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;    post_neuron: global_offset + local_next,
 &lt;&#x2F;span&gt;&lt;span&gt;    post_segment: 10,
 &lt;&#x2F;span&gt;&lt;span&gt;    synapse_membranes: excitatory_synapse
-&lt;&#x2F;span&gt;&lt;span&gt;  }] + 
+&lt;&#x2F;span&gt;&lt;span&gt;  }] +
 &lt;&#x2F;span&gt;&lt;span&gt;  prelude.list.concat
 &lt;&#x2F;span&gt;&lt;span&gt;    (prelude.list.generate params.n_excitatory_per_cluster
 &lt;&#x2F;span&gt;&lt;span&gt;      (\e -&amp;gt; prelude.list.generate n_inhibitory_per_cluster
@@ -82,7 +82,7 @@ I&#x27;m not. :)&lt;&#x2F;p&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
 &lt;&#x2F;span&gt;&lt;span&gt;         post_segment: 10,
 &lt;&#x2F;span&gt;&lt;span&gt;         synapse_membranes: excitatory_synapse
-&lt;&#x2F;span&gt;&lt;span&gt;       } 
+&lt;&#x2F;span&gt;&lt;span&gt;       }
 &lt;&#x2F;span&gt;&lt;span&gt;      ))
 &lt;&#x2F;span&gt;&lt;span&gt;    )
 &lt;&#x2F;span&gt;&lt;span&gt;  )
@@ -268,6 +268,11 @@ post-facto without code comments.&lt;&#x2F;p&gt;
 to make my biologically realistic neurons (the actual ones in my own head, I
 mean) start to feel like they&#x27;re not necessarily the smartest things around
 anymore.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;update-2025-11-12&quot;&gt;Update (2025-11-12)&lt;&#x2F;h1&gt;
+&lt;p&gt;It&#x27;s been an eternity in LLM-years, and I decided to run my original
+prompt past Claude 4.5. It thought for 15 seconds, and solved the
+problem precisely with way less interaction from me:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;attractor-revisited.png&quot; alt=&quot;Chat session with Claude 4.5 about my covert attractor network&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 </description>
       </item>
     </channel>

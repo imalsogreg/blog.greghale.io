@@ -64,7 +64,7 @@ let neurons =
 
 let cluster_excitatory_synapses = \cluster ->
   prelude.list.generate params.n_excitatory_per_cluster
-  (\local_id -> 
+  (\local_id ->
    let global_offset = cluster * n_neurons_per_cluster
    let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
    in
@@ -74,7 +74,7 @@ let cluster_excitatory_synapses = \cluster ->
     post_neuron: global_offset + local_next,
     post_segment: 10,
     synapse_membranes: excitatory_synapse
-  }] + 
+  }] +
   prelude.list.concat
     (prelude.list.generate params.n_excitatory_per_cluster
       (\e -> prelude.list.generate n_inhibitory_per_cluster
@@ -84,7 +84,7 @@ let cluster_excitatory_synapses = \cluster ->
          post_neuron: global_offset + params.n_excitatory_per_cluster + i,
          post_segment: 10,
          synapse_membranes: excitatory_synapse
-       } 
+       }
       ))
     )
   )
@@ -134,7 +134,7 @@ in
 
 <hr/>
 
-#### Claude: 
+#### Claude:
 
 Based on the code provided, I can infer the following high-level properties about this neural network:
 
@@ -142,7 +142,7 @@ Based on the code provided, I can infer the following high-level properties abou
 
 2. Each cluster contains excitatory and inhibitory neurons. The number of excitatory neurons per cluster is defined by `n_excitatory_per_cluster`. There is one less inhibitory neuron than the number of clusters.
 
-3. The excitatory neurons within a cluster are connected to each other in a ring topology. 
+3. The excitatory neurons within a cluster are connected to each other in a ring topology.
 
 4. The excitatory neurons in a cluster connect to all the inhibitory neurons in that same cluster.
 
@@ -173,22 +173,22 @@ Cluster Properties:
    - Example shows 4 clusters
 
 - Neurons per cluster:
-   - Excitatory neurons: Configurable via `n_excitatory_per_cluster` 
+   - Excitatory neurons: Configurable via `n_excitatory_per_cluster`
      - Example shows 5 excitatory neurons per cluster
-   - Inhibitory neurons: 
+   - Inhibitory neurons:
      - Number is always 1 less than `n_clusters`
      - This allows inhibitory connections between all clusters
 
 - Connectivity:
    - Excitatory-Excitatory:
-     - Within cluster: Ring topology 
+     - Within cluster: Ring topology
      - Between clusters: No connections
    - Excitatory-Inhibitory:
-     - Within cluster: Fully connected  
+     - Within cluster: Fully connected
      - Between clusters: No connections
    - Inhibitory-Excitatory:
      - Within cluster: No connections
-     - Between clusters: Fully connected  
+     - Between clusters: Fully connected
 
 So in summary, each cluster contains a small, locally recurrent network of excitatory neurons, along with a pool of inhibitory neurons that connect globally between clusters for competition/inhibition. The sizes of clusters and pool of inhibitions can be adjusted.
 
@@ -269,3 +269,11 @@ Oh, and each Claude answer came out in less than three seconds.. It's all enough
 to make my biologically realistic neurons (the actual ones in my own head, I
 mean) start to feel like they're not necessarily the smartest things around
 anymore.
+
+# Update (2025-11-12)
+
+It's been an eternity in LLM-years, and I decided to run my original
+prompt past Claude 4.5. It thought for 15 seconds, and solved the
+problem precisely with way less interaction from me:
+
+![Chat session with Claude 4.5 about my covert attractor network](/images/attractor-revisited.png)
