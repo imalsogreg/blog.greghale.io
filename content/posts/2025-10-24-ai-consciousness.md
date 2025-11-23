@@ -27,7 +27,7 @@ main thing I hope you take away is this:
 We (speaking for humanity, neuroscience and moral decision-makers)
 _don't know_ how biological consciousness works. The little bit we
 do know is highly counterintuitive. Therefore we need to remain
-open-minded about the possibility of it arrising in our LLMs
+open-minded about the possibility of it arising in our LLMs
 and other exotic new artificial neural network architectures,
 especially as they grow more and more neuromorphic.
 
@@ -60,7 +60,7 @@ the rest of the body, so it's more appropriate to think of this
 operation as a body-and-face transplant, rather than a brain
 transplant, since your identity certainly moves with your brain.
 If you took the other choice and accepted a brain donation,
-contratulations, your wonderful body lives on, but "you" aren't
+congratulations, your wonderful body lives on, but "you" aren't
 here to appreciate that fact. Oh, and that cold fusion formula
 is gone, too.
 
@@ -71,7 +71,7 @@ experiments[^time-slices] is the "two-stage model", which says
 conscious perception is not continuous, but occurs in discrete
 chunks that lag behind physical reality by hundreds of
 milliseconds. I prefer the name _Saltatory Consciousness_ - which
-harkens back to "saltatory condution" of electrical activity
+harkens back to "saltatory conduction" of electrical activity
 jumping from node to node along neural axons. "Saltatory Consciousness"
 is a little more descriptive than "two-stage model", as well. We'll
 see what's so "saltatory" about consciousness soon.
@@ -80,12 +80,12 @@ Although you experience yourself as existing
 smoothly through every point in time that you are awake, your
 true conscious experiences are deceptively fragmented, according
 to this model. Visual
-illusions, transcratial magnetic stimulation studies and brain
+illusions, transcranial magnetic stimulation studies and brain
 wave recordings suggest that we experience new percpepts 2 to 5
 times a second, a rather low frame rate!
 Each percept may embed the _sense_ of motion
-of objecects in your visual scene, but this sense of smoothness
-is reconstcuted by your brain after the fact.
+of objects in your visual scene, but this sense of smoothness
+is reconstructed by your brain after the fact.
 
 ![The two-stage model](/images/2025-10-24-chunked-consciousness.png)
 
@@ -94,7 +94,7 @@ continuously up against a screen. (b) The retina encodes this as
 a collection of pixel intensities along with information about
 velocity at a high "frame rate". Each "frame" contains a pixelated
 image and a motion vector. (c) and (d) after some analysis in the
-brainstem and thalamus, the visual signals are split to the dorsal
+brain-stem and thalamus, the visual signals are split to the dorsal
 stream, which represents the stimulus' position and motion vectors
 at a high "frame rate", and the ventral stream, which encodes
 object color and identity at a lower frame rate. (e) these signals
@@ -106,7 +106,7 @@ but (bottom) the motion vectors present at each frame give the
 impression that consciousness _itself_ has existed continuously to
 sample the ball's position with high frequency.
 
-## But, it _really_ doesnt' feel that way
+## But, it _really_ doesn't feel that way
 
 If the two-stage model is hard to swallow, note that post-hoc
 perceptual reconstruction is extremely common. It's easy to verify an
@@ -119,7 +119,7 @@ The fovea is the part of the retina that sees "well" - well
 enough to tell different letters apart and identify faces. Outside
 the fovea is your "peripheral vision". How much of the visual
 field do you think is covered by your fovea, and how much do you
-think is perpipheral? Let's measure.
+think is peripheral? Let's measure.
 
 First, observe your surroundings and get a sense of how clearly
 you see the room you're in. How many doors can you see? How many
@@ -141,7 +141,7 @@ vision - it has a small disk of high-accuracy that has to move around
 to sample what's out there while your brain integrates the information
 to construct a large, detailed picture.
 
-### Reconsruction in the blind spot
+### Reconstruction in the blind spot
 
 Second, there is one part of each of your retinas that is fully blind.
 Because of your reconstructed visual field, you don't experience this
@@ -152,7 +152,7 @@ with your left eye at the cross below. If you're on a computer, stand
 about 25cm from the screen; it's hard to use the widget on the phone,
 you'll probably need to find a laptop to see the effect. Now move
 the slider to slide the blinking dot back and forth. At some position,
-if You keep your eye on the cross, it will look like the blinknig dot
+if You keep your eye on the cross, it will look like the blinking dot
 disappears.
 
 <div id="blind-spot-finder"></div>
@@ -188,7 +188,7 @@ Assume the existence of a soul. Your soul is your consciousness,
 and it is the thing that connects together your instants of
 consciousness into a narrative sequence. However, in this hypothetical,
 we are still neuroscientists and we still recognize that biological
-things like syntapses and neurons are the
+things like synapses and neurons are the
 physical basis of long-term, short-term and perceptual memory.
 
 Now imagine that your conscious soul could hop between bodies - trade
@@ -210,7 +210,7 @@ receiver is more subtle. If I went to a mystic hospital that
 could perform a soul transplant, I'm not sure I would want to be
 soul donor, because I identify more with my memories and my
 sensations. If the soul that swapped in and out would have no
-memory of swapping in or out, then it seems inconsiquential which
+memory of swapping in or out, then it seems inconsequential which
 soul is inhabiting my body and brain. If my soul got to live on
 in the _other_ memory system, that hardly seems to count as "me",
 and my cold fusion formula is gone, to boot (it was bound to my
@@ -230,23 +230,23 @@ work out whether they have memory. It's to point out how fragmented
 our consciousness might be, and how different it is from
 to what our intuition tells us.
 
-## A Von-Neuman analogy
+## A Von-Neumann analogy
 
 In this model where consciousness as an essentially
 discontinuous thing, we can draw an analogy between human
-consciousness and the von Neuman model of computation.
+consciousness and the von Neumann model of computation.
 
-It's as if consciousnes is bracketed into clock cycles like
+It's as if consciousness is bracketed into clock cycles like
 the cycles of a CPU. Each cycle "starts cold" in the sense of
 being dropped into a preexisting context of long-term and
 short-term memories. Old data is fetched from RAM and recent
 data is fetched from cache.. it's all stored somewhere, nothing
-is done through historesis. The memory system (RAM and cache) is
-completely separate from the instructon processor and memory is
+is done through hysteresis. The memory system (RAM and cache) is
+completely separate from the instruction processor and memory is
 the only thing providing continuity from cycle to cycle.
 
-Or, consciousness is like the agentic LLM API. Every request you
-make encounteres a fresh model. Continuity is supplied through the
+Or, consciousness is like the agentic LLM API. Every request
+encounters a fresh model. Continuity is supplied through the
 API request via context inserted into the prompt. It makes no
 difference at all if your first agentic API request goes to a
 server in us-east-1 and the following one goes to a server in
@@ -254,7 +254,7 @@ ap-southeast-1. Neither the model nor you can tell the difference.
 
 ## The connection to LLMs
 
-Am I agruing that LLMs work via Saltatory Consciousness, and
+Am I arguing that LLMs work via Saltatory Consciousness, and
 are conscious? Not at all. I only want to illustrate that
 biological consciousness is highly counterintuitive. We don't
 know how consciousness works, and therefore we can't appeal to
@@ -268,7 +268,7 @@ consciousness could possibly take, and I plan to share more
 of those findings in future blog posts.
 
 But until then, I hope we can keep an open mind and remain
-proactive, cautious and curious as we develop exocit
+proactive, cautious and curious as we develop exotic
 artificial neural network models that work more and more
 like human brains do.
 
