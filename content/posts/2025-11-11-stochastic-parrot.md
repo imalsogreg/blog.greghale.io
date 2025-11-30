@@ -5,9 +5,9 @@ tags: AI
 draft: true
 ---
 
-There are a few refrains that I continue to hear about LLM's, that
-are frankly surprising. It's daily proof that intelligent people can
-disagree with each other.
+There are a few refrains that I continue to hear about LLMs, that
+are frankly surprising. It's daily proof that intelligent people
+can disagree with each other.
 
 The argument I see a lot goes like this:
 
@@ -23,7 +23,8 @@ on the same page and debating the things that really matter.
 ## Myth: LLMs can only repeat what they learned from their training data
 
 False: Since early 2024 LLMs have been able to use what they have
-learned to reason _beyond_ their training data.
+learned to reason _beyond_ their training data. You can talk to
+a chatbot about truly novel things and it will 
 
 Examples:
 
@@ -31,16 +32,15 @@ Examples:
    and extending codebases that weren't in their training set.
    For example, and work we are building a new programming language
    with features not present in any other programming language.
-   By definition this is different from everything in the LLM's
+   By definition this is different from everything in the model's
    training data. We routinely collaborate with Claude Code and
    Codex to implement these novel features into our novel compiler,
-   to mathematically analize the novel language, and to produce
+   to mathematically analyze the novel language, and to produce
    formal specifications of the novel language.
- - Abstract reasoning: I recently came up with a novel language
-   for describing networks of biological neurons. The first thing
-   I wrote in that novel language was a biological neural network
-   that has some interesting dynamic properties (an attractor
-   network). To build it, I had to specify a lot of neurons, their
+ - Abstract reasoning: For my web-based neuron simulator, I had to
+   make up a new language for defining neural networks. The first
+   thing I built in that language was a an "attractor network", a
+   network with some interesting dynamic properties. To build it, I had to specify a lot of neurons, their
    shapes, and their connections. I pasted this program into Claude
    2.1 (from early 2024!) and asked it to infer the dynamics of
    the network. Claude was able to understand the flow of the
