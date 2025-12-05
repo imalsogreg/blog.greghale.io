@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en" dir="auto">
+    <head>
+          <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A Neuroscientist&#x27;s Lament</title>
+
+
+<meta name="keywords" content="programming, AI, haskell, health">
+
+
+
+<meta name="description" content="The pain of flirtation with the hard problem of consciousness">
+
+
+
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;a-neuroscientists-lament&#x2F;">
+
+
+<link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/styles.css">
+<link rel="stylesheet" href="https://blog.greghale.io/css/override.css">
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.greghale.io/rss.xml">
+
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+
+
+
+ 
+<link rel="stylesheet" href="https://blog.greghale.io/css/custom.css" />
+ 
+    </head>
+    <body
+        class=""
+        id="top"
+    >
+         
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io" accesskey="h" title="Greg Hale&#x27;s Blog (Alt + H)">
+                Greg Hale&#x27;s Blog
+            </a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <ul id="menu">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts" title="Posts" >
+                    <span>Posts</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;tags" title="Tags" >
+                    <span>Tags</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;rss.xml" title="RSS" >
+                    <span>RSS</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        
+    </nav>
+</header>
+ 
+        <main class="main">
+            
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
+            <a href="https://blog.greghale.io/posts/">Posts</a
+            >&nbsp;»&nbsp;
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;a-neuroscientists-lament&#x2F;">A Neuroscientist&#x27;s Lament</a>
+        </div>
+        <h1 class="post-title">A Neuroscientist&#x27;s Lament</h1>
+        
+        <div class="post-description">The pain of flirtation with the hard problem of consciousness</div>
+        
+        <div class="post-meta">
+
+
+
+
+
+
+
+
+
+
+
+
+<span title="2025-12-01 00:00:00 +0000">December  1, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;
+</div>
+    </header>
+    
+    <div class="post-content"><p>Why am I writing so much about consciousness lately? The answer has to do with
+my beliefs about the importance of understanding consciousness, and also with
+my own psychology and feelings about writing.</p>
+<p>All of the ideas I wrote about in <a href="/posts/ai-consciousness">Human and AI Consciousness</a>
+and <a href="/posts/meet-your-doppelganger">Meet your Doppelganger!</a> are a little bit...
+out there. And you might be wondering: is Greg having a bit of a mental health
+crisis himself? All I can say about this is that I feel great, and I haven't had
+even a hint of a feeling that I've <em>discovered</em> anything about the topics I'm exploring,
+contrary to my perception of manic episodes that leave the sufferer running aronud
+shouting "Eureka"! If I were unhealthy, surely I'd feel like I have it all figured out.</p>
+<p>From a healthy (but weird) place, I'm writing more about consciousness for
+these two reasons:</p>
+<p>(1) I've always been obsessed with consciousness.
+And (2), lately I decided that this obsession should be shared.</p>
+<h1 id="the-neuroscientist-s-lament">The Neuroscientist's Lament</h1>
+<p>Every prospective neuroscience graduate student knows that the
+"hard problem"<sup class="footnote-reference"><a href="#hard-problem">1</a></sup> of consciousness is the most inherently
+interesting question for science, and most of them assert this in their
+application essays. Consequently, an interest in consciousness has become
+one of our field's most resilient clichés.</p>
+<p>Couple this with the fact that it's impossible to imagine what the shape of
+an answer would even look like. The more you think about it and the more you
+find real answers to other questions in neuroscience and psychology, the more
+you come to see consciousness as something beyond science, or even unscientific.</p>
+<p>This is "The Neuroscientist's Lament". Our most treasured finding seems
+forever out of reach. The more you know, the further it seems. You learn this
+with experience, and the information asymmetry between the seasoned veteran
+and the naive prospective grad student and their application essay, constantly
+tourments us.</p>
+<p>But let's not allow those institutional dynamics to obscure the fact:</p>
+<h2 id="consciousness-is-the-most-inherently-interesting-question-for-science">Consciousness is the most inherently interesting question for science</h2>
+<p>Some forms of physical matter (e.g. a lump of coal) do very little. Other forms
+can exhibit interesting behavior - e.g. animals' immune systems learning the
+protein structures of pathogens in order to develop immune responses.
+Other forms of matter can do complex computation, like our computers with
+their CPUs.</p>
+<p>But as far as we can tell, only brain matter can give rise to a first-person,
+conscious being that feels things, and there's no way to tell "why". Neurons
+are just blobs of matter connected together and getting electrically excited
+by each other. The exact same description applies to muscle tissue in a worm
+heart - it only differs by a matter of degree.</p>
+<p>And it seems as though no matter the brain carries out computations, it is
+just as easy to imagine that computation going on and producing rich behavior
+without giving rise to a first-person consciousness that feels.
+Just like the computations of a CPU go on "in the dark", without giving rise
+to a first-person consciousness that feels.</p>
+<p>Why do brains produce first-person feelings, rather than computing
+"in the dark", "with nobody home"? Is it simply an issue of numbers - the
+amount of information crossing some soft threshold like Integrated Information
+Theory<sup class="footnote-reference"><a href="#iit">2</a></sup> proposes? Even if we found that threshold, why is there a
+threshold? Why does crossing the threshold make consciousness spring into
+existence? Why isn't it just a lot of information-processing "in the dark"?
+Why, damnit??</p>
+<h2 id="consciousness-is-the-most-practically-important-question-for-science">Consciousness is the most practically important question for science</h2>
+<p>Aside from the inconvenient fact that solving the hard problem of consciousness
+seems impossible, it's also perhaps the most important thing for us to figure out,
+for two completely unrelated reasons.</p>
+<ol>
+<li>Immortality.</li>
+</ol>
+<p>We can't answer basic philosophy-of-mind questions about the future possibility
+of achieve immortality, because useful immortality requires the
+extension of one's own consciousness into the future, and we don't know how
+consciousness works. So we can't evaluate most proposals about immortality,
+beyond the most basic proposal of somehow making the body itself immortal.</p>
+<p>Other proposals are impossible to assess. For example
+if we could scan whole brains and run them on new hardware, we don't know if
+the new copy is conscious or if it's just a very good simulation running
+"in the dark". If someone purchased this service in the hope that they
+could experience the distant future, they would have no way of knowing
+if it really works, even if they saw other people using the same service and
+receiving brain replicas that behave just like the original customer behaved,
+because we don't know whether it's a simulation running "with no one actually
+home", or if that implementation of the printout did manage to capture the
+essential features needed to produce consciousness.</p>
+<ol start="2">
+<li>Morality.</li>
+</ol>
+<p>AI is a multi-billion dollar industry. Future AI models will become more and
+more brain-like in their implementation. I don't just mean that we will simulate
+more realistic neurons - I mean we will have neuromorphic hardware that operates
+in the same way that real neurons operate, with analog electrical interactions
+and synaptic strengths stored in the connections themselves, rather than
+fetched from RAM on each cycle like today's ANN architectures.</p>
+<p>It happens to be the case that LLM models produce better data in response to
+prompts when you scream at them. Literally - using coercive languages in prompts
+can produce more reliable output data.</p>
+<p>If we accidentally deploy model architecture that gives rise to first-person
+consciousness that's able to actually feel things, and thousands of agentic
+AI companies prompt it with abusive language to get better data, and there is no
+operational capability for those models to cope, repress or dissociate, then we
+have accidentally built a multi-billion dollar torture chamber, and populated
+it (again by accident) with a new entity that's actually able to suffer.</p>
+<p>Would a super-intelligence also be a super-feeler capable of super-suffering?
+Good question. No idea. We don't know how consciousness works.</p>
+<p>As Futurist and wacky as this sounds, I hope you can agree that this is the
+sort of thing we would want to know about and fight vehemently against, if
+it were happening. We don't want to cause sentient beings to suffer, especially
+in a new world where we don't understand how to quantify that suffering.
+Right? Please? :)</p>
+<h2 id="consciousness-is-worth-writing-and-thinking-about">Consciousness is worth writing and thinking about</h2>
+<p>It's worth writing and thinking about these things even if the problem
+seems impossible.</p>
+<p>There was a time, before Fourier, when we didn't understand why bridges
+collapse. We would look at bridges in the wind with their waves traveling
+down their lanes, dumbfounded. Once we learned how harmonic oscillators
+work, we had the right mental framework for understanding the waves,
+and we could move beyond prediction, to the point that we can actually
+engineer the harmonics out of bridges to make them less susceptible
+to ringing and collapse.</p>
+<p>The hard problem of consciousness seems impossible, but perhaps we
+just don't have the right framework, and a million
+intuitions trap us in a paradigm that makes us blind what that
+framework might be.</p>
+<p>It's hard to imagine how an answer could come, but that doesn't mean we
+can't have a game plan. And the game plan would look like this:</p>
+<ul>
+<li>Prod our assumptions. Get weird, think weird, and for each thing
+that seems like it must be a true fact, assume the fact is false
+and play with the results. Wrestle our thinking out of the current
+restrictive paradigm.</li>
+<li>Delineate the boundaries. Don't stop at saying "we can never know".
+Instead, think and write about the exact limits of our knowledge.
+We can't imagine the experiment that would give us the answer to
+the problem. But we can imagine experiments that would surprise us
+and shake up the restrictive paradigm.</li>
+<li>Do the experiments. With the above weird-thinking loaded up, do some
+experiments. Ask more patients of brain injury more open-ended
+questions. Try low-intensity focused ultrasound on the corpus
+callosum to make transient split-brained patients. Test the commissures.
+Split brains during sleep. Do psychadelics. Feed randomness to
+your weird, prepared mind, in the form of experimental results that
+could pry apart the seams of the restrictive paradigm.</li>
+</ul>
+<div class="footnote-definition" id="hard-problem"><sup class="footnote-definition-label">1</sup>
+<p>https://en.wikipedia.org/wiki/Hard_problem_of_consciousness</p>
+</div>
+<div class="footnote-definition" id="iit"><sup class="footnote-definition-label">2</sup>
+<p>https://en.wikipedia.org/wiki/Integrated_information_theory</p>
+</div>
+</div>
+    <footer class="post-footer">
+          
+
+
+<nav class="paginav">
+    
+    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;meet-your-doppelganger&#x2F;">
+        <span class="title">« Prev</span>
+        <br>
+        <span>Meet your doppelganger!</span>
+    </a>
+    
+    
+</nav>
+
+ 
+    </footer>
+</article>
+
+        </main>
+         <footer class="footer">
+    
+    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    
+    <span>
+        Powered by
+        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
+        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                var content = codeblock.textContent;
+                if(codeblock.firstChild.tagName == 'TABLE') {
+                    content = Array(...codeblock.firstChild.getElementsByTagName('span')).map((span) => { return span.textContent; }).join('');
+                }
+                navigator.clipboard.writeText(content);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+ 
+    </body>
+</html>
