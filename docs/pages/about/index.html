@@ -5,20 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>jj loves vibe coding</title>
+<title>About Me</title>
 
 
 <meta name="keywords" content="programming, AI, haskell, health">
 
 
 
-<meta name="description" content="Why jj&#x27;s interface is so great for vibe coding.">
+<meta name="description" content="Personal blog of Greg Hale">
 
 
 
 
 
-<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">
+<link rel="canonical" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;pages&#x2F;about&#x2F;">
 
 
 <link rel="stylesheet" href="https://blog.greghale.io/css/includes/scroll-bar.css">
@@ -137,7 +137,7 @@
             
             <li>
                 <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;pages&#x2F;about" title="About" >
-                    <span>About</span>
+                    <span class="active">About</span>
                     
                 </a>
             </li>
@@ -182,11 +182,9 @@
             <a href="https:&#x2F;&#x2F;blog.greghale.io">Home</a>&nbsp;»&nbsp;
             <a href="https://blog.greghale.io/posts/">Posts</a
             >&nbsp;»&nbsp;
-            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;jj-for-vibe-coding&#x2F;">jj loves vibe coding</a>
+            <a href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;pages&#x2F;about&#x2F;">About Me</a>
         </div>
-        <h1 class="post-title">jj loves vibe coding</h1>
-        
-        <div class="post-description">Why jj&#x27;s interface is so great for vibe coding.</div>
+        <h1 class="post-title">About Me</h1>
         
         <div class="post-meta">
 
@@ -201,164 +199,227 @@
 
 
 
-<span title="2025-10-10 00:00:00 +0000">October 10, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;
+<span title="2024-01-01 00:00:00 +0000">January  1, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;
 </div>
     </header>
     
-    <div class="post-content"><p>AI coding assistants have sped up our coding. Parallel agents
-are dividing the development times down further. Version control
-is becoming more of a bottleneck. By <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> VCS is putting a new
-fundamental limit on how fast software development can go. This isn't
-just an intuitive claim, it's something that actively bugged me
-at work and reminded me of an odd tool we used for <em>human</em> based
-VCS at Kadena: <code>jj</code>.</p>
-<p>So, while implementing a meaty feature for the <a href="https://github.com/boundaryml/baml">BAML</a> language with Claude Code, and
-feeling the tedium of managing <code>git</code>'s staging area and branches,
-I decided to dust off <code>jj</code> and try in this new AI coding context.
-The results have been great. Here's why:</p>
-<h2 id="1-automatic-change-tracking">1. Automatic change tracking</h2>
-<p>Long ago, you accepted the fact that you just have to run <code>git add</code>
-for every changed file. Not with <code>jj</code>!
-<code>jj</code> tracks all changes for you, a massive time saver when most of
-your keystrokes are prompting the AI, rather than directly writing
-source code.</p>
-<h2 id="2-low-friction-commits">2. Low-friction commits</h2>
-<p>With <code>jj</code> you can create commits before the work, and changes get
-written into that commit. It feels a bit like creating a directory,
-then <code>cd</code>ing into that directory to create files there.</p>
-<p>When you go back to <code>git</code> after this mindest change, you have the
-opposite feeling: working with <code>git</code> feels creating a bunch of files,
-then creating a folder, and moving files into the folder after the fact.</p>
-<p>To highlight this difference in mindset: it's extremely common for me to
-write a prompt asking for a new work
-item, realize this work should be in its own commit, and quickly run
-<code>jj new</code> to open a new commit before Claude Code has finished
-its reasoning and begun to write code. Having a zero-friction way to
-chunk up work is pure joy.</p>
-<h2 id="3-easy-commit-shuffling-rebasing">3. Easy commit shuffling (rebasing)</h2>
-<p>Rebasing is scary in <code>git</code> because it's easy to rewrite history and
-damage the repository. Rebases in <code>jj</code> are safe and common.</p>
-<p>This is how you move a single commit to some other place in the history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase -r SOME_COMMIT --destination SOME_COMMIT
-</span></code></pre>
-<p>Or move a whole series of commits to some other place in the
-history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
-</span></code></pre>
-<p>With parallel agents, rebasing is very common, and the improved
-user experience in <code>jj</code> reduces rebase toil.</p>
-<h2 id="4-easy-undo">4. Easy Undo</h2>
-<p>Whatever you just did in <code>jj</code>, if you realize it didn't go the way
-you expected, <code>undo</code> has you covered:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj undo
-</span></code></pre>
-<p>Especially helpful while you're still learning the ropes. A lot of noise
-is made about ChatGPT stealing traffic from StackOverflow. <code>jj</code>
-will cut into this market share further by removing the need to search
-for how to undo all the different <code>git</code> accidents that happen in
-work projects.</p>
-<p>If the AI goes down a bad path and writes a bunch of code you dislike,
-<code>abandon</code> abandons the work item.</p>
-<p>Abandon the current commit:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon
-</span></code></pre>
-<p>Abandon some other commit in the history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon -r SOME_COMMIT
-</span></code></pre>
-<p>And if you forgot to introduce a new commit before starting the agent
-on a coding task unrelated to one you had in-progress, it's easy
-to split the work into two separate commits:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
-</span></code></pre>
-<h1 id="jj-loves-vibe-coding">jj loves vibe coding</h1>
-<p>Running <code>jj</code> feels like "managing" something:
-high level, details-managed-for-you, simple. Running <code>git</code>
-feels like "implementing" something. Low level, down in the
-weeds, wrestling with the tools.</p>
-<p>Vibe coding is managing a coding assistant, so <code>jj</code> is a great fit.</p>
-<p>The purpose of this blog post is to summarize why I like
-<code>jj</code> for vibe coding, not to provide a balanced comparison
-between <code>jj</code> and <code>git</code>. That's why I've said nothing good about <code>git</code>
-here and nothing bad about <code>jj</code>. When considering whether to adopt <code>jj</code>
-at work or for your personal projects, of course you'll need
-to try it yourself and read some tutorials.</p>
-<p>Here are a few things to know if you're hearing about <code>jj</code> for the
-first time and considering a switch:</p>
-<ul>
-<li><code>jj</code> is compatible with <code>git</code> and uses the <code>.git</code> directory for
-tracking repository state. So you can freely use <code>jj</code> even if
-the rest of the team uses <code>git</code>.</li>
-<li><code>jj</code> has a learning curve! It's easier to learn than <code>git</code>, but
-not trivial. It took me a few weeks to reach the same
-level of productivity that I built up over many years using
-<code>git</code>.</li>
-<li>There is an excellent <a href="https://steveklabnik.github.io/jujutsu-tutorial/">tutorial from Steve Klabnik</a> and an excellent
-<a href="https://www.youtube.com/watch?v=2otjrTzRfVk&amp;t=327s">video from Chris Krycho</a>.</li>
-<li>Get started at the <a href="https://github.com/jj-vcs/jj">jj GitHub repo</a></li>
-</ul>
-<h2 id="we-have-coding-assistants-so-why-learn-a-new-tool">We have coding assistants - so why learn a new tool?</h2>
-<p>As someone who works on <a href="https://boundaryml.com">developer tools</a> at
-the twilight of humanity's involvement in the software development
-process, I've worried about the utility of learning new tools,
-writing new languages, or making any bets on human productivity.
-Isn't it better to move back to languages and
-tools with billions of tokens on the internet for training LLMs, if
-LLMs will be writing all the code?</p>
-<p>Well, new languages and tools <em>are</em> coming out. And the complete AI
-takeover of software engineering is happening over several years,
-not several months. So I do still have to write code and collaborate
-with people.</p>
-<p>There is a trend among my programmer friends: the ones who are
-the best at <code>git</code> tend to be the most excited about <code>jj</code>. <strong>Interesting</strong>.
-<code>git</code> power users had conquered all <code>git</code>'s complexities.
-They understood the underlying model, were unbothered the differences
-between the commands for creating and deleting branches, knew all the
-different and unrelated jobs done by <code>git checkout</code>, and had bookmarked
-the StackOverflow pages for removing a change from the staging area.</p>
-<p>You might think a <code>git</code> guru would be the last person who wants to
-relinquish all that muscle memory and switch to a new tool and an
-new set of commands to memorize for version control. <strong>Nope</strong>. Those
-colleagues have had their tastes and sensibilities forged in the crucible
-of <code>git</code>, and when <code>jj</code> arrived, they immediately saw the value and
-accepted the switch cost. They fell in love and started making
-slide decks and blog posts to try to convince their friends to use
-it too.</p>
-<p>Some developers (even some great developers!) who don't self-identify
-as <code>git</code> gurus are likely to ask Claude Code to turn a vibe-coded
-work item into a <code>git</code> commit - meaning they'll prefer to prompt
-"add all the files to git and commit and push it to github", instead
-of running <code>git</code> manually. It's a wonderful finding that
-Claude is trustworthy enough to drive <code>git</code> for us, but it's also
-an indigtment of the <code>git</code> user interface.</p>
+    <div class="post-content"><div class="timeline">
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2006 - 2014</div>
+<div class="timeline-content">
+<h3>MIT - PhD in Neuroscience</h3>
+<p style="margin-top: 0.75rem;">
+<a href="https://dspace.mit.edu/handle/1721.1/100872">Thesis</a> · <a href="https://www.youtube.com/watch?v=dfHL5wvqTPw">Defense Video</a>
+</p>
+<div class="timeline-projects">
+<div class="project-card">
+<img
+    src="/images/about/sequences.png"
+    alt="Neural Sequences"
+    data-caption="<strong>Position decoding in simultaneously recorded 
+    hippocampal place cell populations.</strong> (A) Reconstructed positions using neurons from
+    medial (red) and lateral (green) hippocampal cells, which are phase-offset
+    by 25ms. (B) Theta-aligned average spatial reconstructions. (C) Cross
+    correlation of medial and lateral hippocampal representations, showing
+    that the fine-timescale trajectories are aligned in time, albeit with
+    earlier sampling in medial and later sampling in lateral neurons.">
+<div class="project-info">
+<h4>Timing codes for space</h4>
+<p>
+    Theta oscillations in the hippocampus organize the fine-timescale
+    activity of space-encoding neurons into spatial trajectories. Theta
+    is a traveling wave, and I studied the effect of phase delays
+    within the hippocampus on spatial encoding.
+</p>
+</div>
+</div>
+<div class="project-card">
+<img
+    src="/images/about/headToHeadDecoding.png"
+    alt="Head-to-Head Decoding"
+    data-caption="<strong>Batch vs. realtime hippocampal decoding.</strong>
+    Left: behavioral timescale position decoding closely matches the subject's
+    location in both batch and real-time analysis. Center: fine-timescale
+    theta sequences are clearer in batch recordings, but clearly resolvable
+    in real-time. Right: When the subject pauses to consume rewards,
+    hippocampal &quot;replay&quot; events are discernible in both batch
+    and real-time decoding.">
+<div class="project-info">
+<h4>Realtime position decoding</h4>
+<p>
+    I developed signal processing algorithms and Bayesian
+    decoding methods to read fine-timescale spatial trajectories
+    during spatial learning.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2013 - 2019</div>
+<div class="timeline-content">
+<h3>Center for Brains, Minds and Machines</h3>
+<div class="timeline-projects">
+<div class="project-card">
+<img
+    src="/images/about/cbmm.png"
+    alt="CBMM">
+<div class="project-info">
+<h4>Software engineering for cognitive science research</h4>
+<p>
+    To ease the transition into software, I developed web apps for
+    Cog Sci and AI researchers at MIT to conduct experiments.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2010 - Present</div>
+<div class="timeline-content">
+<h3>Functional Programming</h3>
+<div class="timeline-projects">
+<div class="project-card">
+<pre>
+<code>x
+&lambda;x.f
+f x</code>
+</pre>
+<div class="project-info">
+    <h4>Lambda calculus</h4>
+    <p>
+    A Steve Yegge <a href="https://sites.google.com/site/steveyegge2/ocaml">blog post</a>
+    introduced me to the world of functional programming (FP). I fell
+    in love and retooled for a career in software engineering.
+    </p>
+</div>
+</div>
+<div class="project-card">
+    <img
+        src="/images/about/haskell.jpg"
+        alt="Haskell Logo"
+    />
+<div class="project-info">
+    <h4>Haskell Open Source</h4>
+    <ul>
+        <li>Organized Boston Haskell User Group & Hackathons</li>
+        <li>Comaintained the Snap web framework</li>
+        <li>Got excited about compilers</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2023 - Present</div>
+<div class="timeline-content">
+<h3>BoundaryML</h3>
+<p>
+Working on <a href="https://boundaryml.com">BAML</a>, a language for building typesafe LLM applications. Combining my passion for language design with the cutting edge of AI.
+</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">Ongoing</div>
+<div class="timeline-content">
+<h3>Side Projects</h3>
+<p>
+Building <a href="https://neuronbench.com">NeuronBench</a> - a browser-based neuron simulator that brings together my love of neuroscience, functional programming, and the web.
+</p>
+<div class="timeline-projects">
+<div class="project-card">
+<video autoplay loop muted playsinline class="project-video"
+    data-caption="<strong>NeuronBench web-based neuron simulation.</strong> NeuronBench.com allows teachers and students to build neurons with custom
+    morphology, membrane dynamics, and synaptic connectivity, and run them
+    in the browser.">
+    <source src="/images/frosted.mp4" type="video/mp4">
+</video>
+<div class="project-info">
+<h4>NeuronBench</h4>
+<p>
+    A WebGL-powered neuron simulator for exploring neural dynamics in real-time.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="lightbox" class="lightbox-overlay">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="">
+        <video id="lightbox-video" autoplay loop muted playsinline style="display:none;">
+            <source id="lightbox-video-src" src="" type="video/mp4">
+        </video>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
+<script>
+function openLightbox(src, caption, isVideo) {
+    const img = document.getElementById('lightbox-img');
+    const video = document.getElementById('lightbox-video');
+    const videoSrc = document.getElementById('lightbox-video-src');
+
+    if (isVideo) {
+        img.style.display = 'none';
+        video.style.display = 'block';
+        videoSrc.src = src;
+        video.load();
+        video.play();
+    } else {
+        video.style.display = 'none';
+        img.style.display = 'block';
+        img.src = src;
+    }
+
+    document.getElementById('lightbox-caption').innerHTML = caption || '';
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('lightbox-video').pause();
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+});
+
+document.querySelectorAll('.project-card img').forEach(img => {
+    img.addEventListener('click', function() {
+        openLightbox(this.src, this.dataset.caption, false);
+    });
+});
+
+document.querySelectorAll('.project-card video').forEach(video => {
+    video.addEventListener('click', function() {
+        const source = this.querySelector('source');
+        openLightbox(source.src, this.dataset.caption, true);
+    });
+});
+</script>
 </div>
     <footer class="post-footer">
-        
-        <ul class="post-tags">
-            
-            <li>
-                <a href="https:&#x2F;&#x2F;blog.greghale.io/tags/ai/"
-                    >AI</a
-                >
-            </li>
-            
-        </ul>
           
 
 
 <nav class="paginav">
     
-    <a class="prev" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;video-reflection&#x2F;">
-        <span class="title">« Prev</span>
-        <br>
-        <span>Frosted Vertical Reflections in ffmpeg</span>
-    </a>
-    
-    
-    <a class="next" href="https:&#x2F;&#x2F;blog.greghale.io&#x2F;posts&#x2F;ai-consciousness&#x2F;">
-        <span class="title">Next »</span>
-        <br>
-        <span>Human and AI Consciousness</span>
-    </a>
     
 </nav>
 

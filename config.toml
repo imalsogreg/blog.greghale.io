@@ -56,6 +56,7 @@ show_archive_year_count = true
 show_archive_month_count = true
 date_format = "%B %e, %Y"
 navigation = [
+    { url = "$BASE_URL/pages/about", title = "About" },
     { url = "$BASE_URL/posts", title = "Posts" },
     { url = "$BASE_URL/tags", title = "Tags" },
     { url = "$BASE_URL/rss.xml", title = "RSS", icon = "rss" },

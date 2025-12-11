@@ -728,6 +728,224 @@ linux machine.&lt;&#x2F;p&gt;
 </description>
       </item>
       <item>
+          <title>About Me</title>
+          <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.greghale.io/pages/about/</link>
+          <guid>https://blog.greghale.io/pages/about/</guid>
+          <description xml:base="https://blog.greghale.io/pages/about/">&lt;div class=&quot;timeline&quot;&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2006 - 2014&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;MIT - PhD in Neuroscience&lt;&#x2F;h3&gt;
+&lt;p style=&quot;margin-top: 0.75rem;&quot;&gt;
+&lt;a href=&quot;https:&#x2F;&#x2F;dspace.mit.edu&#x2F;handle&#x2F;1721.1&#x2F;100872&quot;&gt;Thesis&lt;&#x2F;a&gt; · &lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=dfHL5wvqTPw&quot;&gt;Defense Video&lt;&#x2F;a&gt;
+&lt;&#x2F;p&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;sequences.png&quot;
+    alt=&quot;Neural Sequences&quot;
+    data-caption=&quot;&lt;strong&gt;Position decoding in simultaneously recorded 
+    hippocampal place cell populations.&lt;&#x2F;strong&gt; (A) Reconstructed positions using neurons from
+    medial (red) and lateral (green) hippocampal cells, which are phase-offset
+    by 25ms. (B) Theta-aligned average spatial reconstructions. (C) Cross
+    correlation of medial and lateral hippocampal representations, showing
+    that the fine-timescale trajectories are aligned in time, albeit with
+    earlier sampling in medial and later sampling in lateral neurons.&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;Timing codes for space&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    Theta oscillations in the hippocampus organize the fine-timescale
+    activity of space-encoding neurons into spatial trajectories. Theta
+    is a traveling wave, and I studied the effect of phase delays
+    within the hippocampus on spatial encoding.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;headToHeadDecoding.png&quot;
+    alt=&quot;Head-to-Head Decoding&quot;
+    data-caption=&quot;&lt;strong&gt;Batch vs. realtime hippocampal decoding.&lt;&#x2F;strong&gt;
+    Left: behavioral timescale position decoding closely matches the subject&#x27;s
+    location in both batch and real-time analysis. Center: fine-timescale
+    theta sequences are clearer in batch recordings, but clearly resolvable
+    in real-time. Right: When the subject pauses to consume rewards,
+    hippocampal &amp;quot;replay&amp;quot; events are discernible in both batch
+    and real-time decoding.&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;Realtime position decoding&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    I developed signal processing algorithms and Bayesian
+    decoding methods to read fine-timescale spatial trajectories
+    during spatial learning.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2013 - 2019&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;Center for Brains, Minds and Machines&lt;&#x2F;h3&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;cbmm.png&quot;
+    alt=&quot;CBMM&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;Software engineering for cognitive science research&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    To ease the transition into software, I developed web apps for
+    Cog Sci and AI researchers at MIT to conduct experiments.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2010 - Present&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;Functional Programming&lt;&#x2F;h3&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;pre&gt;
+&lt;code&gt;x
+&amp;lambda;x.f
+f x&lt;&#x2F;code&gt;
+&lt;&#x2F;pre&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+    &lt;h4&gt;Lambda calculus&lt;&#x2F;h4&gt;
+    &lt;p&gt;
+    A Steve Yegge &lt;a href=&quot;https:&#x2F;&#x2F;sites.google.com&#x2F;site&#x2F;steveyegge2&#x2F;ocaml&quot;&gt;blog post&lt;&#x2F;a&gt;
+    introduced me to the world of functional programming (FP). I fell
+    in love and retooled for a career in software engineering.
+    &lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+    &lt;img
+        src=&quot;&#x2F;images&#x2F;about&#x2F;haskell.jpg&quot;
+        alt=&quot;Haskell Logo&quot;
+    &#x2F;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+    &lt;h4&gt;Haskell Open Source&lt;&#x2F;h4&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Organized Boston Haskell User Group &amp; Hackathons&lt;&#x2F;li&gt;
+        &lt;li&gt;Comaintained the Snap web framework&lt;&#x2F;li&gt;
+        &lt;li&gt;Got excited about compilers&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2023 - Present&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;BoundaryML&lt;&#x2F;h3&gt;
+&lt;p&gt;
+Working on &lt;a href=&quot;https:&#x2F;&#x2F;boundaryml.com&quot;&gt;BAML&lt;&#x2F;a&gt;, a language for building typesafe LLM applications. Combining my passion for language design with the cutting edge of AI.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;Ongoing&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;Side Projects&lt;&#x2F;h3&gt;
+&lt;p&gt;
+Building &lt;a href=&quot;https:&#x2F;&#x2F;neuronbench.com&quot;&gt;NeuronBench&lt;&#x2F;a&gt; - a browser-based neuron simulator that brings together my love of neuroscience, functional programming, and the web.
+&lt;&#x2F;p&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;video autoplay loop muted playsinline class=&quot;project-video&quot;
+    data-caption=&quot;&lt;strong&gt;NeuronBench web-based neuron simulation.&lt;&#x2F;strong&gt; NeuronBench.com allows teachers and students to build neurons with custom
+    morphology, membrane dynamics, and synaptic connectivity, and run them
+    in the browser.&quot;&gt;
+    &lt;source src=&quot;&#x2F;images&#x2F;frosted.mp4&quot; type=&quot;video&#x2F;mp4&quot;&gt;
+&lt;&#x2F;video&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;NeuronBench&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    A WebGL-powered neuron simulator for exploring neural dynamics in real-time.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div id=&quot;lightbox&quot; class=&quot;lightbox-overlay&quot;&gt;
+    &lt;span class=&quot;lightbox-close&quot; onclick=&quot;closeLightbox()&quot;&gt;&amp;times;&lt;&#x2F;span&gt;
+    &lt;div class=&quot;lightbox-content&quot; onclick=&quot;event.stopPropagation()&quot;&gt;
+        &lt;img id=&quot;lightbox-img&quot; src=&quot;&quot; alt=&quot;&quot;&gt;
+        &lt;video id=&quot;lightbox-video&quot; autoplay loop muted playsinline style=&quot;display:none;&quot;&gt;
+            &lt;source id=&quot;lightbox-video-src&quot; src=&quot;&quot; type=&quot;video&#x2F;mp4&quot;&gt;
+        &lt;&#x2F;video&gt;
+        &lt;div id=&quot;lightbox-caption&quot; class=&quot;lightbox-caption&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+function openLightbox(src, caption, isVideo) {
+    const img = document.getElementById(&#x27;lightbox-img&#x27;);
+    const video = document.getElementById(&#x27;lightbox-video&#x27;);
+    const videoSrc = document.getElementById(&#x27;lightbox-video-src&#x27;);
+
+    if (isVideo) {
+        img.style.display = &#x27;none&#x27;;
+        video.style.display = &#x27;block&#x27;;
+        videoSrc.src = src;
+        video.load();
+        video.play();
+    } else {
+        video.style.display = &#x27;none&#x27;;
+        img.style.display = &#x27;block&#x27;;
+        img.src = src;
+    }
+
+    document.getElementById(&#x27;lightbox-caption&#x27;).innerHTML = caption || &#x27;&#x27;;
+    document.getElementById(&#x27;lightbox&#x27;).classList.add(&#x27;active&#x27;);
+    document.body.style.overflow = &#x27;hidden&#x27;;
+}
+
+function closeLightbox() {
+    document.getElementById(&#x27;lightbox&#x27;).classList.remove(&#x27;active&#x27;);
+    document.body.style.overflow = &#x27;&#x27;;
+    document.getElementById(&#x27;lightbox-video&#x27;).pause();
+}
+
+document.getElementById(&#x27;lightbox&#x27;).addEventListener(&#x27;click&#x27;, function(e) {
+    if (e.target === this) closeLightbox();
+});
+
+document.addEventListener(&#x27;keydown&#x27;, function(e) {
+    if (e.key === &#x27;Escape&#x27;) closeLightbox();
+});
+
+document.querySelectorAll(&#x27;.project-card img&#x27;).forEach(img =&gt; {
+    img.addEventListener(&#x27;click&#x27;, function() {
+        openLightbox(this.src, this.dataset.caption, false);
+    });
+});
+
+document.querySelectorAll(&#x27;.project-card video&#x27;).forEach(video =&gt; {
+    video.addEventListener(&#x27;click&#x27;, function() {
+        const source = this.querySelector(&#x27;source&#x27;);
+        openLightbox(source.src, this.dataset.caption, true);
+    });
+});
+&lt;&#x2F;script&gt;
+</description>
+      </item>
+      <item>
           <title>Claude 2.1 correctly interprets a neural network</title>
           <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
