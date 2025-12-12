@@ -66,31 +66,6 @@ date = 2024-01-01
 
 <div class="timeline-item">
 <div class="timeline-marker"></div>
-<div class="timeline-date">2013 - 2019</div>
-<div class="timeline-content">
-<h3>Center for Brains, Minds and Machines</h3>
-
-<div class="timeline-projects">
-
-<div class="project-card">
-<img
-    src="/images/about/cbmm.png"
-    alt="CBMM">
-<div class="project-info">
-<h4>Software engineering for cognitive science research</h4>
-<p>
-    To ease the transition into software, I developed web apps for
-    Cog Sci and AI researchers at MIT to conduct experiments.
-</p>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-marker"></div>
 <div class="timeline-date">2010 - Present</div>
 <div class="timeline-content">
 <h3>Functional Programming</h3>
@@ -120,37 +95,79 @@ f x</code>
     />
 <div class="project-info">
     <h4>Haskell Open Source</h4>
-    <ul>
-        <li>Organized Boston Haskell User Group & Hackathons</li>
-        <li>Comaintained the Snap web framework</li>
-        <li>Got excited about compilers</li>
-    </ul>
+    <p>
+    Interacting with the FP community, I got into open source and
+    organization, comaintaining the Snap web framework, running
+    Boston Haskell Hackathons and getting excited about PL theory
+    and compilers.
+    </p>
 </div>
 </div>
 
 </div>
 </div>
 </div>
+
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2015-2016</div>
+<div class="timeline-content">
+<h3>Center for Brains, Minds and Machines</h3>
+
+<div class="timeline-projects">
+
+<div class="project-card">
+<img
+    src="/images/about/cbmm.png"
+    alt="CBMM">
+<div class="project-info">
+<h4>Software engineering for AI research</h4>
+<p>
+    To ease the transition into software, I developed web apps for
+    Cog Sci and AI researchers at MIT to conduct experiments. I
+    learned a lot, but was limited by being the only software
+    engineer. I had to leave academia and go embed with full-time
+    programmers.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2016 - 2024</div>
+<div class="timeline-content">
+<h3>Engineering Career</h3>
+
+<div class="timeline-projects">
+
+<div class="project-card">
+<img
+    src="/images/about/OctoML.webp"
+    alt="OctoML">
+<div class="project-info">
+<h4>MLOps</h4>
+<p>
+    I worked on various AI infrastructure projects, from large-scale supply chain
+    optimization at Target to a SaaS service for tuning AI models with TVM at
+    OctoML (later acquired by Nvidia).
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
 
 <div class="timeline-item">
 <div class="timeline-marker"></div>
 <div class="timeline-date">2023 - Present</div>
 <div class="timeline-content">
-<h3>BoundaryML</h3>
-<p>
-Working on <a href="https://boundaryml.com">BAML</a>, a language for building typesafe LLM applications. Combining my passion for language design with the cutting edge of AI.
-</p>
-</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-marker"></div>
-<div class="timeline-date">Ongoing</div>
-<div class="timeline-content">
-<h3>Side Projects</h3>
-<p>
-Building <a href="https://neuronbench.com">NeuronBench</a> - a browser-based neuron simulator that brings together my love of neuroscience, functional programming, and the web.
-</p>
+<h3>Realtime Neuron Simulation</h3>
 
 <div class="timeline-projects">
 <div class="project-card">
@@ -163,7 +180,11 @@ Building <a href="https://neuronbench.com">NeuronBench</a> - a browser-based neu
 <div class="project-info">
 <h4>NeuronBench</h4>
 <p>
-    A WebGL-powered neuron simulator for exploring neural dynamics in real-time.
+    Sorely needing more neurons in my life, I made a platform I'd
+    always fantasized about - a biologically realistic neuron
+    simulator focused on interactivity that runs in the 
+    browser. Please try it out!
+    <a href="https://neuronbench.com">neuronbench.com</a>
 </p>
 </div>
 </div>
@@ -171,6 +192,33 @@ Building <a href="https://neuronbench.com">NeuronBench</a> - a browser-based neu
 
 </div>
 </div>
+
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">2024 - Present</div>
+<div class="timeline-content">
+<h3>BoundaryML</h3>
+
+<div class="timeline-projects">
+
+<div class="project-card">
+<img
+    src="/images/about/bammy.png"
+    alt="BAML">
+<div class="project-info">
+<h4>BAML</h4>
+<p>
+Landed a dream-job working on <a href="https://boundaryml.com">BAML</a>,
+a language for building typesafe LLM applications. I work on the compiler,
+the dev tooling, the blogging, the and the videos.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
 
 </div>
 

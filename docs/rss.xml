@@ -789,27 +789,6 @@ linux machine.&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-item&quot;&gt;
 &lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
-&lt;div class=&quot;timeline-date&quot;&gt;2013 - 2019&lt;&#x2F;div&gt;
-&lt;div class=&quot;timeline-content&quot;&gt;
-&lt;h3&gt;Center for Brains, Minds and Machines&lt;&#x2F;h3&gt;
-&lt;div class=&quot;timeline-projects&quot;&gt;
-&lt;div class=&quot;project-card&quot;&gt;
-&lt;img
-    src=&quot;&#x2F;images&#x2F;about&#x2F;cbmm.png&quot;
-    alt=&quot;CBMM&quot;&gt;
-&lt;div class=&quot;project-info&quot;&gt;
-&lt;h4&gt;Software engineering for cognitive science research&lt;&#x2F;h4&gt;
-&lt;p&gt;
-    To ease the transition into software, I developed web apps for
-    Cog Sci and AI researchers at MIT to conduct experiments.
-&lt;&#x2F;p&gt;
-&lt;&#x2F;div&gt;
-&lt;&#x2F;div&gt;
-&lt;&#x2F;div&gt;
-&lt;&#x2F;div&gt;
-&lt;&#x2F;div&gt;
-&lt;div class=&quot;timeline-item&quot;&gt;
-&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-date&quot;&gt;2010 - Present&lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-content&quot;&gt;
 &lt;h3&gt;Functional Programming&lt;&#x2F;h3&gt;
@@ -836,11 +815,12 @@ f x&lt;&#x2F;code&gt;
     &#x2F;&gt;
 &lt;div class=&quot;project-info&quot;&gt;
     &lt;h4&gt;Haskell Open Source&lt;&#x2F;h4&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Organized Boston Haskell User Group &amp; Hackathons&lt;&#x2F;li&gt;
-        &lt;li&gt;Comaintained the Snap web framework&lt;&#x2F;li&gt;
-        &lt;li&gt;Got excited about compilers&lt;&#x2F;li&gt;
-    &lt;&#x2F;ul&gt;
+    &lt;p&gt;
+    Interacting with the FP community, I got into open source and
+    organization, comaintaining the Snap web framework, running
+    Boston Haskell Hackathons and getting excited about PL theory
+    and compilers.
+    &lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;&#x2F;div&gt;
 &lt;&#x2F;div&gt;
@@ -848,12 +828,68 @@ f x&lt;&#x2F;code&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-item&quot;&gt;
 &lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
-&lt;div class=&quot;timeline-date&quot;&gt;2023 - Present&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2015-2016&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;Center for Brains, Minds and Machines&lt;&#x2F;h3&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;cbmm.png&quot;
+    alt=&quot;CBMM&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;Software engineering for AI research&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    To ease the transition into software, I developed web apps for
+    Cog Sci and AI researchers at MIT to conduct experiments. I
+    learned a lot, but was limited by being the only software
+    engineer. I had to leave academia and go embed with full-time
+    programmers.
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2016 - 2024&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-content&quot;&gt;
+&lt;h3&gt;Engineering Career&lt;&#x2F;h3&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;OctoML.webp&quot;
+    alt=&quot;OctoML&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;MLOps&lt;&#x2F;h4&gt;
+&lt;p&gt;
+    I worked on various AI infrastructure projects, from large-scale supply chain
+    optimization at Target to a SaaS service for tuning AI models with TVM at
+    OctoML (later acquired by Nvidia).
+&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-item&quot;&gt;
+&lt;div class=&quot;timeline-marker&quot;&gt;&lt;&#x2F;div&gt;
+&lt;div class=&quot;timeline-date&quot;&gt;2024 - Present&lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-content&quot;&gt;
 &lt;h3&gt;BoundaryML&lt;&#x2F;h3&gt;
+&lt;div class=&quot;timeline-projects&quot;&gt;
+&lt;div class=&quot;project-card&quot;&gt;
+&lt;img
+    src=&quot;&#x2F;images&#x2F;about&#x2F;bammy.png&quot;
+    alt=&quot;BAML&quot;&gt;
+&lt;div class=&quot;project-info&quot;&gt;
+&lt;h4&gt;BAML&lt;&#x2F;h4&gt;
 &lt;p&gt;
 Working on &lt;a href=&quot;https:&#x2F;&#x2F;boundaryml.com&quot;&gt;BAML&lt;&#x2F;a&gt;, a language for building typesafe LLM applications. Combining my passion for language design with the cutting edge of AI.
 &lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
 &lt;&#x2F;div&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;timeline-item&quot;&gt;
