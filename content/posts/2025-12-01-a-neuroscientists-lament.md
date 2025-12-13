@@ -6,7 +6,7 @@ draft: false
 ---
 
 Why am I writing so much about consciousness lately? The answer has to do with
-my beliefs about the importance of understanding consciousness, and also with
+my beliefs about the importance of understanding consciousness, and with
 my own psychology and feelings about writing.
 
 All of the ideas I wrote about in [Human and AI Consciousness](/posts/ai-consciousness)
@@ -14,16 +14,16 @@ and [Meet your Doppelganger!](/posts/meet-your-doppelganger) are a little bit...
 out there. And you might be wondering: is Greg having a bit of a mental health
 crisis himself? All I can say about this is that I feel great, and I haven't had
 even a hint of a feeling that I've _discovered_ anything about the topics I'm exploring,
-contrary to my perception of manic episodes that leave the sufferer running aronud
-shouting "Eureka"! If I were unhealthy, surely I'd feel like I have it all figured out.
+contrary to my perception of manic episodes that leave the sufferer running around
+shouting "Eureka"!
 
 From a healthy (but weird) place, I'm writing more about consciousness for
-these two reasons:
+these reasons:
 
-(1) I've always been obsessed with consciousness.
-And (2), lately I decided that this obsession should be shared.
+I've always been obsessed with consciousness.
+And lately, I decided that this obsession should be shared.
 
-# The Neuroscientist's Lament
+## A Neuroscientist's Lament
 
 Every prospective neuroscience graduate student knows that the
 "hard problem"[^hard-problem] of consciousness is the most inherently
@@ -32,17 +32,15 @@ application essays. Consequently, an interest in consciousness has become
 one of our field's most resilient clichés.
 
 Couple this with the fact that it's impossible to imagine what the shape of
-an answer would even look like. The more you think about it and the more you
-find real answers to other questions in neuroscience and psychology, the more 
-you come to see consciousness as something beyond science, or even unscientific.
+an answer would even look like. The more you think about it (and the more you
+find answers to other more mundane questions in neuroscience and psychology),
+the more  you come to see consciousness as something beyond science, or
+even unscientific.
 
-This is "The Neuroscientist's Lament". Our most treasured finding seems
-forever out of reach. The more you know, the further it seems. You learn this
-with experience, and the information asymmetry between the seasoned veteran
-and the naive prospective grad student and their application essay, constantly
-tourments us.
+This is _The Neuroscientist's Lament_: Our most treasured finding seems
+forever out of reach. The more you know, the further it seems.
 
-But let's not allow those institutional dynamics to obscure the fact:
+But let's not allow this spiral of pity to obscure the fact:
 
 ## Consciousness is the most inherently interesting question for science
 
@@ -53,14 +51,14 @@ Other forms of matter can do complex computation, like our computers with
 their CPUs.
 
 But as far as we can tell, only brain matter can give rise to a first-person,
-conscious being that feels things, and there's no way to tell "why". Neurons
+conscious experience, and there's no way to tell "why". Neurons
 are just blobs of matter connected together and getting electrically excited
-by each other. The exact same description applies to muscle tissue in a worm
-heart - it only differs by a matter of degree.
+by each other. The exact same description applies to the muscle tissue in the
+heart of a worm - it only differs by a matter of degree.
 
-And it seems as though no matter the brain carries out computations, it is
+And it seems as though, however the brain carries out computations, it is
 just as easy to imagine that computation going on and producing rich behavior
-without giving rise to a first-person consciousness that feels.
+without giving rise to a first-person conscious experience.
 Just like the computations of a CPU go on "in the dark", without giving rise
 to a first-person consciousness that feels.
 
@@ -81,23 +79,19 @@ for two completely unrelated reasons.
 1. Immortality.
 
 We can't answer basic philosophy-of-mind questions about the future possibility
-of achieve immortality, because useful immortality requires the
+of achieving immortality, because useful immortality requires the
 extension of one's own consciousness into the future, and we don't know how
-consciousness works. So we can't evaluate most proposals about immortality,
-beyond the most basic proposal of somehow making the body itself immortal.
+consciousness works. So we can't evaluate most proposals about immortality
+(beyond the most basic proposal of somehow making the body itself immortal).
 
 Other proposals are impossible to assess. For example
 if we could scan whole brains and run them on new hardware, we don't know if
 the new copy is conscious or if it's just a very good simulation running
-"in the dark". If someone purchased this service in the hope that they
-could experience the distant future, they would have no way of knowing
-if it really works, even if they saw other people using the same service and
-receiving brain replicas that behave just like the original customer behaved,
-because we don't know whether it's a simulation running "with no one actually
-home", or if that implementation of the printout did manage to capture the
-essential features needed to produce consciousness.
+"in the dark". We don't have the framework to know if that implementation of
+the printout did manage to capture the essential features needed to produce
+consciousness.
 
-2. Morality.
+2. Morality and AI.
 
 AI is a multi-billion dollar industry. Future AI models will become more and
 more brain-like in their implementation. I don't just mean that we will simulate
@@ -120,16 +114,26 @@ it (again by accident) with a new entity that's actually able to suffer.
 Would a super-intelligence also be a super-feeler capable of super-suffering?
 Good question. No idea. We don't know how consciousness works.
 
-As Futurist and wacky as this sounds, I hope you can agree that this is the
-sort of thing we would want to know about and fight vehemently against, if
-it were happening. We don't want to cause sentient beings to suffer, especially
-in a new world where we don't understand how to quantify that suffering.
-Right? Please? :)
+As Futurist and wacky as this sounds, I hope you can agree that causing a
+super-intelligence to super-suffer is something we would want to be aware of
+and fight vehemently against, if it were happening. We don't want to cause
+sentient beings to suffer, especially in a new world where we don't understand
+how to quantify that suffering. Right? Please? :)
+
+And the flip side to that - somehow knowing that a future AI was both
+conscious and capable of reasoning on the scale of the quality of its
+outputs (let's not be fooled by some hallucination issues - the reasoning
+ability of modern LLMs is tremendous), this meeting would be tantamount to
+meeting an extra-terrestrial life form. A second sentient intelligence
+joining humanity for the first time ever.
 
 ## Consciousness is worth writing and thinking about
 
 It's worth writing and thinking about these things even if the problem
-seems impossible.
+seems impossible. It troubles me that some neuroscientists have lost
+faith in the possibility of understanding consciousness, and that it is
+rare as it is for scientists and laypeople to express the importance
+and the wonder of it.
 
 There was a time, before Fourier, when we didn't understand why bridges
 collapse. We would look at bridges in the wind with their waves traveling
@@ -140,12 +144,12 @@ engineer the harmonics out of bridges to make them less susceptible
 to ringing and collapse.
 
 The hard problem of consciousness seems impossible, but perhaps we
-just don't have the right framework, and a million
-intuitions trap us in a paradigm that makes us blind what that
+just don't have the right framework, and a million natural
+intuitions trap us in a paradigm that makes us blind to what that
 framework might be.
 
 It's hard to imagine how an answer could come, but that doesn't mean we
-can't have a game plan. And the game plan would look like this:
+can't have a game plan. The game plan could look like this:
 
  - Prod our assumptions. Get weird, think weird, and for each thing
    that seems like it must be a true fact, assume the fact is false
@@ -161,8 +165,7 @@ can't have a game plan. And the game plan would look like this:
    questions. Try low-intensity focused ultrasound on the corpus
    callosum to make transient split-brained patients. Test the commissures.
    Split brains during sleep. Do psychadelics. Feed randomness to
-   your weird, prepared mind, in the form of experimental results that
-   could pry apart the seams of the restrictive paradigm.
+   your weird, prepared mind.
 
 [^hard-problem]: https://en.wikipedia.org/wiki/Hard_problem_of_consciousness
 [^iit]: https://en.wikipedia.org/wiki/Integrated_information_theory

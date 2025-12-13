@@ -219,6 +219,37 @@ the dev tooling, the blogging, the and the videos.
 </div>
 </div>
 
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-date">Ongoing</div>
+<div class="timeline-content">
+<h3>What's to come</h3>
+
+<div class="timeline-projects">
+
+<div class="project-card">
+<img
+    src="/images/neuromorphic.png"
+    alt="Neuromorphic">
+<div class="project-info">
+<p>
+    Is that me - a collection of jobs?
+    And what's next? I'm anxious about the
+    future of AI, neuromorphic computing, neuroscience,
+    philosophy, and the role want to play in it.
+</p>
+<p>
+    Do you feel the same way? Is there something interesting
+    we can do with this new, mysterious second intelligence
+    that has come to join humanity? Reach out.
+</p>
+     <p>imalsogreg@gmail.com</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
 
 </div>
 
