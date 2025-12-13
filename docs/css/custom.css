@@ -45,6 +45,22 @@
     transition: all 0.2s ease;
 }
 
+.timeline-marker.infinity {
+    background: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    left: -2.65rem;
+    top: 0;
+}
+
+.timeline-item:hover .timeline-marker.infinity {
+    background: transparent;
+}
+
 .timeline-date {
     font-size: 0.85rem;
     font-weight: 600;
