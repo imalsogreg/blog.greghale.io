@@ -167,5 +167,7 @@ can't have a game plan. The game plan could look like this:
    Split brains during sleep. Do psychadelics. Feed randomness to
    your weird, prepared mind.
 
+If you've read 3 Body Problem, conscious needs a Thomas Wade. If you haven't, ...
+
 [^hard-problem]: https://en.wikipedia.org/wiki/Hard_problem_of_consciousness
 [^iit]: https://en.wikipedia.org/wiki/Integrated_information_theory
