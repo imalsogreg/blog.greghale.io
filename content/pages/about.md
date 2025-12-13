@@ -236,7 +236,7 @@ the dev tooling, the blogging, the and the videos.
     Is that me - a collection of jobs?
     And what's next? I'm anxious about the
     future of AI, neuromorphic computing, neuroscience,
-    philosophy, and the role want to play in it.
+    philosophy, and the role I want to play in it.
 </p>
 <p>
     Do you feel the same way? Is there something interesting
