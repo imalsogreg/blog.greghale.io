@@ -208,7 +208,7 @@
     <div class="post-content"><h2 id="prologue">Prologue</h2>
 <p>In my <a href="https://blog.greghale.io/posts/claude-winner-takes-all/2023-03-24-gpt4-neuron-schema.html">last post</a>, ChatGPT and I worked through some
 ideas for domain specific languages (DSLs) for describing biologically realistic neural networks.</p>
-<p><a href="https://anthropic.com">Anthropic</a>'s <a href="https://claude.ai">Claude-2</a> has come on the scene
+<p><a rel="external" href="https://anthropic.com">Anthropic</a>'s <a rel="external" href="https://claude.ai">Claude-2</a> has come on the scene
 as another amazingly powerful chat assistant, and I wondered if I could give in the inverse
 problem - taking a neural network defined in a brand new DSL and asking Claude to tell
 me what it could about the high level properties of the network.</p>
@@ -223,103 +223,103 @@ I'm not. :)</p>
 <h2 id="the-claude-chat-session">The Claude chat session</h2>
 <h4 id="greg">Greg:</h4>
 <p>Could you guess what the high-level properties of this neural network are?</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>let pos = ./neuron_position.ffg
-</span><span>let params = {
-</span><span>      n_clusters: (4 : Natural),
-</span><span>      n_excitatory_per_cluster: (5 : Natural)
-</span><span>    }
-</span><span>let n_inhibitory_per_cluster = params.n_clusters -- 1
-</span><span>let n_neurons_per_cluster = params.n_excitatory_per_cluster + params.n_clusters -- 1
-</span><span>let prelude = https://raw.githubusercontent.com/reuron/reuron-io/main/prelude/package.ffg
-</span><span>let excitatory_neuron = ./excitatory_neuron.ffg
-</span><span>let inhibitory_neuron = ./inhibitory_neuron.ffg
-</span><span>let excitatory_synapse = ./excitatory_synapse.ffg
-</span><span>let inhibitory_synapse = ./inhibitory_synapse.ffg
-</span><span>
-</span><span>
-</span><span>let cluster_neurons = \cluster -&gt;
-</span><span>  prelude.list.generate params.n_excitatory_per_cluster (\i -&gt; {
-</span><span>    location: pos cluster true i,
-</span><span>    neuron: excitatory_neuron [],
-</span><span>    stimulator_segments: []
-</span><span>  }) + prelude.list.generate n_inhibitory_per_cluster (\i -&gt; {
-</span><span>    location: pos cluster false i,
-</span><span>    neuron: inhibitory_neuron [],
-</span><span>    stimulator_segments: []
-</span><span>  })
-</span><span>let neurons =
-</span><span>  prelude.list.concat
-</span><span>  (prelude.list.generate params.n_clusters cluster_neurons)
-</span><span>
-</span><span>let cluster_excitatory_synapses = \cluster -&gt;
-</span><span>  prelude.list.generate params.n_excitatory_per_cluster
-</span><span>  (\local_id -&gt;
-</span><span>   let global_offset = cluster * n_neurons_per_cluster
-</span><span>   let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
-</span><span>   in
-</span><span>   [Synapse {
-</span><span>    pre_neuron: global_offset + local_id,
-</span><span>    pre_segment: 1,
-</span><span>    post_neuron: global_offset + local_next,
-</span><span>    post_segment: 10,
-</span><span>    synapse_membranes: excitatory_synapse
-</span><span>  }] +
-</span><span>  prelude.list.concat
-</span><span>    (prelude.list.generate params.n_excitatory_per_cluster
-</span><span>      (\e -&gt; prelude.list.generate n_inhibitory_per_cluster
-</span><span>       (\i -&gt; Synapse {
-</span><span>         pre_neuron: global_offset + e,
-</span><span>         pre_segment: 1,
-</span><span>         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
-</span><span>         post_segment: 10,
-</span><span>         synapse_membranes: excitatory_synapse
-</span><span>       }
-</span><span>      ))
-</span><span>    )
-</span><span>  )
-</span><span>
-</span><span>let excitatory_synapses = prelude.list.concat
-</span><span>  (prelude.list.concat
-</span><span>    (prelude.list.generate params.n_clusters
-</span><span>      (\c -&gt; cluster_excitatory_synapses c)))
-</span><span>
-</span><span>let cluster_inhibitory_synapses = \cluster -&gt;
-</span><span>  let source_offset = (cluster * n_neurons_per_cluster) + params.n_excitatory_per_cluster
-</span><span>  in
-</span><span>  prelude.list.generate params.n_clusters
-</span><span>  (\target_cluster -&gt;
-</span><span>    if Natural/equal cluster target_cluster
-</span><span>    then []
-</span><span>    else
-</span><span>      let target_offset =
-</span><span>        target_cluster * (params.n_excitatory_per_cluster + n_inhibitory_per_cluster)
-</span><span>      in
-</span><span>      prelude.list.concat
-</span><span>      (prelude.list.generate n_inhibitory_per_cluster
-</span><span>       (\i -&gt; prelude.list.generate params.n_excitatory_per_cluster
-</span><span>        (\e -&gt; Synapse {
-</span><span>          pre_neuron: source_offset + i,
-</span><span>          pre_segment: 1,
-</span><span>          post_neuron: target_offset + e,
-</span><span>          post_segment: 1,
-</span><span>          synapse_membranes: inhibitory_synapse
-</span><span>        }
-</span><span>        )
-</span><span>       )
-</span><span>      )
-</span><span>  )
-</span><span>let inhibitory_synapses =
-</span><span>  prelude.list.concat
-</span><span>    (prelude.list.concat
-</span><span>      (prelude.list.generate params.n_clusters cluster_inhibitory_synapses))
-</span><span>
-</span><span>
-</span><span>in
-</span><span>  Scene {
-</span><span>    neurons: neurons,
-</span><span>    synapses: excitatory_synapses + inhibitory_synapses
-</span><span>  }
-</span></code></pre>
+<pre><code>let pos = ./neuron_position.ffg
+let params = {
+      n_clusters: (4 : Natural),
+      n_excitatory_per_cluster: (5 : Natural)
+    }
+let n_inhibitory_per_cluster = params.n_clusters -- 1
+let n_neurons_per_cluster = params.n_excitatory_per_cluster + params.n_clusters -- 1
+let prelude = https://raw.githubusercontent.com/reuron/reuron-io/main/prelude/package.ffg
+let excitatory_neuron = ./excitatory_neuron.ffg
+let inhibitory_neuron = ./inhibitory_neuron.ffg
+let excitatory_synapse = ./excitatory_synapse.ffg
+let inhibitory_synapse = ./inhibitory_synapse.ffg
+
+
+let cluster_neurons = \cluster -&gt;
+  prelude.list.generate params.n_excitatory_per_cluster (\i -&gt; {
+    location: pos cluster true i,
+    neuron: excitatory_neuron [],
+    stimulator_segments: []
+  }) + prelude.list.generate n_inhibitory_per_cluster (\i -&gt; {
+    location: pos cluster false i,
+    neuron: inhibitory_neuron [],
+    stimulator_segments: []
+  })
+let neurons =
+  prelude.list.concat
+  (prelude.list.generate params.n_clusters cluster_neurons)
+
+let cluster_excitatory_synapses = \cluster -&gt;
+  prelude.list.generate params.n_excitatory_per_cluster
+  (\local_id -&gt;
+   let global_offset = cluster * n_neurons_per_cluster
+   let local_next = Natural/mod (local_id + 1) params.n_excitatory_per_cluster
+   in
+   [Synapse {
+    pre_neuron: global_offset + local_id,
+    pre_segment: 1,
+    post_neuron: global_offset + local_next,
+    post_segment: 10,
+    synapse_membranes: excitatory_synapse
+  }] +
+  prelude.list.concat
+    (prelude.list.generate params.n_excitatory_per_cluster
+      (\e -&gt; prelude.list.generate n_inhibitory_per_cluster
+       (\i -&gt; Synapse {
+         pre_neuron: global_offset + e,
+         pre_segment: 1,
+         post_neuron: global_offset + params.n_excitatory_per_cluster + i,
+         post_segment: 10,
+         synapse_membranes: excitatory_synapse
+       }
+      ))
+    )
+  )
+
+let excitatory_synapses = prelude.list.concat
+  (prelude.list.concat
+    (prelude.list.generate params.n_clusters
+      (\c -&gt; cluster_excitatory_synapses c)))
+
+let cluster_inhibitory_synapses = \cluster -&gt;
+  let source_offset = (cluster * n_neurons_per_cluster) + params.n_excitatory_per_cluster
+  in
+  prelude.list.generate params.n_clusters
+  (\target_cluster -&gt;
+    if Natural/equal cluster target_cluster
+    then []
+    else
+      let target_offset =
+        target_cluster * (params.n_excitatory_per_cluster + n_inhibitory_per_cluster)
+      in
+      prelude.list.concat
+      (prelude.list.generate n_inhibitory_per_cluster
+       (\i -&gt; prelude.list.generate params.n_excitatory_per_cluster
+        (\e -&gt; Synapse {
+          pre_neuron: source_offset + i,
+          pre_segment: 1,
+          post_neuron: target_offset + e,
+          post_segment: 1,
+          synapse_membranes: inhibitory_synapse
+        }
+        )
+       )
+      )
+  )
+let inhibitory_synapses =
+  prelude.list.concat
+    (prelude.list.concat
+      (prelude.list.generate params.n_clusters cluster_inhibitory_synapses))
+
+
+in
+  Scene {
+    neurons: neurons,
+    synapses: excitatory_synapses + inhibitory_synapses
+  }
+</code></pre>
 <hr/>
 <h4 id="claude">Claude:</h4>
 <p>Based on the code provided, I can infer the following high-level properties about this neural network:</p>
@@ -416,17 +416,17 @@ inhibit each other via a global pool of inhibitory neurons. As such, it behaves
 as a series of interconnected attractor networks that maintain their own
 internal representations, while suppressing the activity of the other clusters.</p>
 <p>Some key behavioral properties:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Within a cluster, the excitatory-excitatory recurrence allows maintenance of
-</span><span>an active representation or &quot;memory&quot; in that module after the input is removed.
-</span><span>The inhibitory connections between clusters implement a winner-take-all type
-</span><span>computation, where the most strongly activated cluster will suppress activity
-</span><span>in the other clusters.
-</span><span>
-</span><span>This allows multiple separate representations to be held simultaneously across
-</span><span>the different recurrent clusters. The global inhibition supports competition
-</span><span>between representations held in different clusters depending on the vigor of
-</span><span>the activity, novelty, or other salient features.
-</span></code></pre>
+<pre><code>Within a cluster, the excitatory-excitatory recurrence allows maintenance of
+an active representation or &quot;memory&quot; in that module after the input is removed.
+The inhibitory connections between clusters implement a winner-take-all type
+computation, where the most strongly activated cluster will suppress activity
+in the other clusters.
+
+This allows multiple separate representations to be held simultaneously across
+the different recurrent clusters. The global inhibition supports competition
+between representations held in different clusters depending on the vigor of
+the activity, novelty, or other salient features.
+</code></pre>
 <p>In summary, the modular and competitive design allows this network to maintain
 multiple context-dependent memories or rules simultaneously, while utilizing a
 global suppression mechanism to dictate which module is currently dominating the
@@ -503,7 +503,7 @@ problem precisely with way less interaction from me:</p>
         </main>
          <footer class="footer">
     
-    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
     
     <span>
         Powered by

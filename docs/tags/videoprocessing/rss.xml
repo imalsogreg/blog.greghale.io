@@ -49,20 +49,20 @@ and select &lt;code&gt;File &amp;gt; New Screen Recording&lt;&#x2F;code&gt;. Fra
 generous space (avoid clipping the shadow dropped by the window). Click the
 &quot;Stop&quot; icon in the menu bar when done.&lt;&#x2F;li&gt;
 &lt;li&gt;Trim the time: &lt;code&gt;Edit &amp;gt; Trim&lt;&#x2F;code&gt; in QuickTime. Save.&lt;&#x2F;li&gt;
-&lt;li&gt;Crop the video:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i screengrab_trimmed.mov  -filter:v &amp;quot;crop=1332:1200:0:0&amp;quot; -c:a copy screengrab_cropped.mov
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;li&gt;Crop the video:&lt;pre&gt;&lt;code&gt;ffmpeg -i screengrab_trimmed.mov  -filter:v &amp;quot;crop=1332:1200:0:0&amp;quot; -c:a copy screengrab_cropped.mov
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;&#x2F;li&gt;
-&lt;li&gt;Apply the gaussian blur, flip and composite:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i screengrab_cropped.mov -filter_complex &amp;quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&amp;quot; output.mov
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;li&gt;Apply the gaussian blur, flip and composite:&lt;pre&gt;&lt;code&gt;ffmpeg -i screengrab_cropped.mov -filter_complex &amp;quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&amp;quot; output.mov
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 At this point, we have a stack of the original screen grab, with its mirror image blurred beneath.
 Next we need that blurred mirror image to fade to white.&lt;&#x2F;li&gt;
-&lt;li&gt;Determine the image dimensions:&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;li&gt;Determine the image dimensions:&lt;pre&gt;&lt;code&gt;ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 We will use this to create our gratient as a .png file with matching size in Gimp.&lt;&#x2F;li&gt;
 &lt;li&gt;Create a gradient that goes from transparent to solid white, starting at the top
 of the mirrored image and ending 20-40 pixels lower.&lt;&#x2F;li&gt;
-&lt;li&gt;Overlay the gradient onto the movie.&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ffmpeg -i output.mov -i gradient.png -filter_complex &amp;quot;overlay=0:main_h-overlay_h&amp;quot; output2.mov
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;li&gt;Overlay the gradient onto the movie.&lt;pre&gt;&lt;code&gt;ffmpeg -i output.mov -i gradient.png -filter_complex &amp;quot;overlay=0:main_h-overlay_h&amp;quot; output2.mov
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;

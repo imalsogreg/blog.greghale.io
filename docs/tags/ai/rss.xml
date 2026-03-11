@@ -16,12 +16,12 @@
           <guid>https://blog.greghale.io/posts/jj-for-vibe-coding/</guid>
           <description xml:base="https://blog.greghale.io/posts/jj-for-vibe-coding/">&lt;p&gt;AI coding assistants have sped up our coding. Parallel agents
 are dividing the development times down further. Version control
-is becoming more of a bottleneck. By &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Amdahl%27s_law&quot;&gt;Amdahl&#x27;s Law&lt;&#x2F;a&gt; VCS is putting a new
+is becoming more of a bottleneck. By &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Amdahl%27s_law&quot;&gt;Amdahl&#x27;s Law&lt;&#x2F;a&gt; VCS is putting a new
 fundamental limit on how fast software development can go. This isn&#x27;t
 just an intuitive claim, it&#x27;s something that actively bugged me
 at work and reminded me of an odd tool we used for &lt;em&gt;human&lt;&#x2F;em&gt; based
 VCS at Kadena: &lt;code&gt;jj&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;So, while implementing a meaty feature for the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boundaryml&#x2F;baml&quot;&gt;BAML&lt;&#x2F;a&gt; language with Claude Code, and
+&lt;p&gt;So, while implementing a meaty feature for the &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boundaryml&#x2F;baml&quot;&gt;BAML&lt;&#x2F;a&gt; language with Claude Code, and
 feeling the tedium of managing &lt;code&gt;git&lt;&#x2F;code&gt;&#x27;s staging area and branches,
 I decided to dust off &lt;code&gt;jj&lt;&#x2F;code&gt; and try in this new AI coding context.
 The results have been great. Here&#x27;s why:&lt;&#x2F;p&gt;
@@ -48,19 +48,19 @@ chunk up work is pure joy.&lt;&#x2F;p&gt;
 &lt;p&gt;Rebasing is scary in &lt;code&gt;git&lt;&#x2F;code&gt; because it&#x27;s easy to rewrite history and
 damage the repository. Rebases in &lt;code&gt;jj&lt;&#x2F;code&gt; are safe and common.&lt;&#x2F;p&gt;
 &lt;p&gt;This is how you move a single commit to some other place in the history:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj rebase -r SOME_COMMIT --destination SOME_COMMIT
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj rebase -r SOME_COMMIT --destination SOME_COMMIT
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Or move a whole series of commits to some other place in the
 history:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;With parallel agents, rebasing is very common, and the improved
 user experience in &lt;code&gt;jj&lt;&#x2F;code&gt; reduces rebase toil.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;4-easy-undo&quot;&gt;4. Easy Undo&lt;&#x2F;h2&gt;
 &lt;p&gt;Whatever you just did in &lt;code&gt;jj&lt;&#x2F;code&gt;, if you realize it didn&#x27;t go the way
 you expected, &lt;code&gt;undo&lt;&#x2F;code&gt; has you covered:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj undo
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj undo
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Especially helpful while you&#x27;re still learning the ropes. A lot of noise
 is made about ChatGPT stealing traffic from StackOverflow. &lt;code&gt;jj&lt;&#x2F;code&gt;
 will cut into this market share further by removing the need to search
@@ -69,16 +69,16 @@ work projects.&lt;&#x2F;p&gt;
 &lt;p&gt;If the AI goes down a bad path and writes a bunch of code you dislike,
 &lt;code&gt;abandon&lt;&#x2F;code&gt; abandons the work item.&lt;&#x2F;p&gt;
 &lt;p&gt;Abandon the current commit:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj abandon
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj abandon
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Abandon some other commit in the history:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj abandon -r SOME_COMMIT
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj abandon -r SOME_COMMIT
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;And if you forgot to introduce a new commit before starting the agent
 on a coding task unrelated to one you had in-progress, it&#x27;s easy
 to split the work into two separate commits:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code&gt;jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h1 id=&quot;jj-loves-vibe-coding&quot;&gt;jj loves vibe coding&lt;&#x2F;h1&gt;
 &lt;p&gt;Running &lt;code&gt;jj&lt;&#x2F;code&gt; feels like &quot;managing&quot; something:
 high level, details-managed-for-you, simple. Running &lt;code&gt;git&lt;&#x2F;code&gt;
@@ -101,12 +101,12 @@ the rest of the team uses &lt;code&gt;git&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
 not trivial. It took me a few weeks to reach the same
 level of productivity that I built up over many years using
 &lt;code&gt;git&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
-&lt;li&gt;There is an excellent &lt;a href=&quot;https:&#x2F;&#x2F;steveklabnik.github.io&#x2F;jujutsu-tutorial&#x2F;&quot;&gt;tutorial from Steve Klabnik&lt;&#x2F;a&gt; and an excellent
-&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2otjrTzRfVk&amp;amp;t=327s&quot;&gt;video from Chris Krycho&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
-&lt;li&gt;Get started at the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jj-vcs&#x2F;jj&quot;&gt;jj GitHub repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;There is an excellent &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;steveklabnik.github.io&#x2F;jujutsu-tutorial&#x2F;&quot;&gt;tutorial from Steve Klabnik&lt;&#x2F;a&gt; and an excellent
+&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2otjrTzRfVk&amp;amp;t=327s&quot;&gt;video from Chris Krycho&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Get started at the &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jj-vcs&#x2F;jj&quot;&gt;jj GitHub repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;we-have-coding-assistants-so-why-learn-a-new-tool&quot;&gt;We have coding assistants - so why learn a new tool?&lt;&#x2F;h2&gt;
-&lt;p&gt;As someone who works on &lt;a href=&quot;https:&#x2F;&#x2F;boundaryml.com&quot;&gt;developer tools&lt;&#x2F;a&gt; at
+&lt;p&gt;As someone who works on &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;boundaryml.com&quot;&gt;developer tools&lt;&#x2F;a&gt; at
 the twilight of humanity&#x27;s involvement in the software development
 process, I&#x27;ve worried about the utility of learning new tools,
 writing new languages, or making any bets on human productivity.

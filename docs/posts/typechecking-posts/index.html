@@ -218,17 +218,17 @@ time.</p>
 to do any work. Just create a file in <code>posts/</code> with the <code>.lhs</code>
 file extension.</p>
 <p>The format is described well in the
-<a href="https://wiki.haskell.org/Literate_programming">Haskell Wiki</a>.
+<a rel="external" href="https://wiki.haskell.org/Literate_programming">Haskell Wiki</a>.
 The only features I've used so far are</p>
 <h3 id="code-blocks">Code blocks</h3>
 <p>Most of my code blocks are long, so I prefer the latex-like
 command over bird-tracks</p>
-<pre data-lang="latex" style="background-color:#2b303b;color:#c0c5ce;" class="language-latex "><code class="language-latex" data-lang="latex"><span style="color:#b48ead;">\begin</span><span>{code}
-</span><span>example = do
-</span><span>  x &lt;- getTheX
-</span><span>  useX x
-</span><span style="color:#b48ead;">\end</span><span>{code}
-</span></code></pre>
+<pre><code data-lang="latex">\begin{code}
+example = do
+  x &lt;- getTheX
+  useX x
+\end{code}
+</code></pre>
 <h3 id="hidden-imports">Hidden imports</h3>
 <p>Of course we need to import some modules if <code>ghc</code> is to
 typecheck our <code>.lhs</code> file. Since the imports are often not
@@ -236,34 +236,34 @@ important to the explanation in the blog, I hide them.</p>
 <p>Imaginary functions that I will later use in the blog post
 but which aren't important to the topic at hand can be defined
 here, too.</p>
-<pre data-lang="latex" style="background-color:#2b303b;color:#c0c5ce;" class="language-latex "><code class="language-latex" data-lang="latex"><span style="color:#96b5b4;">\long</span><span style="color:#b48ead;">\def</span><span style="color:#96b5b4;">\ignore</span><span>#1{}
-</span><span>
-</span><span style="color:#96b5b4;">\ignore</span><span>{
-</span><span style="color:#b48ead;">\begin</span><span>{code}
-</span><span>{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
-</span><span>import qualified Servant.Server as Servant
-</span><span>import Servant.API ((:&lt;|&gt;), (:&gt;))
-</span><span>import qualified Database.PostgreSQL.Simple as PG
-</span><span>
-</span><span>processInputs :: Inputs -&gt; IO Outputs
-</span><span>processInputs = undefined
-</span><span style="color:#b48ead;">\end</span><span>{code}
-</span></code></pre>
+<pre><code data-lang="latex">\long\def\ignore#1{}
+
+\ignore{
+\begin{code}
+{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
+import qualified Servant.Server as Servant
+import Servant.API ((:&lt;|&gt;), (:&gt;))
+import qualified Database.PostgreSQL.Simple as PG
+
+processInputs :: Inputs -&gt; IO Outputs
+processInputs = undefined
+\end{code}
+</code></pre>
 <h2 id="nix-shell">nix-shell</h2>
 <p>A separate <code>nix-shell</code> is available for every post, in <code>shells.nix</code>.
 At the top of this file is a record that maps post names to the names
 of <code>Haskell</code> packages that I need to have in scope. There's only one
 entry at the time of writing, because I only have one Literate Haskell
 blog post:</p>
-<pre data-lang="nix" style="background-color:#2b303b;color:#c0c5ce;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="color:#b48ead;">let
-</span><span>  </span><span style="color:#d08770;">shellPkgs </span><span>=
-</span><span>    { </span><span style="color:#d08770;">config-phases </span><span>= [&quot;</span><span style="color:#a3be8c;">generic-lens</span><span>&quot; &quot;</span><span style="color:#a3be8c;">lens</span><span>&quot; &quot;</span><span style="color:#a3be8c;">postgresql-simple</span><span>&quot; &quot;</span><span style="color:#a3be8c;">katip</span><span>&quot;]; };
-</span></code></pre>
+<pre><code data-lang="nix">let
+  shellPkgs =
+    { config-phases = [&quot;generic-lens&quot; &quot;lens&quot; &quot;postgresql-simple&quot; &quot;katip&quot;]; };
+</code></pre>
 <p>Later in the file, these lists are turned into derivations, so that I
 can say</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">nix-shell</span><span> ./shells.nix</span><span style="color:#bf616a;"> -A</span><span> config-phases \
-</span><span style="color:#bf616a;">  --run </span><span>&#39;</span><span style="color:#a3be8c;">ghcid --command &quot;ghci posts/2019-10-17-config-phase.lhs&quot;</span><span>&#39;
-</span></code></pre>
+<pre><code data-lang="bash">nix-shell ./shells.nix -A config-phases \
+  --run &#39;ghcid --command &quot;ghci posts/2019-10-17-config-phase.lhs&quot;&#39;
+</code></pre>
 <p>and now <code>ghcid</code> is recompiling my post and showing me the type errors
 every time the post is saved.</p>
 </div>
@@ -311,7 +311,7 @@ every time the post is saved.</p>
         </main>
          <footer class="footer">
     
-    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
     
     <span>
         Powered by

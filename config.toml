@@ -31,10 +31,6 @@ taxonomies = [
     {name = "tags", feed = true},
 ]
 
-[markdown]
-# Whether to do syntax highlighting
-highlight_code = true
-
 [extra]
 
 [extra.papermod]

@@ -37,7 +37,7 @@ beam of television static blasting from a spot at the back, left side of your
 head. The doctors didn&#x27;t say that other Vertigo patients had something similar.
 But for me, it came with the Vertigo and left with the Vertigo.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;the-inner-ear&quot;&gt;The inner ear&lt;&#x2F;h2&gt;
-&lt;p&gt;Let&#x27;s see what broke. &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hair_cell&quot;&gt;Hair cells&lt;&#x2F;a&gt; in
+&lt;p&gt;Let&#x27;s see what broke. &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hair_cell&quot;&gt;Hair cells&lt;&#x2F;a&gt; in
 the cochlea that are excited by the fluid oscillations caused by sound waves,
 letting us hear. The vestibular organs contain the same type of cell responding
 to a different fluid movement - the movement of fluid rotating in the
@@ -219,22 +219,22 @@ that interfere with my work and my ability to drive my family around.&lt;&#x2F;p
 aware of, it&#x27;s been 6 months since I&#x27;ve had an episode.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;&#x2F;h2&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;xpl2016&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;26936982&quot;&gt;Sodium channel diversity in the vestibular ganglion: NaV1.5,
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;26936982&quot;&gt;Sodium channel diversity in the vestibular ganglion: NaV1.5,
 NaV1.8, and tetrodotoxin-sensitive
 currents&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;xpl2016b&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;?term=liu+holt+utricle&quot;&gt;Functional development of mechanosensitive hair cells in stem
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;?term=liu+holt+utricle&quot;&gt;Functional development of mechanosensitive hair cells in stem
 cell-derived organoids parallels native vestibular hair
 cells&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;rabbitt&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;Wave mechanics of the vestibular semicircular
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;Wave mechanics of the vestibular semicircular
 canals&lt;&#x2F;a&gt; on PubMed&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;epley_youtube&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;4&lt;&#x2F;sup&gt;
 &lt;p&gt;An educational VHS video destribing BPPV and the Epley Maneuver.
-John Epley gives part of the introduction. &lt;a href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+John Epley gives part of the introduction. &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&quot;&gt;https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;28877495&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </description>
       </item>
@@ -257,17 +257,17 @@ time.&lt;&#x2F;p&gt;
 to do any work. Just create a file in &lt;code&gt;posts&#x2F;&lt;&#x2F;code&gt; with the &lt;code&gt;.lhs&lt;&#x2F;code&gt;
 file extension.&lt;&#x2F;p&gt;
 &lt;p&gt;The format is described well in the
-&lt;a href=&quot;https:&#x2F;&#x2F;wiki.haskell.org&#x2F;Literate_programming&quot;&gt;Haskell Wiki&lt;&#x2F;a&gt;.
+&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;wiki.haskell.org&#x2F;Literate_programming&quot;&gt;Haskell Wiki&lt;&#x2F;a&gt;.
 The only features I&#x27;ve used so far are&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;code-blocks&quot;&gt;Code blocks&lt;&#x2F;h3&gt;
 &lt;p&gt;Most of my code blocks are long, so I prefer the latex-like
 command over bird-tracks&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
-&lt;&#x2F;span&gt;&lt;span&gt;example = do
-&lt;&#x2F;span&gt;&lt;span&gt;  x &amp;lt;- getTheX
-&lt;&#x2F;span&gt;&lt;span&gt;  useX x
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;latex&quot;&gt;\begin{code}
+example = do
+  x &amp;lt;- getTheX
+  useX x
+\end{code}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;hidden-imports&quot;&gt;Hidden imports&lt;&#x2F;h3&gt;
 &lt;p&gt;Of course we need to import some modules if &lt;code&gt;ghc&lt;&#x2F;code&gt; is to
 typecheck our &lt;code&gt;.lhs&lt;&#x2F;code&gt; file. Since the imports are often not
@@ -275,34 +275,34 @@ important to the explanation in the blog, I hide them.&lt;&#x2F;p&gt;
 &lt;p&gt;Imaginary functions that I will later use in the blog post
 but which aren&#x27;t important to the topic at hand can be defined
 here, too.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\long&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\def&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;#1{}
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\ignore&lt;&#x2F;span&gt;&lt;span&gt;{
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{code}
-&lt;&#x2F;span&gt;&lt;span&gt;{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
-&lt;&#x2F;span&gt;&lt;span&gt;import qualified Servant.Server as Servant
-&lt;&#x2F;span&gt;&lt;span&gt;import Servant.API ((:&amp;lt;|&amp;gt;), (:&amp;gt;))
-&lt;&#x2F;span&gt;&lt;span&gt;import qualified Database.PostgreSQL.Simple as PG
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;processInputs :: Inputs -&amp;gt; IO Outputs
-&lt;&#x2F;span&gt;&lt;span&gt;processInputs = undefined
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{code}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;latex&quot;&gt;\long\def\ignore#1{}
+
+\ignore{
+\begin{code}
+{-# LANGUAGE ScopedTypeVariables, OverloadedStrings, TypeApplications #-}
+import qualified Servant.Server as Servant
+import Servant.API ((:&amp;lt;|&amp;gt;), (:&amp;gt;))
+import qualified Database.PostgreSQL.Simple as PG
+
+processInputs :: Inputs -&amp;gt; IO Outputs
+processInputs = undefined
+\end{code}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;nix-shell&quot;&gt;nix-shell&lt;&#x2F;h2&gt;
 &lt;p&gt;A separate &lt;code&gt;nix-shell&lt;&#x2F;code&gt; is available for every post, in &lt;code&gt;shells.nix&lt;&#x2F;code&gt;.
 At the top of this file is a record that maps post names to the names
 of &lt;code&gt;Haskell&lt;&#x2F;code&gt; packages that I need to have in scope. There&#x27;s only one
 entry at the time of writing, because I only have one Literate Haskell
 blog post:&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;nix&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-nix &quot;&gt;&lt;code class=&quot;language-nix&quot; data-lang=&quot;nix&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;shellPkgs &lt;&#x2F;span&gt;&lt;span&gt;=
-&lt;&#x2F;span&gt;&lt;span&gt;    { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;config-phases &lt;&#x2F;span&gt;&lt;span&gt;= [&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;generic-lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;lens&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;postgresql-simple&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;katip&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;]; };
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;nix&quot;&gt;let
+  shellPkgs =
+    { config-phases = [&amp;quot;generic-lens&amp;quot; &amp;quot;lens&amp;quot; &amp;quot;postgresql-simple&amp;quot; &amp;quot;katip&amp;quot;]; };
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Later in the file, these lists are turned into derivations, so that I
 can say&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nix-shell&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;shells.nix&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; config-phases \
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --run &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ghcid --command &amp;quot;ghci posts&#x2F;2019-10-17-config-phase.lhs&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;bash&quot;&gt;nix-shell .&#x2F;shells.nix -A config-phases \
+  --run &amp;#39;ghcid --command &amp;quot;ghci posts&#x2F;2019-10-17-config-phase.lhs&amp;quot;&amp;#39;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;and now &lt;code&gt;ghcid&lt;&#x2F;code&gt; is recompiling my post and showing me the type errors
 every time the post is saved.&lt;&#x2F;p&gt;
 </description>
@@ -320,68 +320,68 @@ configuration to your program? This example makes two database connections
 and allows the hostname and logging level to be configured. Imagine how
 &lt;code&gt;main&lt;&#x2F;code&gt; might grow over time as different people follow the patterns they
 find here while adding more parameters.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
-&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
-&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
-&lt;&#x2F;span&gt;&lt;span&gt;{-# &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;LANGUAGE&lt;&#x2F;span&gt;&lt;span&gt; ScopedTypeVariables, DefaultSignatures #-}
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;Data.Text                         (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Text&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;GHC.Generics                      (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import           &lt;&#x2F;span&gt;&lt;span&gt;Control.Lens
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Data.Text                         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;Text
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Katip
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Database.PostgreSQL.Simple        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;PG
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import qualified &lt;&#x2F;span&gt;&lt;span&gt;Data.Generics.Product.Constraints &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;GenericLens
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1 &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1
-&lt;&#x2F;span&gt;&lt;span&gt;  { hostname   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text
-&lt;&#x2F;span&gt;&lt;span&gt;  , userDBUser :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , userDBPass :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , userDBDB   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , userDBPort :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Integer
-&lt;&#x2F;span&gt;&lt;span&gt;  , userDBHost :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , logLevel :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBUser :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBHost :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBPort :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Integer
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBDB   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDBPass :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;deriving&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: IO &lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span&gt;main = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigExample1&lt;&#x2F;span&gt;&lt;span&gt;{..} &amp;lt;- loadConfig &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;local.yaml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
-&lt;&#x2F;span&gt;&lt;span&gt;  print &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Connecting to User Database&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
-&lt;&#x2F;span&gt;&lt;span&gt;  userDB &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
-&lt;&#x2F;span&gt;&lt;span&gt;      { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectUser     = userDBUser
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectHost     = userDBHost
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPort     = fromIntegral userDBPort
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPassword = userDBPass
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectDatabase = userDBDB
-&lt;&#x2F;span&gt;&lt;span&gt;      }
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- ... a block of initialization code
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- ... maybe written by other team members
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;--
-&lt;&#x2F;span&gt;&lt;span&gt;  analysisDB &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
-&lt;&#x2F;span&gt;&lt;span&gt;      { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectUser     = analysisDBUser
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectHost     = analysisDBHost
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPort     = fromIntegral analysisDBPort
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectPassword = analysisDBPass
-&lt;&#x2F;span&gt;&lt;span&gt;      , &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connectDatabase = analysisDBDB
-&lt;&#x2F;span&gt;&lt;span&gt;      }  
-&lt;&#x2F;span&gt;&lt;span&gt;  runBusinessLogic analysisDB userDB logLevel (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text&lt;&#x2F;span&gt;&lt;span&gt;.unpack hostname)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic
-&lt;&#x2F;span&gt;&lt;span&gt;  :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
-&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
-&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
-&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;String
-&lt;&#x2F;span&gt;&lt;span&gt;  -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;IO ()
-&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic userDB analysisDB logLevel myHostname = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
-&lt;&#x2F;span&gt;&lt;span&gt;  undefined
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;{-# LANGUAGE RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
+{-# LANGUAGE MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
+{-# LANGUAGE AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
+{-# LANGUAGE ScopedTypeVariables, DefaultSignatures #-}
+import           Data.Text                         (Text)
+import           GHC.Generics                      (Generic)
+import           Control.Lens
+import qualified Data.Text                         as Text
+import qualified Katip
+import qualified Database.PostgreSQL.Simple        as PG
+import qualified Data.Generics.Product.Constraints as GenericLens
+
+data ConfigExample1 = ConfigExample1
+  { hostname   :: Text
+  , userDBUser :: String
+  , userDBPass :: String
+  , userDBDB   :: String
+  , userDBPort :: Integer
+  , userDBHost :: String
+  , logLevel :: Katip.Severity
+  , analysisDBUser :: String
+  , analysisDBHost :: String
+  , analysisDBPort :: Integer
+  , analysisDBDB   :: String
+  , analysisDBPass :: String
+  } deriving (Generic)
+
+
+main :: IO ()
+main = do
+  ConfigExample1{..} &amp;lt;- loadConfig &amp;quot;local.yaml&amp;quot;
+  print &amp;quot;Connecting to User Database&amp;quot;
+  userDB &amp;lt;- PG.connect PG.ConnectInfo
+      { PG.connectUser     = userDBUser
+      , PG.connectHost     = userDBHost
+      , PG.connectPort     = fromIntegral userDBPort
+      , PG.connectPassword = userDBPass
+      , PG.connectDatabase = userDBDB
+      }
+  -- ... a block of initialization code
+  -- ... maybe written by other team members
+  --
+  analysisDB &amp;lt;- PG.connect PG.ConnectInfo
+      { PG.connectUser     = analysisDBUser
+      , PG.connectHost     = analysisDBHost
+      , PG.connectPort     = fromIntegral analysisDBPort
+      , PG.connectPassword = analysisDBPass
+      , PG.connectDatabase = analysisDBDB
+      }  
+  runBusinessLogic analysisDB userDB logLevel (Text.unpack hostname)
+
+
+
+runBusinessLogic
+  :: PG.Connection
+  -&amp;gt; PG.Connection
+  -&amp;gt; Katip.Severity
+  -&amp;gt; String
+  -&amp;gt; IO ()
+runBusinessLogic userDB analysisDB logLevel myHostname = do
+  undefined
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;What problems will we run into as we try to scale this program up?&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Flat format&lt;&#x2F;strong&gt; Without organization, it&#x27;s easy for config files
@@ -399,16 +399,16 @@ configuration. Let&#x27;s start by drawing a connection between
 the configuration phase, and the running phase. We&#x27;ll start by
 using a single configuration type that abstracts over the &lt;em&gt;phase&lt;&#x2F;em&gt;
 at which it is used:&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; (p :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase&lt;&#x2F;span&gt;&lt;span&gt;) = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Config
-&lt;&#x2F;span&gt;&lt;span&gt;  { userDB     :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
-&lt;&#x2F;span&gt;&lt;span&gt;  , analysisDB :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
-&lt;&#x2F;span&gt;&lt;span&gt;  , hostname   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Text
-&lt;&#x2F;span&gt;&lt;span&gt;  , logLevel   :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Katip&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Severity
-&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;deriving&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Generic&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Config    &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Resources &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigF&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;data ConfigF (p :: Phase) = Config
+  { userDB     :: AtPhase p PG.Connection
+  , analysisDB :: AtPhase p PG.Connection
+  , hostname   :: Text
+  , logLevel   :: Katip.Severity
+  } deriving (Generic)
+
+type Config    = ConfigF &amp;#39;ConfigTime
+type Resources = ConfigF &amp;#39;RunTime
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Some of our configuration fields are regular Haskell datatypes, like
 &lt;code&gt;Text&lt;&#x2F;code&gt; and &lt;code&gt;Katip.Severity&lt;&#x2F;code&gt;. These values are specified and used in
 the same way. But the &lt;code&gt;userDB&lt;&#x2F;code&gt; and &lt;code&gt;analysisDB&lt;&#x2F;code&gt; fields are defined
@@ -417,14 +417,14 @@ in terms of &lt;code&gt;Phase&lt;&#x2F;code&gt; and &lt;code&gt;AtPhase&lt;&#x2F
 for specifying two things (a) the configuration &lt;em&gt;data&lt;&#x2F;em&gt; and (b) the
 configuration &lt;em&gt;result&lt;&#x2F;em&gt;, in one go.&lt;&#x2F;p&gt;
 &lt;p&gt;Our &lt;code&gt;main&lt;&#x2F;code&gt; function will look more like this:&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span&gt;main&amp;#39; = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;cfg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Config&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;loadConfig&lt;&#x2F;span&gt;&lt;span&gt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;local&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;res &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Resources&lt;&#x2F;span&gt;&lt;span&gt; &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildConfig cfg
-&lt;&#x2F;span&gt;&lt;span&gt;  runBusinessLogic&amp;#39; res
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;runBusinessLogic&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: Resources -&amp;gt; IO &lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span&gt;runBusinessLogic&amp;#39; = undefined
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;main&amp;#39; = do
+  cfg :: Config    &amp;lt;- loadConfig &amp;quot;local.yaml&amp;quot;
+  res :: Resources &amp;lt;- buildConfig cfg
+  runBusinessLogic&amp;#39; res
+
+runBusinessLogic&amp;#39; :: Resources -&amp;gt; IO ()
+runBusinessLogic&amp;#39; = undefined
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Whether the added complexity is worth it depends on a few things.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Configuration complexity&lt;&#x2F;strong&gt; If your configuration is simple,
@@ -435,39 +435,39 @@ a type family. If there are other aspects of your codebase
 that use your complexity budget, or if the budget is low
 for other reasons, then it&#x27;s best to treat this technique
 as a fun curiosity. Use your budget on something with a
-higher power-to-weight ratio, like &lt;a href=&quot;https:&#x2F;&#x2F;dhall-lang.org&quot;&gt;dhall&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+higher power-to-weight ratio, like &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;dhall-lang.org&quot;&gt;dhall&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;Let&#x27;s build the required machinery.&lt;&#x2F;p&gt;
 &lt;p&gt;First, we use &lt;code&gt;DataKinds&lt;&#x2F;code&gt; to
 define a new kind &lt;code&gt;Phase&lt;&#x2F;code&gt;
 inhabited by two types &lt;code&gt;&#x27;ConfigTime&lt;&#x2F;code&gt; and &lt;code&gt;&#x27;RunTime&lt;&#x2F;code&gt;
 to specialize our application&#x27;s configuration for one phase or the other.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;data &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase
-&lt;&#x2F;span&gt;&lt;span&gt;  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime
-&lt;&#x2F;span&gt;&lt;span&gt;  | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;data Phase
+  = ConfigTime
+  | RunTime
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Next, a type family will let us associate a configuration type
 to a runtime type for some particular resource.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;HasPhases &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; (p :: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Phase&lt;&#x2F;span&gt;&lt;span&gt;) t
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance HasPhases PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Connection where
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConfigTime PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ConnectInfo
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;AtPhase&lt;&#x2F;span&gt;&lt;span&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;RunTime    PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;Connection
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;class HasPhases t where
+  type AtPhase (p :: Phase) t
+
+instance HasPhases PG.Connection where
+  type AtPhase &amp;#39;ConfigTime PG.Connection = PG.ConnectInfo
+  type AtPhase &amp;#39;RunTime    PG.Connection = PG.Connection
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Another typeclass allows the construction of a resource
 from its configuration data. The two type parameters correspond
 to the configtime and runtime types.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ToRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cty rty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
-&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;toRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;-&amp;gt; IO &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rty
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;-- | Catch-all instance for regular (not phase-specific) types
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance ToRuntime &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ty ty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;where
-&lt;&#x2F;span&gt;&lt;span&gt;  toRuntime = return
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;instance ToRuntime PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ConnectInfo PG&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Connection where
-&lt;&#x2F;span&gt;&lt;span&gt;  toRuntime = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;PG&lt;&#x2F;span&gt;&lt;span&gt;.connect
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;class ToRuntime cty rty where
+  toRuntime :: cty -&amp;gt; IO rty
+
+-- | Catch-all instance for regular (not phase-specific) types
+instance ToRuntime ty ty where
+  toRuntime = return
+
+instance ToRuntime PG.ConnectInfo PG.Connection where
+  toRuntime = PG.connect
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;There is a catch-all instance for cases when the configtime
 type is the same as the runtime type. When we eventually
 process our configuration record, the catch-all instance will
@@ -481,16 +481,16 @@ the aside, I hope it makes sense)&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;generic-lens&quot;&gt;generic-lens&lt;&#x2F;h2&gt;
 &lt;p&gt;In order to have our &lt;code&gt;buildConfig&lt;&#x2F;code&gt; function, we
 will use some fabulous magic from
-&lt;a href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens&quot;&gt;generic-lens&lt;&#x2F;a&gt;.
-Specifically, &lt;a href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens-1.2.0.1&#x2F;docs&#x2F;Data-Generics-Product-Constraints.html#v:constraints&quot;&gt;&lt;code&gt;constraints&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;
+&lt;a rel=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens&quot;&gt;generic-lens&lt;&#x2F;a&gt;.
+Specifically, &lt;a rel=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;hackage.haskell.org&#x2F;package&#x2F;generic-lens-1.2.0.1&#x2F;docs&#x2F;Data-Generics-Product-Constraints.html#v:constraints&quot;&gt;&lt;code&gt;constraints&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;
 allows us to traverse a record, applying an effectful function
 at every field with a type satisfying some particular constraint.&lt;&#x2F;p&gt;
 &lt;p&gt;We choose that constraint to be our &lt;code&gt;ToRuntime&lt;&#x2F;code&gt; class.&lt;&#x2F;p&gt;
 &lt;p&gt;Now we can write &lt;code&gt;buildConfig&lt;&#x2F;code&gt; without repeating any
 details about the internals of our configuration record.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;haskell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-haskell &quot;&gt;&lt;code class=&quot;language-haskell&quot; data-lang=&quot;haskell&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;buildConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:: ConfigF ConfigTime -&amp;gt; IO&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ConfigF RunTime&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span&gt;buildConfig = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;GenericLens&lt;&#x2F;span&gt;&lt;span&gt;.constraints @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ToRuntime&lt;&#x2F;span&gt;&lt;span&gt; toRuntime
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;haskell&quot;&gt;buildConfig :: ConfigF ConfigTime -&amp;gt; IO (ConfigF RunTime)
+buildConfig = GenericLens.constraints @ToRuntime toRuntime
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;summing-up&quot;&gt;Summing up&lt;&#x2F;h2&gt;
 &lt;p&gt;Summing up, we have removed a few types of duplication and
 informality from the process of building runtime resources
@@ -507,19 +507,19 @@ in a codebase with multiple authors, written in a language
 where type safety encourages us to skimp on testing. The
 competing interests here (redundancy vs. complexity) depend
 on just how much redundancy you are cleaning up.&lt;&#x2F;p&gt;
-&lt;p&gt;Thanks to Sarah Brofeldt (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;srhb&quot;&gt;@srhb&lt;&#x2F;a&gt;),
+&lt;p&gt;Thanks to Sarah Brofeldt (&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;srhb&quot;&gt;@srhb&lt;&#x2F;a&gt;),
 who fleshed out the idea with me and did much of the implementation.
 Simple as it may look, we had to explore quite a few paths before
 we found this solution.&lt;&#x2F;p&gt;
 &lt;p&gt;Thanks also to K.A. Buhr for his very helpful
-&lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;51388962&#x2F;how-to-derive-generic-traversals-that-involve-a-type-family&#x2F;51409436#51409436&quot;&gt;answer&lt;&#x2F;a&gt; on StackOverflow.
-&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rossabaker&quot;&gt;Ross Baker&lt;&#x2F;a&gt;
+&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;51388962&#x2F;how-to-derive-generic-traversals-that-involve-a-type-family&#x2F;51409436#51409436&quot;&gt;answer&lt;&#x2F;a&gt; on StackOverflow.
+&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rossabaker&quot;&gt;Ross Baker&lt;&#x2F;a&gt;
 read a draft of this post and gave great suggestions
 for improvement - Thanks!&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;related-work&quot;&gt;Related work&lt;&#x2F;h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;uploads&#x2F;prod&#x2F;2016&#x2F;11&#x2F;trees-that-grow.pdf&quot;&gt;Trees that Grow&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;reasonablypolymorphic.com&#x2F;blog&#x2F;higher-kinded-data&#x2F;&quot;&gt;Higher-Kinded Data&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;uploads&#x2F;prod&#x2F;2016&#x2F;11&#x2F;trees-that-grow.pdf&quot;&gt;Trees that Grow&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;reasonablypolymorphic.com&#x2F;blog&#x2F;higher-kinded-data&#x2F;&quot;&gt;Higher-Kinded Data&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 </description>
       </item>

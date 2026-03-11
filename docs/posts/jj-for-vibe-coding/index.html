@@ -207,12 +207,12 @@
     
     <div class="post-content"><p>AI coding assistants have sped up our coding. Parallel agents
 are dividing the development times down further. Version control
-is becoming more of a bottleneck. By <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> VCS is putting a new
+is becoming more of a bottleneck. By <a rel="external" href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's Law</a> VCS is putting a new
 fundamental limit on how fast software development can go. This isn't
 just an intuitive claim, it's something that actively bugged me
 at work and reminded me of an odd tool we used for <em>human</em> based
 VCS at Kadena: <code>jj</code>.</p>
-<p>So, while implementing a meaty feature for the <a href="https://github.com/boundaryml/baml">BAML</a> language with Claude Code, and
+<p>So, while implementing a meaty feature for the <a rel="external" href="https://github.com/boundaryml/baml">BAML</a> language with Claude Code, and
 feeling the tedium of managing <code>git</code>'s staging area and branches,
 I decided to dust off <code>jj</code> and try in this new AI coding context.
 The results have been great. Here's why:</p>
@@ -239,19 +239,19 @@ chunk up work is pure joy.</p>
 <p>Rebasing is scary in <code>git</code> because it's easy to rewrite history and
 damage the repository. Rebases in <code>jj</code> are safe and common.</p>
 <p>This is how you move a single commit to some other place in the history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase -r SOME_COMMIT --destination SOME_COMMIT
-</span></code></pre>
+<pre><code>jj rebase -r SOME_COMMIT --destination SOME_COMMIT
+</code></pre>
 <p>Or move a whole series of commits to some other place in the
 history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
-</span></code></pre>
+<pre><code>jj rebase --branch SOME_COMMIT --destination SOME_COMMIT
+</code></pre>
 <p>With parallel agents, rebasing is very common, and the improved
 user experience in <code>jj</code> reduces rebase toil.</p>
 <h2 id="4-easy-undo">4. Easy Undo</h2>
 <p>Whatever you just did in <code>jj</code>, if you realize it didn't go the way
 you expected, <code>undo</code> has you covered:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj undo
-</span></code></pre>
+<pre><code>jj undo
+</code></pre>
 <p>Especially helpful while you're still learning the ropes. A lot of noise
 is made about ChatGPT stealing traffic from StackOverflow. <code>jj</code>
 will cut into this market share further by removing the need to search
@@ -260,16 +260,16 @@ work projects.</p>
 <p>If the AI goes down a bad path and writes a bunch of code you dislike,
 <code>abandon</code> abandons the work item.</p>
 <p>Abandon the current commit:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon
-</span></code></pre>
+<pre><code>jj abandon
+</code></pre>
 <p>Abandon some other commit in the history:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj abandon -r SOME_COMMIT
-</span></code></pre>
+<pre><code>jj abandon -r SOME_COMMIT
+</code></pre>
 <p>And if you forgot to introduce a new commit before starting the agent
 on a coding task unrelated to one you had in-progress, it's easy
 to split the work into two separate commits:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
-</span></code></pre>
+<pre><code>jj split TASK_2_FILE_1.hs TASK_2_FILE_2.hs
+</code></pre>
 <h1 id="jj-loves-vibe-coding">jj loves vibe coding</h1>
 <p>Running <code>jj</code> feels like "managing" something:
 high level, details-managed-for-you, simple. Running <code>git</code>
@@ -292,12 +292,12 @@ the rest of the team uses <code>git</code>.</li>
 not trivial. It took me a few weeks to reach the same
 level of productivity that I built up over many years using
 <code>git</code>.</li>
-<li>There is an excellent <a href="https://steveklabnik.github.io/jujutsu-tutorial/">tutorial from Steve Klabnik</a> and an excellent
-<a href="https://www.youtube.com/watch?v=2otjrTzRfVk&amp;t=327s">video from Chris Krycho</a>.</li>
-<li>Get started at the <a href="https://github.com/jj-vcs/jj">jj GitHub repo</a></li>
+<li>There is an excellent <a rel="external" href="https://steveklabnik.github.io/jujutsu-tutorial/">tutorial from Steve Klabnik</a> and an excellent
+<a rel="external" href="https://www.youtube.com/watch?v=2otjrTzRfVk&amp;t=327s">video from Chris Krycho</a>.</li>
+<li>Get started at the <a rel="external" href="https://github.com/jj-vcs/jj">jj GitHub repo</a></li>
 </ul>
 <h2 id="we-have-coding-assistants-so-why-learn-a-new-tool">We have coding assistants - so why learn a new tool?</h2>
-<p>As someone who works on <a href="https://boundaryml.com">developer tools</a> at
+<p>As someone who works on <a rel="external" href="https://boundaryml.com">developer tools</a> at
 the twilight of humanity's involvement in the software development
 process, I've worried about the utility of learning new tools,
 writing new languages, or making any bets on human productivity.
@@ -369,7 +369,7 @@ an indigtment of the <code>git</code> user interface.</p>
         </main>
          <footer class="footer">
     
-    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
     
     <span>
         Powered by

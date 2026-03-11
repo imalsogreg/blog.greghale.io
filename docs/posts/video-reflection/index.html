@@ -240,20 +240,20 @@ and select <code>File &gt; New Screen Recording</code>. Frame the application wi
 generous space (avoid clipping the shadow dropped by the window). Click the
 "Stop" icon in the menu bar when done.</li>
 <li>Trim the time: <code>Edit &gt; Trim</code> in QuickTime. Save.</li>
-<li>Crop the video:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_trimmed.mov  -filter:v &quot;crop=1332:1200:0:0&quot; -c:a copy screengrab_cropped.mov
-</span></code></pre>
+<li>Crop the video:<pre><code>ffmpeg -i screengrab_trimmed.mov  -filter:v &quot;crop=1332:1200:0:0&quot; -c:a copy screengrab_cropped.mov
+</code></pre>
 </li>
-<li>Apply the gaussian blur, flip and composite:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i screengrab_cropped.mov -filter_complex &quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&quot; output.mov
-</span></code></pre>
+<li>Apply the gaussian blur, flip and composite:<pre><code>ffmpeg -i screengrab_cropped.mov -filter_complex &quot;[0:v] split [original][mirror]; [mirror] vflip, gblur=sigma=10 [flipped]; [original][flipped] vstack&quot; output.mov
+</code></pre>
 At this point, we have a stack of the original screen grab, with its mirror image blurred beneath.
 Next we need that blurred mirror image to fade to white.</li>
-<li>Determine the image dimensions:<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
-</span></code></pre>
+<li>Determine the image dimensions:<pre><code>ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 output.mov
+</code></pre>
 We will use this to create our gratient as a .png file with matching size in Gimp.</li>
 <li>Create a gradient that goes from transparent to solid white, starting at the top
 of the mirrored image and ending 20-40 pixels lower.</li>
-<li>Overlay the gradient onto the movie.<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>ffmpeg -i output.mov -i gradient.png -filter_complex &quot;overlay=0:main_h-overlay_h&quot; output2.mov
-</span></code></pre>
+<li>Overlay the gradient onto the movie.<pre><code>ffmpeg -i output.mov -i gradient.png -filter_complex &quot;overlay=0:main_h-overlay_h&quot; output2.mov
+</code></pre>
 </li>
 <li>Trim excess vertical pixels from the video, now that much of the bottom mirror is masked off.</li>
 </ol>
@@ -308,7 +308,7 @@ linux machine.</p>
         </main>
          <footer class="footer">
     
-    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
     
     <span>
         Powered by

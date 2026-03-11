@@ -212,68 +212,68 @@ configuration to your program? This example makes two database connections
 and allows the hostname and logging level to be configured. Imagine how
 <code>main</code> might grow over time as different people follow the patterns they
 find here while adding more parameters.</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
-</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
-</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
-</span><span>{-# </span><span style="color:#b48ead;">LANGUAGE</span><span> ScopedTypeVariables, DefaultSignatures #-}
-</span><span style="color:#b48ead;">import           </span><span>Data.Text                         (</span><span style="color:#b48ead;">Text</span><span>)
-</span><span style="color:#b48ead;">import           </span><span>GHC.Generics                      (</span><span style="color:#b48ead;">Generic</span><span>)
-</span><span style="color:#b48ead;">import           </span><span>Control.Lens
-</span><span style="color:#b48ead;">import qualified </span><span>Data.Text                         </span><span style="color:#b48ead;">as </span><span>Text
-</span><span style="color:#b48ead;">import qualified </span><span>Katip
-</span><span style="color:#b48ead;">import qualified </span><span>Database.PostgreSQL.Simple        </span><span style="color:#b48ead;">as </span><span>PG
-</span><span style="color:#b48ead;">import qualified </span><span>Data.Generics.Product.Constraints </span><span style="color:#b48ead;">as </span><span>GenericLens
-</span><span>
-</span><span style="color:#b48ead;">data </span><span style="color:#d08770;">ConfigExample1 </span><span>= </span><span style="color:#d08770;">ConfigExample1
-</span><span>  { hostname   :: </span><span style="color:#d08770;">Text
-</span><span>  , userDBUser :: </span><span style="color:#d08770;">String
-</span><span>  , userDBPass :: </span><span style="color:#d08770;">String
-</span><span>  , userDBDB   :: </span><span style="color:#d08770;">String
-</span><span>  , userDBPort :: </span><span style="color:#d08770;">Integer
-</span><span>  , userDBHost :: </span><span style="color:#d08770;">String
-</span><span>  , logLevel :: </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
-</span><span>  , analysisDBUser :: </span><span style="color:#d08770;">String
-</span><span>  , analysisDBHost :: </span><span style="color:#d08770;">String
-</span><span>  , analysisDBPort :: </span><span style="color:#d08770;">Integer
-</span><span>  , analysisDBDB   :: </span><span style="color:#d08770;">String
-</span><span>  , analysisDBPass :: </span><span style="color:#d08770;">String
-</span><span>  } </span><span style="color:#b48ead;">deriving</span><span> (</span><span style="color:#a3be8c;">Generic</span><span>)
-</span><span>
-</span><span>
-</span><span style="color:#8fa1b3;">main </span><span style="color:#b48ead;">:: IO </span><span>()
-</span><span>main = </span><span style="color:#b48ead;">do
-</span><span>  </span><span style="color:#d08770;">ConfigExample1</span><span>{..} &lt;- loadConfig &quot;</span><span style="color:#a3be8c;">local.yaml</span><span>&quot;
-</span><span>  print &quot;</span><span style="color:#a3be8c;">Connecting to User Database</span><span>&quot;
-</span><span>  userDB &lt;- </span><span style="color:#d08770;">PG</span><span>.connect </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
-</span><span>      { </span><span style="color:#d08770;">PG</span><span>.connectUser     = userDBUser
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectHost     = userDBHost
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPort     = fromIntegral userDBPort
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPassword = userDBPass
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectDatabase = userDBDB
-</span><span>      }
-</span><span>  </span><span style="color:#65737e;">-- ... a block of initialization code
-</span><span>  </span><span style="color:#65737e;">-- ... maybe written by other team members
-</span><span>  </span><span style="color:#65737e;">--
-</span><span>  analysisDB &lt;- </span><span style="color:#d08770;">PG</span><span>.connect </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
-</span><span>      { </span><span style="color:#d08770;">PG</span><span>.connectUser     = analysisDBUser
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectHost     = analysisDBHost
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPort     = fromIntegral analysisDBPort
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectPassword = analysisDBPass
-</span><span>      , </span><span style="color:#d08770;">PG</span><span>.connectDatabase = analysisDBDB
-</span><span>      }  
-</span><span>  runBusinessLogic analysisDB userDB logLevel (</span><span style="color:#d08770;">Text</span><span>.unpack hostname)
-</span><span>
-</span><span>
-</span><span>
-</span><span>runBusinessLogic
-</span><span>  :: </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
-</span><span>  -&gt; </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
-</span><span>  -&gt; </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
-</span><span>  -&gt; </span><span style="color:#d08770;">String
-</span><span>  -&gt; </span><span style="color:#d08770;">IO ()
-</span><span>runBusinessLogic userDB analysisDB logLevel myHostname = </span><span style="color:#b48ead;">do
-</span><span>  undefined
-</span></code></pre>
+<pre><code data-lang="haskell">{-# LANGUAGE RecordWildCards, DeriveGeneric, DuplicateRecordFields, KindSignatures #-}
+{-# LANGUAGE MultiParamTypeClasses, DataKinds, TypeFamilies, FunctionalDependencies #-}
+{-# LANGUAGE AllowAmbiguousTypes, TypeApplications, FlexibleContexts, FlexibleInstances #-}
+{-# LANGUAGE ScopedTypeVariables, DefaultSignatures #-}
+import           Data.Text                         (Text)
+import           GHC.Generics                      (Generic)
+import           Control.Lens
+import qualified Data.Text                         as Text
+import qualified Katip
+import qualified Database.PostgreSQL.Simple        as PG
+import qualified Data.Generics.Product.Constraints as GenericLens
+
+data ConfigExample1 = ConfigExample1
+  { hostname   :: Text
+  , userDBUser :: String
+  , userDBPass :: String
+  , userDBDB   :: String
+  , userDBPort :: Integer
+  , userDBHost :: String
+  , logLevel :: Katip.Severity
+  , analysisDBUser :: String
+  , analysisDBHost :: String
+  , analysisDBPort :: Integer
+  , analysisDBDB   :: String
+  , analysisDBPass :: String
+  } deriving (Generic)
+
+
+main :: IO ()
+main = do
+  ConfigExample1{..} &lt;- loadConfig &quot;local.yaml&quot;
+  print &quot;Connecting to User Database&quot;
+  userDB &lt;- PG.connect PG.ConnectInfo
+      { PG.connectUser     = userDBUser
+      , PG.connectHost     = userDBHost
+      , PG.connectPort     = fromIntegral userDBPort
+      , PG.connectPassword = userDBPass
+      , PG.connectDatabase = userDBDB
+      }
+  -- ... a block of initialization code
+  -- ... maybe written by other team members
+  --
+  analysisDB &lt;- PG.connect PG.ConnectInfo
+      { PG.connectUser     = analysisDBUser
+      , PG.connectHost     = analysisDBHost
+      , PG.connectPort     = fromIntegral analysisDBPort
+      , PG.connectPassword = analysisDBPass
+      , PG.connectDatabase = analysisDBDB
+      }  
+  runBusinessLogic analysisDB userDB logLevel (Text.unpack hostname)
+
+
+
+runBusinessLogic
+  :: PG.Connection
+  -&gt; PG.Connection
+  -&gt; Katip.Severity
+  -&gt; String
+  -&gt; IO ()
+runBusinessLogic userDB analysisDB logLevel myHostname = do
+  undefined
+</code></pre>
 <p>What problems will we run into as we try to scale this program up?</p>
 <ul>
 <li><strong>Flat format</strong> Without organization, it's easy for config files
@@ -291,16 +291,16 @@ configuration. Let's start by drawing a connection between
 the configuration phase, and the running phase. We'll start by
 using a single configuration type that abstracts over the <em>phase</em>
 at which it is used:</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">data </span><span style="color:#d08770;">ConfigF</span><span> (p :: </span><span style="color:#d08770;">Phase</span><span>) = </span><span style="color:#d08770;">Config
-</span><span>  { userDB     :: </span><span style="color:#d08770;">AtPhase</span><span> p </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
-</span><span>  , analysisDB :: </span><span style="color:#d08770;">AtPhase</span><span> p </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
-</span><span>  , hostname   :: </span><span style="color:#d08770;">Text
-</span><span>  , logLevel   :: </span><span style="color:#d08770;">Katip</span><span>.</span><span style="color:#d08770;">Severity
-</span><span>  } </span><span style="color:#b48ead;">deriving</span><span> (</span><span style="color:#a3be8c;">Generic</span><span>)
-</span><span>
-</span><span style="color:#b48ead;">type </span><span style="color:#d08770;">Config    </span><span>= </span><span style="color:#d08770;">ConfigF</span><span> &#39;</span><span style="color:#d08770;">ConfigTime
-</span><span style="color:#b48ead;">type </span><span style="color:#d08770;">Resources </span><span>= </span><span style="color:#d08770;">ConfigF</span><span> &#39;</span><span style="color:#d08770;">RunTime
-</span></code></pre>
+<pre><code data-lang="haskell">data ConfigF (p :: Phase) = Config
+  { userDB     :: AtPhase p PG.Connection
+  , analysisDB :: AtPhase p PG.Connection
+  , hostname   :: Text
+  , logLevel   :: Katip.Severity
+  } deriving (Generic)
+
+type Config    = ConfigF &#39;ConfigTime
+type Resources = ConfigF &#39;RunTime
+</code></pre>
 <p>Some of our configuration fields are regular Haskell datatypes, like
 <code>Text</code> and <code>Katip.Severity</code>. These values are specified and used in
 the same way. But the <code>userDB</code> and <code>analysisDB</code> fields are defined
@@ -309,14 +309,14 @@ in terms of <code>Phase</code> and <code>AtPhase</code>, which we are about to d
 for specifying two things (a) the configuration <em>data</em> and (b) the
 configuration <em>result</em>, in one go.</p>
 <p>Our <code>main</code> function will look more like this:</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span>main&#39; = </span><span style="color:#b48ead;">do
-</span><span>  </span><span style="color:#8fa1b3;">cfg </span><span style="color:#b48ead;">:: Config</span><span>    &lt;- </span><span style="color:#bf616a;">loadConfig</span><span> &quot;</span><span style="color:#bf616a;">local</span><span>.</span><span style="color:#bf616a;">yaml</span><span>&quot;
-</span><span>  </span><span style="color:#8fa1b3;">res </span><span style="color:#b48ead;">:: Resources</span><span> &lt;- </span><span style="color:#bf616a;">buildConfig cfg
-</span><span>  runBusinessLogic&#39; res
-</span><span>
-</span><span style="color:#8fa1b3;">runBusinessLogic&#39; </span><span style="color:#b48ead;">:: Resources -&gt; IO </span><span>()
-</span><span>runBusinessLogic&#39; = undefined
-</span></code></pre>
+<pre><code data-lang="haskell">main&#39; = do
+  cfg :: Config    &lt;- loadConfig &quot;local.yaml&quot;
+  res :: Resources &lt;- buildConfig cfg
+  runBusinessLogic&#39; res
+
+runBusinessLogic&#39; :: Resources -&gt; IO ()
+runBusinessLogic&#39; = undefined
+</code></pre>
 <p>Whether the added complexity is worth it depends on a few things.</p>
 <ul>
 <li><strong>Configuration complexity</strong> If your configuration is simple,
@@ -327,39 +327,39 @@ a type family. If there are other aspects of your codebase
 that use your complexity budget, or if the budget is low
 for other reasons, then it's best to treat this technique
 as a fun curiosity. Use your budget on something with a
-higher power-to-weight ratio, like <a href="https://dhall-lang.org">dhall</a></li>
+higher power-to-weight ratio, like <a rel="external" href="https://dhall-lang.org">dhall</a></li>
 </ul>
 <p>Let's build the required machinery.</p>
 <p>First, we use <code>DataKinds</code> to
 define a new kind <code>Phase</code>
 inhabited by two types <code>'ConfigTime</code> and <code>'RunTime</code>
 to specialize our application's configuration for one phase or the other.</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">data </span><span style="color:#d08770;">Phase
-</span><span>  = </span><span style="color:#d08770;">ConfigTime
-</span><span>  | </span><span style="color:#d08770;">RunTime
-</span></code></pre>
+<pre><code data-lang="haskell">data Phase
+  = ConfigTime
+  | RunTime
+</code></pre>
 <p>Next, a type family will let us associate a configuration type
 to a runtime type for some particular resource.</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">HasPhases </span><span style="color:#bf616a;">t </span><span style="color:#b48ead;">where
-</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> (p :: </span><span style="color:#d08770;">Phase</span><span>) t
-</span><span>
-</span><span style="color:#b48ead;">instance HasPhases PG</span><span>.</span><span style="color:#b48ead;">Connection where
-</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> &#39;</span><span style="color:#d08770;">ConfigTime PG</span><span>.</span><span style="color:#d08770;">Connection </span><span>= </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">ConnectInfo
-</span><span>  </span><span style="color:#b48ead;">type </span><span style="color:#d08770;">AtPhase</span><span> &#39;</span><span style="color:#d08770;">RunTime    PG</span><span>.</span><span style="color:#d08770;">Connection </span><span>= </span><span style="color:#d08770;">PG</span><span>.</span><span style="color:#d08770;">Connection
-</span></code></pre>
+<pre><code data-lang="haskell">class HasPhases t where
+  type AtPhase (p :: Phase) t
+
+instance HasPhases PG.Connection where
+  type AtPhase &#39;ConfigTime PG.Connection = PG.ConnectInfo
+  type AtPhase &#39;RunTime    PG.Connection = PG.Connection
+</code></pre>
 <p>Another typeclass allows the construction of a resource
 from its configuration data. The two type parameters correspond
 to the configtime and runtime types.</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">class </span><span style="color:#a3be8c;">ToRuntime </span><span style="color:#bf616a;">cty rty </span><span style="color:#b48ead;">where
-</span><span>  </span><span style="color:#8fa1b3;">toRuntime </span><span style="color:#b48ead;">:: </span><span style="color:#bf616a;">cty </span><span style="color:#b48ead;">-&gt; IO </span><span style="color:#bf616a;">rty
-</span><span>
-</span><span style="color:#65737e;">-- | Catch-all instance for regular (not phase-specific) types
-</span><span style="color:#b48ead;">instance ToRuntime </span><span style="color:#bf616a;">ty ty </span><span style="color:#b48ead;">where
-</span><span>  toRuntime = return
-</span><span>
-</span><span style="color:#b48ead;">instance ToRuntime PG</span><span>.</span><span style="color:#b48ead;">ConnectInfo PG</span><span>.</span><span style="color:#b48ead;">Connection where
-</span><span>  toRuntime = </span><span style="color:#d08770;">PG</span><span>.connect
-</span></code></pre>
+<pre><code data-lang="haskell">class ToRuntime cty rty where
+  toRuntime :: cty -&gt; IO rty
+
+-- | Catch-all instance for regular (not phase-specific) types
+instance ToRuntime ty ty where
+  toRuntime = return
+
+instance ToRuntime PG.ConnectInfo PG.Connection where
+  toRuntime = PG.connect
+</code></pre>
 <p>There is a catch-all instance for cases when the configtime
 type is the same as the runtime type. When we eventually
 process our configuration record, the catch-all instance will
@@ -373,16 +373,16 @@ the aside, I hope it makes sense)</p>
 <h2 id="generic-lens">generic-lens</h2>
 <p>In order to have our <code>buildConfig</code> function, we
 will use some fabulous magic from
-<a href="http://hackage.haskell.org/package/generic-lens">generic-lens</a>.
-Specifically, <a href="http://hackage.haskell.org/package/generic-lens-1.2.0.1/docs/Data-Generics-Product-Constraints.html#v:constraints"><code>constraints</code></a>
+<a rel="external" href="http://hackage.haskell.org/package/generic-lens">generic-lens</a>.
+Specifically, <a rel="external" href="http://hackage.haskell.org/package/generic-lens-1.2.0.1/docs/Data-Generics-Product-Constraints.html#v:constraints"><code>constraints</code></a>
 allows us to traverse a record, applying an effectful function
 at every field with a type satisfying some particular constraint.</p>
 <p>We choose that constraint to be our <code>ToRuntime</code> class.</p>
 <p>Now we can write <code>buildConfig</code> without repeating any
 details about the internals of our configuration record.</p>
-<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#8fa1b3;">buildConfig </span><span style="color:#b48ead;">:: ConfigF ConfigTime -&gt; IO</span><span> (</span><span style="color:#b48ead;">ConfigF RunTime</span><span>)
-</span><span>buildConfig = </span><span style="color:#d08770;">GenericLens</span><span>.constraints @</span><span style="color:#d08770;">ToRuntime</span><span> toRuntime
-</span></code></pre>
+<pre><code data-lang="haskell">buildConfig :: ConfigF ConfigTime -&gt; IO (ConfigF RunTime)
+buildConfig = GenericLens.constraints @ToRuntime toRuntime
+</code></pre>
 <h2 id="summing-up">Summing up</h2>
 <p>Summing up, we have removed a few types of duplication and
 informality from the process of building runtime resources
@@ -399,19 +399,19 @@ in a codebase with multiple authors, written in a language
 where type safety encourages us to skimp on testing. The
 competing interests here (redundancy vs. complexity) depend
 on just how much redundancy you are cleaning up.</p>
-<p>Thanks to Sarah Brofeldt (<a href="https://github.com/srhb">@srhb</a>),
+<p>Thanks to Sarah Brofeldt (<a rel="external" href="https://github.com/srhb">@srhb</a>),
 who fleshed out the idea with me and did much of the implementation.
 Simple as it may look, we had to explore quite a few paths before
 we found this solution.</p>
 <p>Thanks also to K.A. Buhr for his very helpful
-<a href="https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436">answer</a> on StackOverflow.
-<a href="https://github.com/rossabaker">Ross Baker</a>
+<a rel="external" href="https://stackoverflow.com/questions/51388962/how-to-derive-generic-traversals-that-involve-a-type-family/51409436#51409436">answer</a> on StackOverflow.
+<a rel="external" href="https://github.com/rossabaker">Ross Baker</a>
 read a draft of this post and gave great suggestions
 for improvement - Thanks!</p>
 <h2 id="related-work">Related work</h2>
 <ul>
-<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/11/trees-that-grow.pdf">Trees that Grow</a></li>
-<li><a href="https://reasonablypolymorphic.com/blog/higher-kinded-data/">Higher-Kinded Data</a></li>
+<li><a rel="external" href="https://www.microsoft.com/en-us/research/uploads/prod/2016/11/trees-that-grow.pdf">Trees that Grow</a></li>
+<li><a rel="external" href="https://reasonablypolymorphic.com/blog/higher-kinded-data/">Higher-Kinded Data</a></li>
 </ul>
 </div>
     <footer class="post-footer">
@@ -446,7 +446,7 @@ for improvement - Thanks!</p>
         </main>
          <footer class="footer">
     
-    <span>&copy; 2025 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
+    <span>&copy; 2026 <a href="https:&#x2F;&#x2F;blog.greghale.io"></a></span>
     
     <span>
         Powered by
